@@ -1,0 +1,90 @@
+\documentclass[dvipdfmx,a4paper]{jsreport}
+\usepackage[utf8]{inputenc}
+\usepackage[dvipdfmx, linktocpage]{hyperref} %リンクを有効にする
+%\usepackage{tikz}
+%\usepackage[all]{xy}
+\usepackage{here}
+\usepackage{url} %同上
+\usepackage{amsmath,amssymb} %数式とか
+\usepackage{mathtools} 
+\usepackage{braket,physics} %ブラケット
+\usepackage{bm} %ベクトル
+\usepackage[top=20truemm,bottom=20truemm,left=15truemm,right=15truemm]{geometry} %余白設定
+\usepackage{latexsym} 
+\usepackage{amsthm}
+\newtheoremstyle{break}
+{\topsep}{\topsep}%
+{}{}%
+{\bfseries}{}%
+{\newline}{}%
+\theoremstyle{break}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{eg}[thm]{Example}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{ax}[thm]{Axiom}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{rem}[thm]{Remark}
+\makeatletter
+\newenvironment{pr}[1][\proofnam]{\par
+%\newenvironment{Proof}[1][\Proofname]{\par
+\topsep6\p@\@plus6\p@ \trivlist
+\item[\hskip\labelsep{\itshape #1}\@addpunct{\bfseries}]\ignorespaces
+}{%
+\endtrivlist
+}
+\newcommand{\proofnam}{\underline{Derivation.}}
+\makeatother
+\usepackage{latexsym} 
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\C}{\mathbb{C}}
+%\newcommand{\D}{\mathcal{D}}
+\renewcommand{\O}{\mathcal{O}}
+%\newcommand{\SO}{\mathrm{SO}}
+%\newcommand{\SU}{\mathrm{SU}}
+%\newcommand{\so}{\mathfrak{so}}
+%\newcommand{\su}{\mathfrak{su}}
+%\newcommand{\GL}{\mathrm{GL}}
+%\newcommand{\g}{\mathfrak{g}}
+\newcommand{\diff}{\mathrm{d}}
+\newcommand{\drv}[2]{\frac{\mathrm{d} #1}{\mathrm{d} #2}} %常微分
+\newcommand{\drvn}[3]{\frac{\mathrm{d}^{#1} #2}{\mathrm{d} #3^{#1}}}%高階常微分
+\newcommand{\pdrvn}[3]{\frac{\partial^{#1}#2}{\partial #3^{#1}}}%高階偏微分
+%\newcommand{\h}{\mathcal{H}}
+\usepackage{mathrsfs} %花文字 \mathscr
+\renewcommand{\headfont}{\bfseries}
+\usepackage{ascmac}
+\usepackage{framed,color}%枠等
+\definecolor{lightgray}{rgb}{0.75,0.75,0.75}
+\usepackage{comment}
+\usepackage[dvipdfmx]{color, hyperref}
+\usepackage{pxjahyper}
+\usepackage{cite}
+\usepackage{xcolor}
+\hypersetup{
+    colorlinks=true,
+    citecolor=blue,
+    linkcolor=teal,
+    urlcolor=orange,
+ }
+\makeatletter
+\@addtoreset{equation}{section}
+\makeatother
+\numberwithin{equation}{section}
+\renewcommand{\thefootnote}{\roman{footnote}.}
+\renewcommand{\appendixname}{Appendix }
+\title{Statistical Mechanics}
+\author{Toshiya Tanaka}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\bibliography{books}
+\bibliographystyle{ytamsalpha}
+
+\end{document}

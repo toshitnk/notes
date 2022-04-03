@@ -1,0 +1,124 @@
+\section{1次元量子系}
+\subsection{自由粒子}
+一次元自由粒子のSchr\"{o}dinger方程式は
+\begin{align}
+    -\frac{\hbar^2}{2m}\drvn{2}{}{x}\psi(x)=E\psi(x)
+\end{align}
+である．変形して，
+\begin{align}
+    \drvn{2}{}{x}\psi(x)=-k^2\psi(x)\quad;\quad k\coloneqq\frac{\sqrt{2mE}}{\hbar}>0
+\end{align}
+である．この一般解は任意定数$C_1,C_2\in\C$または$A\in\C,\delta\in\R$を用いて
+\begin{align}
+    \psi(x)=C_1e^{ikx}+C_2e^{-ikx}=A\sin\qty(kx+\delta)\label{free_sol}
+\end{align}
+と書ける．
+\footnote{以前\url{https://www.mns.kyutech.ac.jp/~okamoto/education/quantum/quantum-1dim100802.pdf}を参照して，自由粒子では重ね合わせの状態は取らないなど議論していたが，それは誤りであると栗本先生から指摘を受けた．私が誤っていた点は，演算子が可換ならば同時固有状態を取ることが出来るが，すべての状態が同時固有状態なわけでないということ．固有状態の線形結合は一般に固有状態でないからそれは当たり前．}
+\begin{comment}
+\begin{cl}\label{thm:eikx}
+自由粒子では，この重ね合わせ状態は許されず，
+\begin{align}
+    \psi(x)=Ce^{ikx}\quad\text{xor}\quad\psi(x)=Ce^{-ikx}
+\end{align}
+のどちらかになる．%\footnote{この議論は\url{https://www.mns.kyutech.ac.jp/~okamoto/education/quantum/quantum-1dim100802.pdf}による．}
+\end{cl}
+\begin{pr}
+自由粒子ではHamiltonianと運動量が可換なので，エネルギー固有状態は同時に運動量の固有状態でなければならない．\eqref{free_sol}のとき，
+\begin{align}
+    -i\hbar\drv{\psi(x)}{x}&=\hbar k \qty(C_1e^{ikx}-C_2e^{ikx})
+\end{align}
+となるので，運動量の固有状態になるのは$C_1=0\ \text{xor}\ C_2=0$のときである．
+\end{pr}
+
+\subsection*{変な境界条件の入れ方}
+この規格化には
+\begin{enumerate}
+    \item Dirac deltaを用いる方法
+    \item fixed boundary condition $\psi(0)=\psi(L)=0$を用いる方法
+    \item periodic boundary condition (PBC) $\psi(x)=\psi(x+L)$を用いる方法
+\end{enumerate}
+を用いるのが通常であるが，逆張りオタクなので$\psi(x+L)=e^{i\theta}\psi(x)\ (0\leq\theta<2\pi)$と入れてみる．
+\end{comment}
+
+これは，無限に高い井戸型ポテンシャル
+\begin{align}
+    V(x)=\begin{cases}
+    0\quad&(0\leq x\leq L)\\
+    \infty\quad&(x\leq0,\ L\leq x)
+    \end{cases}
+\end{align}
+で規格化したのち，井戸の幅を無限大にするというのが一つの方法である．\footnote{もう一つ，Dirac deltaを使う規格化がある．}この方法を用いるとき，ナイーブな差異として境界条件の取り方があるが，意外と面白いので紹介する．
+\subsubsection*{Dirichlet型境界条件}
+まず，一番簡単なのは「境界で波動関数がゼロ」i.e.,$\psi(0)=\psi(L)=0$とすることである．これをDirichlet型境界条件\footnote{これはPDEの言葉だろうか？例えばLaplacianはHermitianであってほしいわけだが，そうであるためには表面項が消える必要があって，その時にDerichletを入れたりする．他に，微分が境界で消えるNeumannであったりこの後のPBCも表面項を消す境界条件になっていたりする．}という．このとき，Eq\eqref{free_sol}のsineの解を採用すると簡単で，
+\begin{align}
+    A\sin\delta=A\sin(kL+\delta)=0
+\end{align}
+なので，$\delta=0,\ kL=n\pi\  (n\in\Z_{>0})$となる．一つの固有状態を規格化しておくと，
+\begin{align}
+    \int_{0}^{L}\diff x\abs{A}^2\sin^2(kx)=1
+\end{align}
+の条件から，$\abs{A}=\sqrt{2/L}$と決まり，固有関数は
+\begin{align}
+    \psi(x)=\sqrt{\frac{2}{L}}\sin\qty(\frac{n\pi}{L}x)\quad;\quad n\in\Z_{>0}
+\end{align}
+となる．
+
+ところで，これは何の固有状態であるかというと，エネルギーの固有状態である．エネルギー,i.e., Hamiltonian, の構成上，これは運動量の固有状態になっていてほしいが，そうはなっていない．\footnote{このことは谷村先生に2021年03月02日の集中講義で質問し答えていただいた．}実際，
+\begin{align}
+    -i\hbar\pdv{}{x}\sqrt{\frac{2}{L}}\sin\qty(\frac{n\pi}{L}x)=-i\hbar\sqrt{\frac{2}{L}}\frac{n\pi}{L}\cos\qty(\frac{n\pi}{L}x)
+\end{align}
+とsineがcosineになっており，固有関数でない．Hamiltonianでは二回微分することでsineがsineに戻っていた．
+
+
+
+２状態$\psi,\phi$を考えると，
+\begin{align}
+    (\phi,P\psi)&=\int_{0}^{L}\diff x\phi^{*}(x)\qty(-i\hbar\pdv{}{x})f(x)\\
+    &=\qty[\pdv{}{x}\phi^{*}(x)\qty(-i\hbar\pdv{}{x})\psi(x)]_{0}^{L}+\int_{0}^{L}\diff x\qty(-i\hbar\pdv{}{x}\phi(x))^{*}\psi(x)\\
+    &=(P\phi,\psi)
+\end{align}
+となる．これは，運動量はHermitianということ．
+ところが，$P$と$P^{\dagger}$\footnote{関数$f,g$と演算子$A$があって，内積を$(f,Ag)=(Bf,g)$とする演算子$B$をもって$A^{\dagger}\coloneqq B$と定め，$A$のHermitian conjugateという．}の定義域を見てみると，$\mathrm{dom}P=\qty{\psi\colon\R\to\C\mid \psi(0)=\psi(L)=0}$なのに対し，$\mathrm{dom}P^{\dagger}=\qty{\phi\colon\R\to\C\mid \text{特に制限なし}}$である．\footnote{これは部分積分した第一項を見れば，$\psi$の条件で表面項が消えてくれるので$\phi$に制限を書ける必要がないことが分かる．}
+
+すなわちDirichlet境界条件の下で運動量演算子がHermitianだがself adjointでない\footnote{最近\url{https://arxiv.org/abs/quant-ph/0103153}が話題になっていた気がする．}ということである．\footnote{Hermitianとは$P=P^{\dagger}$のことで，self adjointはそれに加え両者の定義域が一致していることまで要求する．self adjoint operatorはHermitian operatorより狭いクラスということ．self adjoint\ $\subset$\ Hermitianみたいな感じ．物理量はself adjointのクラス．}
+\subsubsection*{周期的境界条件}
+別の境界条件の取り方として，周期的境界条件(Periodic boundary condition; PBC)$\psi(x)=\psi(x+L)$がある．Eq\eqref{free_sol}でexponentialのほうを使うと$kL=2n\pi(n\in\Z_{\geq0})$となる．先ほどと違い等号がつくのは，exponentialでは引数が$0$でもnull stateにならないから．また，ground state以外では縮退していて，固有状態を全て別々に扱うことにすると，負の整数も許して勘定することが出来る．すなわち固有状態$\langle\ldots,e^{2i\pi x/L\cdot(-1)},1,e^{2i\pi x/L\cdot 1},\ldots\rangle$たちが全状態空間を張るということ．具体的な規格化などは次にやる．
+
+この境界条件の下では上に列挙したエネルギー固有状態たちは運動量の同次固有状態になり，運動量はちゃんとself adjointである．
+\subsubsection*{Twisted boundary condition}
+もう少し変な境界条件の取り方もできて，量子力学の基本的要請からphaseの違いは同一視できるので「一周して同じ状態」という境界条件をPBCより一般に$\psi(x+L)=e^{i\theta}\psi(x)$といれることが出来る．これをtwisted boundary conditionという．
+
+境界条件より，
+\begin{align}
+    kL=\theta+2\pi n\quad n\in\Z
+\end{align}
+となる．，正負をまとめることで$k$および$n$は負の値も取ることに注意．
+
+$k$の定義から，エネルギー固有値は
+\begin{align}
+    E_n=\frac{\hbar^2}{2mL^2}\qty(\theta+2\pi n)^2
+\end{align}
+となり，固有状態は
+\begin{align}
+    \psi_n(x)=\frac{1}{\sqrt{L}}\exp\qty(i\frac{\theta+2\pi n}{L}x)
+\end{align}
+となる．
+
+ここで，
+\begin{itemize}
+\item $\theta=0$のとき，i.e.,通常のPBCのとき，
+\begin{align}
+    E_n=\frac{2\pi^2\hbar^2}{mL^2}n^2
+\end{align}
+となる．spectrumは$n\neq0$のとき正負の組で二重に縮退するが，ground stateは縮退しない．
+
+\item $\theta=\pi$のとき，
+\begin{align}
+    E_n=\frac{2\pi^2\hbar^2}{mL^2}\qty(n+\frac{1}{2})^2
+\end{align}
+で，すべての$n\in\Z$において縮退する．
+
+\item $\theta\neq0,\pi$のとき，すべての$n\in\Z$において縮退しない．
+\end{itemize}
+
+さて，$\theta$の制限を外して，$\theta:0\to2\pi$に連続的に（断熱的に）動かすことを考える．すると，$\ket{n}$だった状態が$\theta=2\pi$をまたいだ瞬間$\ket{n+1}$に移ってしまう．\footnote{これは境界を同一視した，i.e.,一次元円周$S^1$のtopologyを持たせた，ことで空間が単連結でなくなったことによるらしい．}これはspectral flowと呼ばれるらしく，非常に面白い．

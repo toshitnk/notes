@@ -1,0 +1,386 @@
+	\section{最小作用の原理，局所ゲージ不変性}
+	\subsection{量子化}
+	最小作用の原理から始まる理論形式は量子化の筋道を与える．
+	点粒子の量子化は作用汎関数
+	\begin{align}
+			S = \int _{t_1}^{t_2} \dd{t} L(q(t), \dot{q}(t))
+	\end{align}
+	が極小$\var{S} = 0$となるように要請すると，Euler-Lagrange方程式
+	\begin{align}
+			\pdv{L}{q} - \dv{L}{\dot{q}} = 0
+	\end{align}
+	が導出され，Legendre変換したものは
+	\begin{align}
+			\dv{x}{t} = \qty{x, H}_{\text{Poisson}}
+	\end{align}
+	である．Poisson braketを
+	\begin{align}
+			\qty{x, H} _{\text{Poisson}} \mapsto \frac{1}{i\hbar}\qty[x, H]
+	\end{align}
+	と置き換えるのが正準量子化である．
+
+	場の量子化では，作用を
+	\begin{align}
+			S = \int\dd[4]{x}\L(\varphi(x), \partial ^{\mu} \varphi(x))
+	\end{align}
+	と与え，変分により
+	\begin{align}
+			\pdv{\L}{\varphi} - \pdv{}{x_{\mu}}\pdv{\L}{\partial(\partial^{\mu}\varphi)} = 0
+	\end{align}
+	を得，Legendre変換により，
+	\begin{align}
+			\partial {0} \varphi = \qty{\varphi, H}_{\text{Poisson}}
+	\end{align}
+	となり，正準量子化により
+	\begin{align}
+			\qty{\varphi, H}_{\text{Poisson}}\mapsto \frac{1}{i\hbar} [\varphi, H]
+	\end{align}
+	となる．
+
+	\subsection{古典力学における最小作用の原理}
+	ある質点が時刻$t_1$から$t_2$まで運動する．この間にLagrangianという量を時間積分したものとして作用を定義する．
+	\begin{align}
+			S = \int_{t_1}^{t_2}\dd{t}L
+	\end{align}
+	Lagrangianは質点の位置と速度に依存する関数である．
+	\begin{align}
+			L = L(q(t), \dot{q}(t)).
+	\end{align}
+	作用が極値をとるような運動が実現するというのが最小作用の原理である．
+	
+
+	境界は$\var{q(t_1)} = \var{q(t_2)} = 0 $と固定されているとして，$\var{S} = 0$を計算する．
+	\begin{align}
+			\var{S} &= \int _{t_1}^{t_2} \dd{t} \var{L(q(t), \dot{q}(t))}\\
+					&= \int _{t_1}^{t_2} \dd{t} \qty(\pdv{L}{q}\var{q} + \pdv{L}{\dot{q}}\var{\qty(\dv{q}{t})})\\
+					&= \int_{t_1}^{t_2} \pdv{L}{q}\var{q} - \qty(dv{}{t}\pdv{L}{\dot{q}})\var{q} + \dv{}{t}\qty(\pdv{L}{\dot{q}}\var{q})\\
+					&= \int_{t_1}^{t_2}\dd{t}\qty(\pdv{L}{q} - \dv{}{t}\pdv{L}{\dot{q}})\var{q} + \pdv{L}{\dot{q}}\var{q(t_2)} - \pdv{L}{\dot{q}}\var{q(t_1)}
+	\end{align}
+	となり，後ろ二項は境界条件から消える．これがゼロになるので，
+	\begin{align}
+			\pdv{L}{q} - \dv{}{t}\pdv{L}{\dot{q}} = 0 \label{ELeq}
+	\end{align}
+	となる．
+
+	もっとも簡単な運動のLagrangianを考える．
+	\begin{eg}[等速直線運動]
+			運動方程式
+			\begin{align}
+					m\dv[2]{}{t}\vec{r}(t) = m \dv{}{t}\vec{v}(t) = \vec{0}
+			\end{align}
+			にEuler-Lagrange方程式\eqref{ELeq}が一致するようにLanrangianを与えると
+			\begin{align}
+					L = \frac{1}{2}m\abs{\vec{v}}^2
+			\end{align}
+			はこれを満たす\footnote{一意ではないが．}．
+
+			このLagrangianは次の性質を実際に満たす．
+			\begin{enumerate}
+					\item Lagrangianは位置と速度に依存する関数である．
+							\begin{align}
+									L = L(q(t), \dot{q}(t))
+							\end{align}
+					\item Lagrangianは実関数である．
+							\begin{align}
+									L = L^{*}
+							\end{align}
+					\item Lagrangianは系の対称性を反映している．
+			\end{enumerate}
+	\end{eg}
+
+	\subsection{古典場の理論における最小作用の原理}
+	同様にLagrangianという量を時間積分したものとして作用を定義する．
+	\begin{align}
+			S \coloneqq = \int \dd{t} L = \int \dd{t}\int \dd[3]{x}\L.
+	\end{align}
+	
+	Lagrangianは場と，場の一階微分項に依存する関数とする\footnote{電磁気学では場$\varphi$はポテンシャルに相当して，これらの微分が電磁場である．}．
+	\begin{align}
+			\L = \L(\varphi(x), \partial^{\mu}\varphi(x)).
+	\end{align}
+
+	以上に定義した作用が極値をとるような運動が実現する．同様に変分を計算すると，Euler-Lagrange方程式
+	\begin{align}
+			\pdv{\L}{\varphi(x)} - \partial^{\mu}\pdv{\L}{\partial (\partial^{\mu}\varphi(x))} = 0
+	\end{align}
+	を得る．
+	\begin{eg}[Dirac方程式]
+			よく知られた相対論的場の方程式としてDirac方程式を考える．
+			\begin{align}
+			\qty(i\gamma^{\mu}\partial_{\mu} - m)\psi(x) = 0
+			\end{align}
+			Euler-Lagrange方程式がこれに一致するようなLagrangianは
+			\begin{align}
+					\L = \frac{i}{2}\bar{\psi}(x)\gamma^{\mu}\partial_{\mu}\psi(x) - \frac{i}{2}\qty(\partial_{\mu}\bar{\psi}(x))\gamma^{\mu}\psi(x) - m\bar{\psi}(x)\psi(x) \label{Dirac_L}
+			\end{align}
+			で与えられる．実際，
+			\begin{align}
+					-\partial ^{\mu}\pdv{\L}{(\partial^{\mu}\psi(x))} &= -\frac{i}{2}\partial^{\mu}\bar{\psi}(x)\gamma_{\mu}\\
+					\pdv{\L}{\psi(x)} &= -\frac{i}{2}\partial_{\mu}\bar{\psi}(x)\gamma^{\mu} - m\bar{\psi}(x)
+			\end{align}
+			となり，
+			\begin{align}
+					-i\partial_{\mu}\bar{\psi}(x)\gamma^{\mu} - m \bar{\psi}(x) = 0
+			\end{align}
+			を得る．両辺エルミート共役を取り，$\gamma_0$をかけることで，Dirac方程式を得る．
+
+			\eq{Dirac_L}のLagrangianは次の性質を満たす．
+			\begin{enumerate}
+					\item Lagrangianは場と，その一階微分に依存する関数．
+							\begin{align}
+									\L = \L(\varphi(x), \partial^{\mu}\varphi(x))
+							\end{align}
+					\item Langrangianは実関数．
+							\begin{align}
+									\L^{*} = L
+							\end{align}
+					\item Lagrangianは系の対称性を反映している．Lorentz不変性は
+							\begin{align}
+									\bar{\psi}(x)\psi(x), \bar{\psi}(x)\gamma^{\mu}\partial_{\mu}\psi(x)
+							\end{align}
+							である．Lorentz不変性では$(\bar{\psi}(x)\psi(x))^n$のような高次項は禁止されない．
+
+							そこで次の要請も加える．
+
+					\item 各項の係数は自然単位系で負の質量次元を持たない．
+					\item Lagrangian密度は局所的．
+			\end{enumerate}
+	\end{eg}
+	\subsection{自然単位系}
+	物理量は質量$\mathrm{[M]}$，時間$\mathrm{[T]} $, 長さ$\mathrm{[L]} $の組み合わせで構成される．e.g.,エネルギーは$\mathrm{ML^2T^{-2}} $の次元を持つ．
+
+	自然単位系では
+	\begin{align}
+			c\mathrm{[LT^{-1}]} = \hbar \mathrm{[ML^2T^{-1}]} = 1
+	\end{align}
+	とおく．これより，$\mathrm{[L]} = \mathrm{[T]} $, $\mathrm{[M]} = \mathrm{[L^{-1}]} $となり，すなわち，
+	\begin{align}
+			\mathrm{[M]} = \mathrm{[L^{-1}]} = \mathrm{[T^{-1}]}
+	\end{align}
+	である．この質量の次元をカウントする．
+	\subsection{Lagrangeの未定乗数法}
+	拘束条件の元で極値を求めるのに便利な方法であるLagrange未定乗数法の使い方をまとめる．
+	\begin{eg}
+			束縛$x^2 + 2xy + y^2 = 1$のもとで，$x^2 + 3y^2$の極値を求めることを考える．未定乗数$\lambda$を加えた三変数関数$F(x, y; \lambda) \coloneqq x^2 + 3y^2 - \lambda(x^2 + 2xy + y^2 - 1) $を作り，これの変分をとる．
+			\begin{align}
+					\var{F}
+					&= 2x\var{x} + 6y\var{y} - \lambda(2x\var{x} + 2x\var{y} + 2y\var{x} + 2y\var{y}) - \var{\lambda} (x^2 + 2xy + y^2 - 1)
+			\end{align}
+			これがゼロになるように，
+			\begin{align}
+					2x - 2x\lambda - 2y\lambda &= 0,\\
+					6y - 2x\lambda - 2y\lambda &= 0
+			\end{align}
+			より
+			\begin{align}
+					x = 3y
+			\end{align}
+			を得る．これより$y = \pm 1/4$となり，極値$x^2 + 3y^2 = 3/4$を得る．
+	\end{eg}
+	これを使って，Euler-Lagrange方程式を再考する．今，Lagrangianを位置$x(t)$と速度$v(t)$を独立に取って$L = L(x(t), v(t)) $と与え，これを拘束条件$v(t) = \dv*{x(t)}{t}$の元で作用を極小にすることを考える．
+
+	このとき，未定乗数を含めたLagrangian
+	\begin{align}
+			L'(x(t), v(t); \lambda) = L(x(t), v(t)) - \lambda (v - \dv{x(t)}{t})
+	\end{align}
+	を時間積分して作られる作用の変分を考えれば良い．
+	\begin{align}
+			\var{S}
+			&= \int_{t_1}^{t_2}\dd{t}\var{L'}\\
+			&= \int_{t_1}^{t_2}\dd{t}\qty(\var{L} - \var{\lambda}\qty(v - \dv{x}{t}) - \lambda\qty(\var{v} - \dv{\var{x}}{t}))
+	\end{align}
+	Lagrangian自体の変分は
+	\begin{align}
+			\var{L} = \pdv{L}{x}\var{x} + \pdv{L}{v}\var{v}
+	\end{align}
+	で，
+	\begin{align}
+			\lambda \dv{\var{x}}{t} = -\dv{\lambda}{t}\var{x} + \dv{}{t}\qty(\lambda\var{x})
+	\end{align}
+	は最後の全微分項は定積分で落ちることを考えると，
+	\begin{align}
+			\var{S}
+			&= \int_{t_1}^{t_2} \dd{t}\qty(\qty(\pdv{L}{x} - \dv{\lambda}{t})\var{x} + \qty(\pdv{L}{v} - \lambda)\var{v} - \qty(v - \dv{x}{t})\var{\lambda})
+	\end{align}
+	となる．これがゼロという条件から未定乗数は
+	\begin{align}
+			\lambda = \pdv{L}{v}
+	\end{align}
+	となって
+	\begin{align}
+			\eval{\qty(\pdv{L}{x} - \dv{}{t}\pdv{L}{v})}_{v = \dv*{x}{v}} = 0
+	\end{align}
+	となる．
+
+
+	\subsection{$\U(1)$ gauge 理論}
+
+	自由Dirac場のLagrangianを考える．
+
+	\begin{align}
+			\L &= \frac{i}{2}\bar{\psi}(x) \gamma^{\mu} \qty(\partial_{\mu}\psi(x)) - \frac{i}{2}\qty(\partial_{\mu}\bar{\psi}(x))\gamma^{\mu}\psi(x) - m \bar{\psi}(x)\psi(x)\\
+			   &= i \bar{\psi}(x)\gamma^{/mu}\qty(\partial_{\mu}\psi(x)) - \frac{i}{2}\partial_{\mu}\qty(\bar{\psi}(x)\gamma^{\mu}\psi(x)) - m\bar{\psi}(x)\psi(x)\\
+			   &= i\bar{\psi}(x)\gamma^{\mu}\partial_{\mu}\psi(x) - m\bar{\psi}(x)\psi(x)
+	\end{align}
+
+	これ以降この形を使う．
+
+
+	大域的$\U(1)$ gauge変換は$\theta$を定数すると
+	\begin{align}
+			\psi'(x) &= e^{-i\theta}\\
+			\bar{\psi'} &= \bar{\psi}(x)e^{i\theta}
+	\end{align}
+	である．
+
+	この変換の下で
+	\begin{align}
+			\L'
+			&= i\bar{\psi'}(x)\gamma^{\mu}\partial_{mu}\psi'(x) - m \bar{\psi'}(x)\psi(x)\\
+			&= i\bar{\psi}(x)e^{i\theta}\gamma^{mu}\partial_{\mu}e-{-u\theta}\psi(x) - m\bar{\psi}(x)e-{i\theta}e^{-i\theta}\psi(x)\\
+			&= \L
+	\end{align}
+	となる．自由Dirac場のLagrangianは大域的$\U(1)$ gauge不変性を持つ．
+
+	次に本題の局所$\U(1)$ gauge変換を考える．変換パラメータ$\theta$を座標依存に依存するようにし，$\theta(x)$とする．局所的$\U(1)$変換は
+	\begin{align}
+			\psi'(x) = e^{-i\theta(x)}e^{i\theta(x)}
+	\end{align}
+	である．このとき，座標に依存するので，微分がヒットし
+	\begin{align}
+			\partial^{\mu}e^{-i\theta(x)} = -i\qty(\partial^{\mu})e^{-i\theta(x)}
+	\end{align}
+	となる．
+
+	自由Dirac場は
+	\begin{align}
+			\L
+			&= i\bar{\psi'}(x)\gamma^{\mu}\partial_{\mu}\psi'(x) - m\bar{\psi'}(x)\psi'(x)\\
+			&= i\bar{\psi}(x)e^{i\theta(x)}\gamma^{\mu}\partial_{\mu}e^{-i\theta(x)}\psi(x) - m\bar(\psi)(x)e-{i\theta}e^{-i\theta}\psi(x)\\
+			&= i\bar{\psi}(x)\gamma^{\mu}\qty(-i\partial_{\mu}\theta(x) + \partial_{\mu})\psi(x) - m \bar{\psi}(x)\psi(x) \neq \L
+	\end{align}
+	変換する．故に自由Dirac場のLagrangianは局所的$\U(1)$対称性を持たない．
+
+	ここでアクロバティックな発想をする．Lagrangianが局所$\U(1)$対称性を持つべきである，という信念によって局所的gauge対称性を持つように書き換える．この書き換えによって場の相互作用の仕方が決まる．\footnote{電磁気学ではMaxwell方程式がgauge不変になっている．これがなぜかはわからないが原理になっているとしてgauge不変性が原理にあるとして考えると，これは強い力でも成り立っていることがわかっている．ここでは，そういう原理であるとして受け入れることにする．}
+
+	今，微分を強偏微分に書き換える．$\U(1)$ gauge場を$A^{\mu}(x)$とし，共変微分を
+	\begin{align}
+			D^{\mu} \coloneqq \partial^{\mu} - ie A^{\mu}(x)
+	\end{align}
+	として，Lagrangianは
+	\begin{align}
+			\L = i\bar{\psi}(x)\gamma^{\mu}D_{\mu}\psi(x) - m\bar{\psi}(x)\psi(x)
+	\end{align}
+	と書き換える．
+	これと同時にgauge場も
+	\begin{align}
+			\psi' &= e^{-i\theta(x)}\psi(X)\\
+			(A')^{\mu}(x) &= A^{\mu} - \frac{1}{e}\partial^{\mu}\theta(x)
+	\end{align}
+	と変換する．
+
+	この下でLagrangianの変換を見る．
+	\begin{align}
+			\L'
+			&= i\bar{\psi'}(x) \gamma^{\mu}\qty(\partial_{\mu} - ieA'_{\mu}(x))\psi'(x) - m\bar{\psi'}(x)\psi'(x)\\
+			&= i\bar{\psi}(x)e^{i\theta(x)}\gamma^{\mu}e^{-i\theta(x)}\qty(-i\partial^{\mu}\theta(x) + \partial_{\mu} - ieA_{\mu}(x) + i\partial^{\mu}\theta(x))\psi(x) - \cdots \\
+			&= i\bar{\psi}(x)\gamma^{\mu}\qty(\partial_{\mu} - ieA_{\mu}(x))\psi(x) - m\bar{\psi}(x)\psi(x)\\
+			&= \L
+	\end{align}
+	書き換えたLagrangianは局所gauge不変である．
+
+	新しいLagrangian
+	\begin{align}
+			\L
+			&= i\bar{\psi}(x)\gamma^{\mu}\qty(\partial_{\mu} - ieA_{mu}(x))\psi(x) - m\bar{\psi}(x)\psi(x)
+	\end{align}
+	に対して運動方程式を求める．
+
+	\begin{align}
+			\pdv{L}{\psi(x)} &= e\bar{\psi}(x)\gamma^{\mu}A_{\mu} - m\bar{\psi}(x)
+	\end{align}
+	\begin{align}
+			\qty(i\gamma^{\mu}\partial_{\mu} - m)\psi(x) = 0
+	\end{align}
+	\begin{align}
+			\qty(i\gamma^{\mu}\partial_[\mu] - m)\psi(x) = e\gamma^{\mu}A_{\mu}\psi(x)
+	\end{align}
+
+	\footnote{以上が数学的要請のみから導出される事実である．左辺の相互作用項は実験から決めるしかないが，ここから$e$が決まり，すべてが決定されることになる．}
+	\footnote{古典力学を思いだす．古典力学でもフルに対称性を要求してフリーな場合の
+	\begin{align}
+			m\dv[2]{}{t}\vec{r}(t) = 0
+	\end{align}
+	と導かれる．力が加わる一般的な場合は
+	\begin{align}
+			m\dv[2]{}{t}\vec{r}(t) = \vec{F}
+	\end{align}
+	の右辺は実験事実からきまる ．
+	}
+
+	物質場のLagrangian$\L(\psi(x), \partial^{\mu}\psi(x))$を$\L(\psi(x), \partial^{\mu}\psi(x), A^{\mu}(x))$と微分項も許し，各要請を破らないように足し上げる．
+
+	非微分項で他に許される形はあるか．
+	$\dim \qty(\bar{\psi}A \psi) = 4$ならば$\dim A =1$.
+
+	高事項は局所gauge不変性を破ってしまう．
+	\begin{align}
+			\qty(A^{\mu}(x)A_{\mu}(x))' \neq A^{\mu}(x) A_{\mu}(x)
+	\end{align}
+	これより，質量項が禁止される．
+
+
+	微分項に局所gauge不変性を保つ形はあるか．
+	\begin{align}
+			\partial^{\nu}\qty(A')^{\mu}(x)
+			= \frac{1}{e}\partial^{\nu}\partial^{\mu}\theta(x)
+	\end{align}
+	と$\mu$と$\nu$の対称な形になっている．ここで場の強さ$F^{\mu\nu}\coloneqq \partial^{\mu}A^{\nu}- \partial^{\nu}A^{\mu}A^{\mu}$を導入する．
+
+	\begin{align}
+			(F')^{\mu\nu}
+			&= \partial^{mu}(A')^{\mu}A^{\nu} - \frac{1}{e}\partial^{\mu}\partial^{\nu}\theta(x) - \qty(\partial^{\nu}A^{\mu} - \frac{1}{e}\partial^{\nu}\partial^{\mu}\theta(x)) = F^{\mu\nu}
+	\end{align}
+	とgauge不変になっている．
+
+	ここで，共変微分に対し便利な表記を導入する．Dirac場のgauge変換はphaseを簡単のため$U(x)$とかくと，
+	\begin{align}
+			\bar{\psi'}(x) &= e^{i\theta(x)}\psi(x)\\
+						   &= U(x)\psi(x),\\
+			\qty(D^{\mu}\psi(x))'
+						   &=e^{-i\theta(x)}\psi(x)\\
+						   &= U(x)D^{\mu}\psi(x)
+	\end{align}
+
+	この２つを形式的に
+	\begin{align}
+			\qty(D^{\mu})' = U(x)D^{\mu}U^{-1}(x)
+	\end{align}
+	と書く．共変微分の交換関係を計算すると
+	\begin{align}
+			\frac{i}{e}\qty[D^{\mu}, D^{\nu}]
+			&=\frac{i}{e}\qty(\qty(\partial^{\mu} - ieA^{\mu})\qty(\partial^{\nu} - ieA^{\nu}) - (\mu \leftrightarrow \nu))\\
+			&=\frac{i}{e}\qty(\qty(\partial^{\mu}\partial^{\nu} - ie\qty(\partial^{\mu}A^{\nu}) -ieA^{\nu}\partial^{\mu} - ieA^{\nu}\partial^{\mu} - e^2A^{\mu}A^{\nu}) - (\mu \leftrightarrow \nu))\\
+			&=\partial^{\mu}A^{\nu} - \partial^{\nu}A^{\mu}\\
+			&= F^{\mu\nu}
+	\end{align}
+	と場の強さになる．これは一般相対論では曲率テンソルに対応する．この計算法で場の強さの変換を計算すると
+	\begin{align}
+			\qty(F')^{\mu\nu}
+			&= \frac{i}{e}\qty([D^{\mu}, D^{\nu}])'\\
+			&= \frac{i}{e}((D')^{\mu}(D')^{\nu} - (D')^{\nu}(D')^{\mu})\\
+			&= \frac{i}{e}(UD^{\mu}U^{-1}UD^{\nu}U^{-1} - UD^{\nu}U^{-1}UD^{\mu}U^{-1})\\
+			&= UF^{\mu\nu}U^{-1}\\
+			&= F^{\mu\nu}
+	\end{align}
+	となる．
+
+	ところで，場の強さ$F^{\mu\nu} = \partial^{\mu}A^{\nu}$の質量次元は$2$であるので，$F^{\mu\nu}F_{\mu\nu}$などは許され，
+	$F^{\mu\nu}F_{\nu}^{\rho}F_{\rho\mu}$などは禁止される．許されるすべてを含めたLagrangianは量子電磁力学のLagrangianと呼ばれ，
+	\begin{align}
+			\L_{\text{QED}} = \frac{-1}{4}F^{\mu\nu}F_{\mu\nu} + i\bar{\psi}(x)\gamma^{\mu}\qty(\partial_{\mu} - ieA_{\mu})\psi(x) - m\bar{\psi}(x)\psi(x)
+	\end{align}
+	である．
+
+
+

@@ -1,0 +1,20 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\providecommand{\doihref}[2]{\href{#1}{#2}}
+\providecommand{\arxivfont}{\tt}
+\begin{thebibliography}{Tas00}
+
+\bibitem[Shi12]{thermo_shimizu}
+A.~Shimizu, \emph{熱力学の基礎 = principles of thermodynamics}, 第6刷 ed.,
+  東京大学出版会, 2012.
+
+\bibitem[Tas00]{Tasaki_thermo}
+H.~Tasaki, \emph{熱力学 : 現代的な視点から}, 新物理学シリーズ / 山内恭彦監修,
+  no.~32, 培風館, 2000.
+
+\end{thebibliography}

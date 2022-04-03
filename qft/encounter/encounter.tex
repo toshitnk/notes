@@ -1,0 +1,175 @@
+\documentclass[dvipdfmx, a4paper]{jsarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[top=10truemm, bottom=20truemm, left=15truemm, right=15truemm]{geometry} % mergin
+\renewcommand{\headfont}{\bfseries}
+
+% graphics
+\usepackage{graphicx}
+\usepackage{here}
+
+% link
+
+\usepackage{url}
+\usepackage[dvipdfmx, linktocpage]{hyperref} 
+\usepackage{xcolor}
+\usepackage{pxjahyper}
+\hypersetup{
+	colorlinks=true,
+	citecolor=blue,
+	linkcolor=teal,
+	urlcolor=orange,
+}
+
+% math
+
+\usepackage{amsmath, amssymb} 
+\usepackage{physics}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+
+% theoremstyle
+\usepackage{amsthm}
+\newtheoremstyle{break}
+{\topsep}{\topsep}%
+{}{}%
+{\bfseries}{}%
+{\newline}{}%
+\theoremstyle{break}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{eg}[thm]{Example}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{prob}{Problem}[section]
+
+\makeatletter
+\newenvironment{pr}[1][\proofnam]{\par
+\topsep6\p@\@plus6\p@ \trivlist
+\item[\hskip\labelsep{\itshape #1}\@addpunct{\bfseries}]\ignorespaces
+}{%
+\endtrivlist
+}
+\newcommand{\proofnam}{\underline{Derivation.}}
+\makeatother
+
+
+% my command
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\U}{\mathrm{U}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\su}{\mathfrak{su}}
+\newcommand{\N}{\mathcal{N}}
+\renewcommand{\H}{\mathcal{H}}
+
+\newcommand{\eq}[1]{Eq. \eqref{#1}}
+\newcommand{\theorem}[1]{Thm. \ref{#1}}
+\newcommand{\definition}[1]{Def. \ref{#1}}
+\newcommand{\proposition}[1]{Prop. \ref{#1}}
+\newcommand{\example}[1]{e.g.\ref{#1}}
+\newcommand{\claim}[1]{Cl. \ref{#1}}
+\newcommand{\corolary}[1]{Cor. \ref{#1}}
+\newcommand{\remark}[1]{Rem. \ref{#1}}
+\newcommand{\problem}[1]{Prob. \ref{#1}}
+
+\renewcommand{\O}{\mathcal{O}}
+
+
+% number
+
+%\makeatletter
+%\@addtoreset{equation}{section}
+%\makeatother
+%\numberwithin{equation}{section}
+%\renewcommand{\thefootnote}{\roman{footnote}.}
+%\renewcommand{\appendixname}{Appendix }
+
+
+%English
+
+\renewcommand{\tablename}{Tab. }
+\renewcommand{\figurename}{Fig. }
+
+
+
+\title{場の量子論の数学と2次元4次元対応}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	\tableofcontents
+	\section{2次元4次元対応とは}
+	\begin{itemize}
+			\item 「物理」では，二次元の共形場理論，特にLiuville理論と四次元のゲージ理論，特に$\SU(2)$の対応．
+			\item 数学では，無限次元代数，Virasoroとインスタントンモジュライ空間の幾何の対応
+	\end{itemize}
+	2009年に見つかったときにはびっくり．対応の両側とも35年くらい別個に数理物理で研究されていた．\footnote{いろいろprecursorはあったが．}
+	なぜ対応があるか．六次元の"$\N =(2, 0)$理論"を$S^4\times C$(Riemann面)で考える．$C$が小さい場合$C$で定まる四次元のQFTがあり$S^4$が小さいと$S^4$で定まる二次元のQFTがある．
+	ここでトポロジカルな物理量を考える．トポロジカルというのは$S^4$と$C$のサイズによらず，どちらで計算しても答えがかわらないものである．
+
+	\section{場の量子論とはどんなものか．}
+
+	0+1d QFT = 1d QFTとは普通の量子力学のことである．$\H$をHilbert空間(状態空間)とし，この上の作用素$A_1, A_2, \ldots$を考える．この中で時間発展を決める特別なものがあり，それをHamiltonianといい$H$と書くことにする．
+	一次元時空の各点にHilbert空間があり，$t_1$の時間発展を$e^{-t_1H}$が指定する．
+
+	閉じた1d多様体に対しては二点A, Bがあると
+	\begin{align}
+			\tr_{\H} e^{-t_1 H }A e^{-t_2 H}B\in\C
+	\end{align}
+
+	という複素数を対応させる．
+
+	開いた1d多様体に対しては線型写像
+	\begin{align}
+			e^{-tH}\colon \H\to \H
+	\end{align}
+	を対応させる．
+
+	これらは空間の切り貼りに対してcompatibleである．
+
+	一般化すると，(D-1)+1d QFT = D-d QFT $Q$とは
+	境界なしD-d多様体$M$を与えられると分配関数$Z_{Q}(M)\in\C$を出力し，さらにいろいろと条件を満たすものである．
+
+	場の量子論の作り方は大きく分けて三通りある．
+	\begin{itemize}
+			\item 公理系を満たすデータを手で与える．\label{given}
+
+					e.g. 自由場の理論，topological QFT
+			\item 経路積分を行う．\label{pathint}
+
+					e.g. 4d pure gauge theory
+					\begin{align}
+							Z_{\text{QFT}, d=4, G} (M) \coloneqq \int_{M\text{上の$G$接続全体}}\exp{-\int \tr \abs{F}^2 \dd{\operatorname{vol}_M}}\qty[\mathcal{D}\operatorname{Vol}]
+					\end{align}
+					\begin{itemize}
+							\item 数学的にきちんと構成し，性質を調べたら賞金一億円
+							\item スパコン上に近似して乗せられる．これは実験をよく再現する．
+					\end{itemize}
+			\item 超弦理論に押し付ける．\label{superstring}
+
+					e.g. 10dのquantum gravity theory
+	\end{itemize}
+
+	\section{2d Liouvilleと4d $\N=2$ $\SU(2)$ $w/4$ flavors}
+	2d Liuvilleは経路積分による構成(\ref{pathint})で始まったが，結局直接定義する構成(\ref{given})になった2d 共形場理論である．
+
+	$f$をholomorophicな$\C$上の変換として微小変換
+	$z \mapsto z' = z + \sum_{n}\epsilon_n z^{n+1}$で与えられる．
+
+	生成子は$\xi_n\coloneqq z^{n+1}\partial_{z}, \bar{\xi}_n \coloneqq \bar{z}^{n+1}\bar{\partial}_z$で交換関係は
+	\begin{align}
+			[\xi_m, \xi_n] &= (m-n)\xi_{m+n}\\
+			[\bar{\xi}_m, \bar{\xi}_n] &= (m-n)\bar{\xi}_{m+n}\\
+			[\xi_m, \bar{\xi}_n] &= 0
+	\end{align}
+	\section{6dからの視点}
+
+	
+	\bibliography{books}
+	\bibliographystyle{ytamsalpha}
+\end{document}

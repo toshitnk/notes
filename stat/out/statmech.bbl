@@ -1,0 +1,16 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\providecommand{\doihref}[2]{\href{#1}{#2}}
+\providecommand{\arxivfont}{\tt}
+\begin{thebibliography}{田08}
+
+\bibitem[田08]{Tasaki_statmech}
+田崎晴明, \emph{統計力学}, 新物理学シリーズ / 山内恭彦監修, no. 37-38, 培風館,
+  2008.
+
+\end{thebibliography}

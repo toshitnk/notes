@@ -1,0 +1,443 @@
+\section{Lorentz変換}
+\subsection{Lorentz変換の性質}
+$(ct, x) \mapsto (ct', x')$の変換で
+\begin{align}
+		x &\mapsto x' = \gamma x + \beta \gamma ct\\
+		ct &\mapsto ct' = \gamma ct + \beta\gamma ct
+\end{align}
+をLorentz変換という．
+これはMinkowski空間での「長さ」
+\begin{align}
+		(ct)^2 - x^2 - y^2 - z^2
+\end{align}
+を不変に保つ．この意味で，Lorentz変換はMinkowski空間における回転と解釈できる．
+
+四次元で考えると，回転平面は${}_4C_{2} = 6$つの回転平面がある．xy, yz, zx平面ではEuclid空間の回転と同じで，時間を含んだtx, ty, tz平面での回転は特にブーストと呼ばれる．
+
+tx平面におけるブーストは
+\begin{align}
+		\begin{pmatrix}
+				ct'\\
+				x'
+		\end{pmatrix}
+		&=
+		\begin{pmatrix}
+				\gamma & -\gamma\beta\\
+				-\gamma\beta & \gamma
+		\end{pmatrix}
+		\begin{pmatrix}
+				ct\\
+				x
+		\end{pmatrix}
+\end{align}
+となる．
+$\gamma^2 (1-\beta^2) = 1$より$\gamma = \cosh w_1$, $-\gamma\beta = \sinh w_1$
+とおき，四次元で書くと
+\begin{align}
+		\begin{pmatrix}
+				ct'\\
+				x'\\
+				y'\\
+				z'
+		\end{pmatrix}
+		&=
+		\begin{pmatrix}
+				\cosh w_1 & \sinh w_1 & 0 & 0\\
+				\sinh w_1 & \cosh w_1 & 0 & 0\\
+				0 & 0 & 1 & 0\\
+				0 & 0 & 0 & 1
+		\end{pmatrix}
+		\begin{pmatrix}
+				ct\\
+				x\\
+				y\\
+				z
+		\end{pmatrix}
+\end{align}
+となる．
+
+xy平面での回転は
+\begin{align}
+		\begin{pmatrix}
+				ct'\\
+				x'\\
+				y'\\
+				z'
+		\end{pmatrix}
+		&=
+		\begin{pmatrix}
+				1 & 0 & 0 & 0\\
+				0 & \cos\theta_3 & -\sin\theta_3 & 0\\
+				0 & \sin\theta_3 & \cos \theta _3 & 0\\
+				0 & 0 & 0 & 1
+		\end{pmatrix}
+		\begin{pmatrix}
+				ct\\
+				x\\
+				y\\
+				z
+		\end{pmatrix}
+\end{align}
+である．他の成分も同様にできる．
+行列を書くのは大変なのでEinsteinの規約を使う．
+
+六つの変換行列はすべて行列式が1になる．
+これらの変換行列$\Lambda$すべてが
+\begin{align}
+		{}^{t}\Lambda
+		\begin{pmatrix}
+				1 & 0 & 0 & 0\\
+				0 & -1 & 0 & 0\\
+				0 & 0 & -1 & 0\\
+				0 & 0 & 0 & -1
+		\end{pmatrix}
+		\Lambda
+		&=
+		\begin{pmatrix}
+				1 & 0 & 0 & 0\\
+				0 & -1 & 0 & 0\\
+				0 & 0 & -1 & 0\\
+				0 & 0 & 0 & -1
+		\end{pmatrix}
+\end{align}
+を満たす．この全体を$\SO(3, 1)$という．
+
+今，$\abs{w_i}, \abs{\theta_i} \ll 1 $の無限小変換を考える．このとき，変換行列は$\Gamma^{\mu}_{\nu}\simeq \delta ^{\mu}_{\nu} + \epsilon^{\mu}_{\nu} $と単位行列と無限小パラメータの和で書ける．
+パラメータの一次まででは積は順序によらず，任意の$\SO(3, 1)$無限小変換は
+\begin{align}
+		\delta^{\mu}_{\nu} + \epsilon^{\mu}_{\nu} = \delta^{\mu}_{\nu} + \qty(\epsilon_{tx})^{\mu}_{\nu}+ \qty(\epsilon_{ty})^{\mu}_{\nu}+ \qty(\epsilon_{tz})^{\mu}_{\nu}+ \qty(\epsilon_{xy})^{\mu}_{\nu}+ \qty(\epsilon_{yz})^{\mu}_{\nu}+ \qty(\epsilon_{zx})^{\mu}_{\nu}
+\end{align}
+と書ける．行列で書くと
+\begin{align}
+		\epsilon^{\mu}_{\nu}
+		&=
+		\begin{pmatrix}
+				0 & w_1 & w_2 & w_3\\
+				w_1 & 0 & -\theta_3 & \theta_2\\
+				w_2 & \theta_3 & 0 & -\theta_1\\
+				w_3 & -\theta_2 & \theta_1 & 0
+		\end{pmatrix}
+\end{align}
+となり，添字を上げ下げすると
+\begin{align}
+		\epsilon^{\mu\nu}
+		&=
+		\begin{pmatrix}
+				0 & -w_1 & -w_2 & -w_3\\
+				w_1 & 0 & \theta_3 & -\theta_2\\
+				w_2 & -\theta_3 & 0 & \theta_1\\
+				w_3 & \theta_2 & -\theta_1 & 0
+		\end{pmatrix}
+\end{align}
+である．これは反対称になる．
+
+
+\subsection{場の変換}
+通常の三次元回転でベクトル場$\vec{A}(\vec{x})$を考えると
+引数の座標変換と場そのものの変換が現れる．一般に変換$\Lambda$に対して
+\begin{align}
+		\qty(A')(\Lambda \vec{x}) = \Lambda^{i}_{j}A^{j}(\vec{x})
+\end{align}
+と書ける．
+
+場の量子論では場を量子化して粒子描像を得るが，どんな粒子が現れるかはどんな場の変換性があるかと言い換えられる．
+
+標準理論に現れる素粒子は場の変換性で区別できる．
+\begin{table}[H]
+		\centering
+		\begin{tabular}{c|cccc}\hline
+				スカラー場 & Higgs & & & \\
+				ベクトル場 & photon & gluon & $W^{\pm}$boson & $Z$ boson\\
+				Dirac場 & quark & 荷電lepton & neutorino & \\\hline
+		\end{tabular}
+\end{table}
+それぞれの場は次のように変換する．
+\begin{itemize}
+		\item スカラー場
+
+				一成分の場．Lorentz変換の下で不変．
+				\begin{align}
+						\phi'(\Lambda x) = \phi(x)
+				\end{align}
+		\item ベクトル場
+
+				四成分の場．$x^{\mu}$と同じ変換をする．
+				\begin{align}
+						(A')^{\mu}(\Lambda x) = \Lambda^{\mu}_{\nu}A^{\nu}(x)
+				\end{align}
+\end{itemize}
+
+\subsection{量子力学における$\SU(2)$}
+量子力学では，物理量$O$は演算子の波動関数$\psi$による期待値$\langle \psi^{\dagger}, O\psi \rangle = \expval{O}$で与えられる．
+
+今，z方向にspin 1/2を持つ状態$\ket{\up} = {}^{t}(1, 0)$を考える．
+z方向のspin角運動量の期待値は
+\begin{align}
+		\mel{\up}{\frac{1}{2}\sigma_3}{\up}
+		&=
+		\begin{pmatrix}
+				1 & 0
+		\end{pmatrix}
+		\begin{pmatrix}
+				1/2 & 0
+				~ & -1/2
+		\end{pmatrix}
+		\begin{pmatrix}
+				1\\
+				0
+		\end{pmatrix}\\
+		&= \frac{1}{2}
+\end{align}
+となる．
+
+ここで，状態$\ket{\up}$に$\SU(2)$変換$\ket{\up}\mapsto e^{i\theta_2 \sigma_2 /2}\ket{\up} $を施す．
+\begin{align}
+		\mel{\up}{e^{-i\theta_2\sigma_2 / 2}\frac{1}{2}\sigma_3e^{i\theta_2\sigma_2/2}}{\up}
+		&=
+		\begin{pmatrix}
+				1 & 0
+		\end{pmatrix}
+		\begin{pmatrix}
+				\cos\theta_2 / 2 & \sin\theta_2 / 2\\
+				\sin\theta_2 / 2 & -\cos\theta_2 / 2
+		\end{pmatrix}
+		\begin{pmatrix}
+				1 \\
+				0
+		\end{pmatrix}
+		\\
+		&=
+		\frac{1}{2}\cos\theta_2
+\end{align}
+
+これはz方向に向いていたspinがxz平面上で$\theta_2$回転したことを意味する．波動関数に$\SU(2)$変換を施すと，2つ合わせて観測量としては$\SO(3)$変換が実現する．
+
+\subsection{四次元Minkowski空間のLorentz変換}
+四次元Minkowski空間のLorentz変換は回転三つとブースト三つからなる．
+四元ベクトル$x^{\mu} = (ct, x, y, z) $のブースト変換を考える．
+\begin{itemize}
+		\item 行列を使った方法
+
+				tx平面のブーストは$4\times 4$行列で
+				\begin{align}
+						\begin{pmatrix}
+								ct'\\
+								x'\\
+								y'\\
+								z'
+						\end{pmatrix}
+						&=
+						\begin{pmatrix}
+								\cosh w_1 & \sinh w_1 & 0 & 0\\
+								\sinh w_1 & \cosh w_1 & 0 & 0\\
+								0 & 0 & 1 & 0\\
+								0 & 0 & 0 & 1
+						\end{pmatrix}
+						\begin{pmatrix}
+								ct\\
+								x\\
+								y\\
+								z
+						\end{pmatrix}
+				\end{align}
+				これは長さを保っている．
+		\item 複素行列を使った方法
+
+				detが$(ct)^2 - x^2 - y^2 - z^2$になる行列をつくればよい．
+				$x^{\mu} = (ct, x, y, z)$に対して
+				\begin{align}
+						\begin{pmatrix}
+								ct + z & x - iy\\
+								x + iy & ct - z
+						\end{pmatrix}
+						= ct  + x\sigma_1 + y\sigma_2 + z\sigma_3
+				\end{align}
+				がそれである．エルミート性を崩さない変換を与えたいが，回転の場合から推測して$e^{w_1\sigma_1/2}$ととると，Lorentz変換を再現する．
+\end{itemize}
+
+回転は$e^{-i\theta_i\sigma_i/2}$, ブーストは$e^{w_i\sigma_i/2}$が指定しそれぞれdetが1になる．
+
+
+ところが，ブーストがunitary性を破る．$\qty(e^{w_i\sigma_i/2})e^{w_i\sigma_i/2} \neq 1$．これらのなす群は$\SL(2, \C)$である．
+
+$a\in\SL(2, \C)$に対し，
+\begin{align}
+		ct' + x'\sigma_1 + y'\sigma_2 + z'\sigma_3 = a(ct + x\sigma_1 + y\sigma_2 + z\sigma_3)a^{\dagger}
+\end{align}
+はひとまとめに
+\begin{align}
+		(x')^{\mu}\sigma_{\mu} = a(x^{\mu}\sigma_{\mu})a^{\dagger}
+\end{align}
+とかくと，変換部分に関しては
+\begin{align}
+		\Lambda^{\mu}_{\nu}\sigma_{\mu} = a\sigma_{\nu}a^{\dagger}
+\end{align}
+となる．
+
+この指揮はベクトル場の変換である$\SO(3, 1)$変換が2つの$\SL(2. \C)$の組み合わせで実現できることを表しており，$\SL(2, \C)$変換がより基本的である．
+この$\SL(2, C)$で変換する場がDirac場である．
+
+\subsection{Dirac場}
+$\Lambda^{\mu}_{\nu}\sigma_{\mu} = a\sigma_{\nu}a^{\dagger} $を満たす$a$と$a^{*}$で変換する場$\xi$, $\eta$を考える．
+\begin{align}
+		\xi'(x') &= a\xi(x)\\
+		\bar{\eta'}(x') &= a^{*}\bar{\eta}(x)
+\end{align}
+
+Dirac場$\psi$は
+\begin{align}
+		\psi(x) \coloneqq 
+		\begin{pmatrix}
+				\xi(x)\\
+				i\sigma_2\bar{\eta}(x)
+		\end{pmatrix}
+\end{align}
+と定義される．$\bar{\eta}$を$i\sigma_2\bar{\eta}$と定義しなおす．
+
+Lorentz変換則は
+\begin{align}
+		\eta'(x')
+		&= i\sigma_2\bar{\eta'}(x')\\
+		&= i\sigma_2a^{*}\bar{\eta}(x)\\
+		&= i\sigma_2a^{*}(-i\sigma_2)i\sigma_2\bar{\eta}(x)\\
+		&= \bar{a}\eta(x)
+\end{align}
+なので，Dirac場のLorentz変換は
+\begin{align}
+		\psi'(x')
+		&= 
+		\begin{pmatrix}
+				\xi'(x')\\
+				\eta'(x')
+		\end{pmatrix}
+		\begin{pmatrix}
+				a & 0\\
+				0 & \bar{a}
+		\end{pmatrix}
+\end{align}
+である．
+変換行列$a$, $\bar{a}$の具体系を与える．まずは$\SL{2, \C}$の無限小変換を考える．
+\begin{align}
+		a \simeq 1 - i\frac{\theta_i\sigma_i}{2} + \frac{w_i}{2}\sigma_i
+\end{align}
+$\SO(3, 1)$との関係を見やすくするためにおなじパラメータを使うことにする．
+\begin{align}
+		\Lambda^{\mu}_{\nu} \simeq \delta^{\mu}_{\nu} + \epsilon^{\mu}_{\nu}
+\end{align}
+ここで
+\begin{align}
+		\epsilon^{\mu\nu}
+		&=
+		\begin{pmatrix}
+				0 & -w_1 & -w_2 & -w_3\\
+				w_1 & 0 & \theta_3 & -\theta_2\\
+				w_2 & -\theta_3 & 0 & \theta_1\\
+				w_3 & \theta_2 & -\theta_1 & 0
+		\end{pmatrix}
+\end{align}
+を使って，
+\begin{align}
+		a &\simeq 1 - i\frac{\theta_i\sigma_i}{2} + \frac{w_i\sigma_i}{2}\\
+		  &= 1 - \frac{i}{4}\epsilon^{\mu\nu}\sigma_{\mu\nu}
+\end{align}
+と書き換える．
+\begin{align}
+		\sigma_{\mu\nu} = 
+		\begin{pmatrix}
+				0 & -i\sigma_1 & -i\sigma_2 & -i\sigma_3\\
+				i\sigma_1 & 0 & \sigma_3 & -\sigma_2\\
+				i\sigma_2 & -\sigma_3 & 0 & \sigma_1\\
+				i\sigma_3 & \sigma_2 & -\sigma_1 & 0
+		\end{pmatrix}
+\end{align}
+さらに，
+\begin{align}
+		\sigma_{\mu\nu} &= \frac{i}{2}\qty[\sigma_{\mu}\bar{\sigma}_{\nu} - \sigma_{\nu}\bar{\sigma}_{\mu}]
+\end{align}
+$\sigma_{\mu} = (1, \sigma_1, \sigma_2, \sigma_3)$, $\bar{\sigma}_{\mu} = (1, -\sigma_1, -\sigma_2, -\sigma_3)$である．
+
+結局，$a$の無限小変換が決まったので，$a$は指数の肩に乗せて$a = e^{-i\epsilon^{\mu\nu}\sigma_{\mu\nu}}$となる．
+
+次に$\bar{a}$の変換を与える．
+無限小変換は
+\begin{align}
+		\bar{a} &\simeq i\sigma_2\qty(1 - \frac{i\theta_i\sigma_i}{2} + \frac{w_i\sigma_i}{2})^{*}(-i\sigma_2)\\
+				&= i\sigma\qty(1 + \frac{i\theta_i\sigma_i^{*}}{2} + \frac{w_i\sigma_{i}^{*}}{2})(-i\sigma_2)\\
+				&= \qty(1 - \frac{i\theta_i\sigma_i}{2} - \frac{w_i\sigma_i}{2})\\
+				&= 1 - \frac{i}{4}\epsilon^{\mu\nu}\bar{\sigma}^{\mu\nu}
+\end{align}
+で，
+\begin{align}
+		\bar{\sigma}_{\mu\nu}
+		&=
+		\begin{pmatrix}
+				0 & i\sigma_1 & i\sigma_2 & i\sigma_3\\
+				-i\sigma_1 & 0 & \sigma_3 & -\sigma_2\\
+				-i\sigma_2 & -\sigma_3 & 0 & \sigma_1\\
+				-i\sigma_3 & \sigma_2 & -\sigma_1 & 0
+		\end{pmatrix}
+\end{align}
+である．
+
+
+$\bar{a} = e^{-i\epsilon^{\mu\nu}\bar{\sigma}_{\mu\nu}}$と決定した．
+
+最後にDirac場のLorentz変換を考える．
+\begin{align}
+		\psi'(x')
+		&= \begin{pmatrix}
+				a & 0\\
+				0 & \bar{a}
+		\end{pmatrix}
+		\begin{pmatrix}
+				\xi(x)\\
+				\eta(x)
+		\end{pmatrix}\\
+		&=
+		\begin{pmatrix}
+				e^{-i\epsilon^{mu\nu}\sigma_{\mu\nu}/4} & 0\\
+				0 & e^{-i\epsilon^{\mu\nu}\bar{\sigma}_{\mu\nu}}
+		\end{pmatrix}
+		\begin{pmatrix}
+				\xi(x)\\
+				\eta(x)
+		\end{pmatrix}
+		&= \sum_{n = 1}^{\infty} \frac{1}{n!}\qty(-\frac{i}{4})^n\qty(\frac{i}{2})\qty(\epsilon^{\mu\nu}\qty(\gamma_{\mu}\gamma_{\nu} - \gamma_{\nu}\gamma_{\mu}))^n
+		\begin{pmatrix}
+				\xi(x)\\
+				\eta(x)
+		\end{pmatrix}
+		\\
+		&= e^{-i\epsilon^{\mu\nu}\sigma_{\mu\nu}}
+		\begin{pmatrix}
+				\xi(x)\\
+				\eta(x)
+		\end{pmatrix}
+\end{align}
+ここで．Dirac行列
+\begin{align}
+		\gamma_{\mu} = 
+		\begin{pmatrix}
+				0 & \sigma_{\mu}\\
+				\bar{\sigma}_{\mu} & 0
+		\end{pmatrix}
+\end{align}
+である．
+
+\begin{itemize}
+		\item Dirac場
+
+				四成分の場で
+				\begin{align}
+						\psi'(x') = e^{-i\epsilon^{\mu\nu}\sigma_{\mu\nu}}\psi(x), \quad \sigma_{\mu\nu} = \frac{i}{2}\qty[\gamma_{\mu}, \gamma_{\nu}]
+				\end{align}
+				と変換する
+\end{itemize}
+
+
+
+
+
+
+
+

@@ -1,0 +1,49 @@
+\section{波動力学}
+\subsection{基底による表示}
+状態$\ket{\alpha}\in\h$は位置の固有状態の線形結合として
+\begin{align}
+    \ket{\alpha}=\int\diff x^{\prime}\ket{x^{\prime}}\braket{x^{\prime}}{\alpha}
+\end{align}
+と展開できる．この展開係数$\psi(x,t)\coloneqq\braket{x^{\prime}}{\alpha}$を波動関数という．
+
+この位置のように，任意の状態を線形結合により表せる物理量には例えば運動量$P$がある．運動量の固有状態の組を$\qty{\ket{p}}$とする．すなわち，$P\ket{p}=p\ket{p}$．これを位置基底により表現すると
+\begin{align}
+    \bra{x}P\ket{p}&=-i\hbar\pdv{}{x}\braket{x}{p}=p\braket{x}{p}\\
+    \pdv{}{x}\braket{x}{p}&=\frac{ip}{\hbar}\braket{x}{p}\\
+    \pdv{}{x}\psi_p(x,t)&=\frac{ip}{\hbar}\psi_p(x,t)
+\end{align}
+の微分方程式を満たすことが分かる．複素定数$N$としてこの解を
+\begin{align}
+    \psi_p(x,t)=N\exp\qty(\frac{ip}{\hbar}x)
+\end{align}
+とかく．この定数は$\ket{x}$の規格化によって決定できて，
+\begin{align}
+    \braket{x^{\prime}}{x}&=\int\diff p\braket{x^{\prime}}{p}\braket{p}{x}\\
+    &=\int\diff p |N|^{2}\exp\qty(\frac{ip\qty(x-x^{\prime})}{\hbar})\label{N_nomalization}\\
+    &=\delta\qty(x-x^{\prime})\\
+    &=\frac{1}{2\pi\hbar}\int\diff p \exp\qty(\frac{ip\qty(x-x^{\prime})}{\hbar})\label{delta_fourier}
+\end{align}
+となる．\eqref{delta_fourier}ではDirac deltaのFourier変換を使った．ここで，\eqref{N_nomalization}と\eqref{delta_fourier}を比較すると
+\begin{align}
+    |N|=\frac{1}{\sqrt{2\pi\hbar}}
+\end{align}
+として決定できる．
+結局
+\begin{align}
+    \psi_p(x,t)=\braket{x}{p}=\frac{1}{\sqrt{2\pi\hbar}}\exp\qty(\dfrac{ipx}{\hbar})
+\end{align}
+となる．また，このHermitian conjugateをとると
+\begin{align}
+    \phi_x(p)\coloneqq\braket{p}{x}=\frac{1}{\sqrt{2\pi\hbar}}\exp\qty(\dfrac{-ipx}{\hbar})
+\end{align}
+
+また，これらより，任意の状態$\ket{\alpha}$に対して
+\begin{align}
+    \psi_{\alpha}(x,t)&=\braket{x}{\alpha}=\int\diff p \braket{x}{p}\braket{p}{\alpha}\\
+    &=\frac{1}{\sqrt{2\pi\hbar}}\int\diff p\phi_{\alpha}(p,t)\exp\qty(\frac{ipx}{\hbar})
+\end{align}
+および，
+\begin{align}
+    \phi_{\alpha}(p,t)&=\braket{p}{\alpha}=\int\diff x \braket{p}{x}\braket{x}{\alpha}\\
+    &=\frac{1}{\sqrt{2\pi\hbar}}\int\diff x\psi_{\alpha}(x,t)\exp\qty(\frac{-ipx}{\hbar})
+\end{align}

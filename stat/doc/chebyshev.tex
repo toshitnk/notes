@@ -1,0 +1,115 @@
+\begin{abstract}
+
+  確率を物理に用いることの妥当性について，Chebyshev不等式と大数の法則の
+  物理的解釈から議論する．なお，
+  本稿の議論は，ほとんど\cite{Tasaki_statmech}の焼き直しである．
+\end{abstract}
+\section{測定精度と確率}
+  \begin{thm}[Chebyshev不等式]
+    確率分布$\vec{p}$，物理量$f$とする．
+    任意の$\varepsilon>0$に対し，次の不等式が成り立つ．
+    \begin{align}
+      \mathrm{Prob} \qty(\abs{f-\langle f \rangle_{\vec{p}}} \geq \varepsilon) \leq \qty(\frac{\sigma_{\vec{p}}[f]}{\varepsilon})^2\label{chebyshev}
+    \end{align}
+    ここで，$\langle\bullet\rangle$は期待値で$\sigma[\bullet]$はゆらぎ(標準偏差)である．
+  \end{thm}
+  \begin{pr}
+    まず，次の量を定める．
+    \begin{align}
+      \theta \coloneqq 
+        \begin{cases}
+          1,\quad (\abs{f_i-\langle f \rangle _{\vec{p}}}\geq \varepsilon)\\
+          0,\quad (\abs{f_i-\langle f \rangle _{\vec{p}}} < \varepsilon)
+        \end{cases}
+    \end{align}
+    これは，物理量の期待値からのズレが，$\varepsilon$より大きいとき1,
+    そうでないとき0を返す関数で，$\theta$の期待値はEq.\eqref{chebyshev}の左辺の確率に等しい．
+
+    ところで，その期待値は
+    \begin{align}
+      \sum_{i} \theta_ip_i &\leq \sum_{i}\qty(\frac{f_i-\langle f \rangle_{\vec{p}}}{\varepsilon})^2\\
+      &=\qty(\frac{\sigma_{\vec{p}}[f]}{\varepsilon})^2
+    \end{align}
+    と評価でき，不等式が示せる．\qed
+  \end{pr}
+
+  Chebyshev不等式\eqref{chebyshev}は次のように解釈することができる．物理量$f$のゆらぎ$\sigma_{\vec{p}}[f]$が
+  測定精度より十分小さければ，すなわち$\sigma_{vec{p}}[f]/\varepsilon \ll 1$ならば，
+  測定値$f$の期待値$\langle f \rangle_{\vec{p}}$からのずれが有意に現れる\footnote{測定の分解能$\varepsilon$より大きく現れる．}確率は
+  a.s.\footnote{almost surely}ゼロである．
+\section{試行回数と確率}
+  \begin{thm}[大数の法則]
+    $f$を物理量，$\vec{p}$を一つの系の確率分布とし，同じ系を$N$個考える．全系の確率分布が$\tilde{\vec{p}}$とする．このとき，任意の$\varepsilon>0$に対し，
+    \begin{align}
+      \lim_{N\to\infty}\mathrm{Prob}_{\tilde{\vec{p}}}\qty(\abs{\frac{1}{N}\sum_{i=1}^{N}f_i - \langle f \rangle_{\vec{p}}}\geq \varepsilon ) = 0
+    \end{align}
+    が成り立つ．すなわち，a.s.で平均値が出るということ．
+  \end{thm}
+  \begin{pr}
+    一つの系の物理量$f$の期待値を$\mu$，$f^2$の期待値を$\sigma^2$とする．このとき，ゆらぎは$\sigma = \sqrt{\nu - \mu^2}$である．
+    今，平均値という物理量を
+    \begin{align}
+      m = \frac{1}{N} \sum_{i=1}^{N}f_i
+    \end{align}
+    とし，この期待値は
+    \begin{align}
+      \langle m \rangle_{\tilde{\vec{p}}} = \mu
+    \end{align}
+    $m^2$の期待値は
+    \begin{align}
+      \langle m^2 \rangle_{\tilde\vec{p}} = \frac{1}{N^2} \sum_{i}\sum_{j}\langle f_if_j\rangle_{(\vec{p}_i,\vec{p}_j)}.
+    \end{align}
+    これは独立性より，$i\neq j$については
+    \begin{align}
+      \langle f_if_j \rangle &= \langle f_i \rangle_{\vec{p}} \langle f_j \rangle_{\vec{p}}\\
+      &= \mu^2,
+    \end{align}
+    $i=j$については
+    \begin{align}
+      \langle f_i f_i \rangle &= \langle f_i^2 \rangle = \nu
+    \end{align}
+    と計算できて，
+    \begin{align}
+      \langle m^2 \rangle _{\tilde{\vec{p}}} &= \frac{1}{N^2} \qty(\qty(N^2 - N)\mu^2 + N\nu)
+    \end{align}
+    となる．\footnote{めんどくて添字抜かしたので，考えて．}全体のゆらぎは
+    \begin{align}
+      \sigma_{\tilde{\vec{p}}}[f] &= \sqrt{\frac{\nu-\mu^2}{N}}\\
+      &= \frac{\sigma_{\vec{p}}[f]}{\sqrt{N}}
+    \end{align}
+    となる．ここでChebyshev不等式\eqref{chebyshev}を用いると，
+    \begin{align}
+      \mathrm{Prob}_{\tilde{\vec{p}}}\qty(\abs{\frac{1}{N}\sum_{i=1}^{N}f_i - \langle f \rangle_{\vec{p}}} > \varepsilon) = \qty(\frac{\sigma_{\vec{p}}[f]}{\sqrt{N}}) \underset{N \to \infty}{\to} 0
+    \end{align}
+    と示せる．\qed
+  \end{pr}
+  具体例を一つ．
+  \begin{eg}
+    $N\sim10^{24}$個のサイコロを振ることを考える．測定精度を$\varepsilon\sim10^{-8}$とすると，
+    平均値
+    \begin{align}
+      m\coloneqq \frac{1}{N}\sum_{i=1}^{N}f_i
+    \end{align}
+    が期待値$3.5000000$に一致しない確率は，$\langle m \rangle = 7/2,\ \langle m^2 \rangle = 35 / (12 N) + (7/2)^2,\ \sigma[m] = \sqrt{35/12N}$なので\footnote{大数の法則の導出と同様にできる．}
+    Chebyshev不等式\eqref{chebyshev}より
+    \begin{align}
+      \mathrm{Prob}(\abs{m-7/2} > 10^{-8}) < \qty(\frac{\sigma}{\varepsilon})\sim \qty(\frac{10^{-12}}{10^{-8}})^{2}= 10^{-8}
+    \end{align}
+    となる．\qed
+  \end{eg}
+  今，$\chi$をある事象$A$が起きたとき1，そうでないとき0を返す関数として，
+  $A$が起こる確率は，$p = \langle \chi \rangle$である．このとき，大数の法則で
+  $f=\chi$と置くと，次が成り立つ．
+  \begin{cor}
+    $N$回の試行で事象$A$がおこる回数を$N_A$とする．このとき，
+    \begin{align}
+      \lim_{N\to\infty}\mathrm{Prob}\qty(\abs{\frac{N_A}{N}-p}\geq \varepsilon ) = 0  
+    \end{align}
+    が成り立つ．
+  \end{cor}
+  この系は，$N$が大きいとき，$N_A/N$の比という物理的なものが，確率$p$とa.s.で等しいと解釈できる．
+\section{結論}
+  \begin{itemize}
+    \item Chebyshev不等式\eqref{chebyshev}より，測定値が期待値からずれる確率を具体的に評価できる．
+    \item 大数の法則およびその系より，たくさんあれば物理量の比と確率がa.s.で等しい．
+  \end{itemize}

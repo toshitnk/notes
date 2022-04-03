@@ -1,0 +1,25 @@
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\providecommand{\doihref}[2]{\href{#1}{#2}}
+\providecommand{\arxivfont}{\tt}
+\begin{thebibliography}{WC84}
+
+\bibitem[Aki17]{ino_condmat}
+I.~Akihiro, \emph{固体物理学i講義録}, 2017.
+  \url{https://home.hiroshima-u.ac.jp/ino/lecture/}.
+
+\bibitem[WC84]{doi:10.1063/1.555728}
+G.~K. White and S.~J. Collocott, \emph{Heat capacity of reference materials: Cu
+  and w}, \href{https://doi.org/10.1063/1.555728}{Journal of Physical and
+  Chemical Reference Data \textbf{13} (1984) 1251--1257}.
+
+\bibitem[田08]{Tasaki_statmech}
+田崎晴明, \emph{統計力学}, 新物理学シリーズ / 山内恭彦監修, no. 37-38, 培風館,
+  2008.
+
+\end{thebibliography}

@@ -1,0 +1,304 @@
+\documentclass[dvipdfmx]{beamer}
+
+\usepackage{pxjahyper}
+
+% theme
+\usefonttheme{professionalfonts}
+\usefonttheme{serif}
+\usetheme{Madrid}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{theorems}[numbered]
+% graphics
+\usepackage{graphicx}
+\usepackage{here}
+
+% math
+\usepackage{amsmath, amssymb}
+\usepackage{physics}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+
+% theoremstyle
+\usepackage{amsthm}
+\newtheoremstyle{break}
+{\topsep}{\topsep}%
+{}{}%
+{\bfseries}{}%
+{\newline}{}%
+\theoremstyle{break}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{eg}[thm]{Example}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{ax}[thm]{Axiom}
+\newtheorem{prob}{Problem}[section]
+
+\makeatletter
+\newenvironment{pr}[1][\proofnam]{\par
+\topsep6\p@\@plus6\p@ \trivlist
+\item[\hskip\labelsep{\itshape #1}\@addpunct{\bfseries}]\ignorespaces
+}{%
+\endtrivlist
+}
+\newcommand{\proofnam}{\underline{Derivation.}}
+\makeatother
+
+% link
+
+\usepackage{url}
+\usepackage{hyperref} 
+\usepackage{xcolor}
+\usepackage{pxjahyper}
+\hypersetup{
+	colorlinks=true,
+	citecolor=blue,
+	linkcolor=teal,
+	urlcolor=orange,
+}
+
+% my command
+\newcommand{\hilb}{\mathcal{H}}
+\DeclareMathOperator{\Dom}{Dom}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+
+% title
+%\author{Toshiya Tanaka}
+%\institute[富大理物]{富山大学理学部物理学科}
+\title[\textcolor{white}{CCRについて}]{第22回数物セミナー特別講義\\
+正準交換関係について}
+\subtitle{Stone - von Neumannの定理とその応用としてのSegal - Bergmann空間}
+\begin{document}
+\begin{frame}
+		\maketitle
+\end{frame}
+
+\begin{frame}{Outline}
+		\tableofcontents
+\end{frame}
+\section{作用素についての準備}
+\begin{frame}{作用素についての準備}
+		\begin{itemize}
+				\item Hilbert空間とは完備な内積空間
+				\item Hilbert空間$\hilb$上の作用素$(A, \Dom A)$とは，\par
+						denseな部分空間$\Dom A \subset \hilb$と線形写像$A\colon \Dom A \to \hilb'$の組
+				\item $(A, \Dom A)$が有界なとき，\par
+						つまり，ある定数$C$が存在して，$\forall \psi \in \Dom A$, $\|A\psi\|\leq C\|\psi\|$のとき，$\Dom A = \hilb$として拡張が一意に決まる．
+		\end{itemize}
+\end{frame}
+
+\begin{frame}{例}
+		\begin{eg}[有限次元ベクトル空間$\C^n$上の線形写像]
+				$v = \sum_{j=1}{n}a_je_j $, $w = \sum_{j=1}^{n}b_je_j $のとき，
+				$\langle v, w \rangle \coloneqq \sum_{j=1}^{n}\bar{a}_jb_j $
+		\end{eg}
+		
+		\begin{eg}
+				\begin{align}
+						L^2(\R) & \coloneqq \qty{\text{可測関数}f\colon\R\to\C \mid \int_{\R}\abs{f(x)}^2\dd{x} < \infty},\\
+						\langle f, g\rangle & \coloneqq \int_{\R}\bar{f(x)}g(x)\dd{x},\\
+						\Dom (X) & \coloneqq \qty{f\in L^2(\R) \mid xf(x)\in L^2(\R)}
+				\end{align}
+				\begin{align}
+						X  \colon \Dom(X)&\to L^2(\R)\\
+						f(x) &\mapsto xf(x)
+				\end{align}
+		\end{eg}
+\end{frame}
+
+\begin{frame}{作用素について}
+		\begin{itemize}
+				\item 作用素$(A, \Dom A)$と$(B, \Dom B)$が同じであるとは
+						\begin{itemize}
+								\item $\Dom A = \Dom B$
+								\item $\forall \psi \in \Dom A$; $A\psi = B\psi$
+						\end{itemize}
+				\item 以降，$A = B$と表す
+		\end{itemize}
+		
+		\begin{itemize}
+				\item 作用素$(A, \Dom A)$の共役作用素$(A^{*}, \Dom A^{*})$とは
+				\begin{align}
+						\Dom A^{*} & \coloneqq \qty{\psi\in\hilb\mid\exists\phi\in\hilb; \forall \langle \psi, A\psi\rangle = \langle\phi, \psi\rangle},\\
+								&= \qty{\psi\in\hilb\mid \text{$\hilb$上の汎関数$\langle\psi, A\bullet\rangle$が有界である．}},\\
+						A^{*}\psi &\coloneqq \phi
+				\end{align}
+				\item 作用素が有界であるとき，$\Dom A^{*} = \hilb$
+		\end{itemize}
+\end{frame}
+
+\begin{frame}{作用素について}
+		\begin{itemize}
+				\item 作用素$(A, \Dom A)$が自己共役であるとは
+						\begin{align}
+								A = A^{*}
+						\end{align}
+				\item このとき，
+						\begin{align}
+						\forall \psi \in A;\quad \langle \psi, A\psi \rangle = \langle \psi, A\psi\rangle = \overline{\langle \psi, A\psi \rangle} \label{symmetric}
+						\end{align}
+						より，$\langle \psi, A\psi \rangle \in \R$．逆は成り立たない．
+				\item Eq. \eqref{symmetric}の条件を対称という．
+		\end{itemize}
+\end{frame}
+
+\begin{frame}{作用素について}
+		\begin{ax}
+				量子力学では，
+				\begin{itemize}
+						\item 状態をHilbert空間の元
+						\item 物理量をHilbert空間上の自己共役作用素
+				\end{itemize}
+				として考える．
+		\end{ax}
+\end{frame}
+
+\section{Stoneの定理}
+\begin{frame}{Stoneの定理}
+		\begin{itemize}
+				\item 一径強連続ユニタリ群$\qty{U(t)}_{t\in \R}$とは
+				任意の$t\in\R$で
+				\begin{itemize}
+						\item $U(t)\colon \hilb \to \hilb $がユニタリ作用素
+						\item $U(s+t) = U(s)U(t)$
+						\item $\lim_{t\to 0}\|U(t)\psi - \psi\| = 0$
+				\end{itemize}
+		\end{itemize}
+\end{frame}
+
+\begin{frame}{Stoneの定理}
+		\begin{thm}[Stoneの定理]
+				任意の一径強連続ユニタリ群$\qty{U(t)}$に対し
+				\begin{itemize}
+						\item $\Dom A \coloneqq \qty{\psi \in \hilb \mid (U(t)\psi - \psi)/(it)\text{が$t\to0$で収束}}$
+						\item $A\psi \coloneqq \lim_{t\to0}(U(t)\psi - \psi)/(it)$
+				\end{itemize}
+				とさだめると，$A$は自己共役作用素である．
+		\end{thm}
+\end{frame}
+\section{Stone - von Neumannの定理}
+\section{Segal - Bergmann変換}
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+%\documentclass[dvipdfmx, a4paper]{jsarticle}
+%\usepackage[utf8]{inputenc}
+%\usepackage[top=10truemm, bottom=20truemm, left=15truemm, right=15truemm]{geometry} % mergin
+%\renewcommand{\headfont}{\bfseries}
+%
+%% graphics
+%\usepackage{graphicx}
+%\usepackage{here}
+%
+%% link
+%
+%\usepackage{url}
+%\usepackage[dvipdfmx, linktocpage]{hyperref} 
+%\usepackage{xcolor}
+%\usepackage{pxjahyper}
+%\hypersetup{
+%	colorlinks=true,
+%	citecolor=blue,
+%	linkcolor=teal,
+%	urlcolor=orange,
+%}
+%
+%% math
+%
+%\usepackage{amsmath, amssymb} 
+%\usepackage{physics}
+%\usepackage{mathrsfs}
+%\usepackage{mathtools}
+%
+%% theoremstyle
+%\usepackage{amsthm}
+%\newtheoremstyle{break}
+%{\topsep}{\topsep}%
+%{}{}%
+%{\bfseries}{}%
+%{\newline}{}%
+%\theoremstyle{break}
+%\newtheorem{thm}{Theorem}[section]
+%\newtheorem{defn}[thm]{Definition}
+%\newtheorem{eg}[thm]{Example}
+%\newtheorem{cl}[thm]{Claim}
+%\newtheorem{cor}[thm]{Corollary}
+%\newtheorem{fact}[thm]{Fact}
+%\newtheorem{rem}[thm]{Remark}
+%\newtheorem{prob}{Problem}[section]
+%
+%\makeatletter
+%\newenvironment{pr}[1][\proofnam]{\par
+%\topsep6\p@\@plus6\p@ \trivlist
+%\item[\hskip\labelsep{\itshape #1}\@addpunct{\bfseries}]\ignorespaces
+%}{%
+%\endtrivlist
+%}
+%\newcommand{\proofnam}{\underline{Derivation.}}
+%\makeatother
+%
+%
+%% my command
+%
+%\newcommand{\R}{\mathbb{R}}
+%\newcommand{\C}{\mathbb{C}}
+%\newcommand{\Z}{\mathbb{Z}}
+%
+%\newcommand{\eq}[1]{Eq. \eqref{#1}}
+%\newcommand{\theorem}[1]{Thm. \ref{#1}}
+%\newcommand{\definition}[1]{Def. \ref{#1}}
+%\newcommand{\proposition}[1]{Prop. \ref{#1}}
+%\newcommand{\example}[1]{e.g.\ref{#1}}
+%\newcommand{\claim}[1]{Cl. \ref{#1}}
+%\newcommand{\corolary}[1]{Cor. \ref{#1}}
+%\newcommand{\remark}[1]{Rem. \ref{#1}}
+%\newcommand{\problem}[1]{Prob. \ref{#1}}
+%
+%\renewcommand{\O}{\mathcal{O}}
+%
+%
+%% number
+%
+%%\makeatletter
+%%\@addtoreset{equation}{section}
+%%\makeatother
+%%\numberwithin{equation}{section}
+%%\renewcommand{\thefootnote}{\roman{footnote}.}
+%%\renewcommand{\appendixname}{Appendix }
+%
+%
+%%English
+%
+%\renewcommand{\tablename}{Tab. }
+%\renewcommand{\figurename}{Fig. }
+%
+%
+%
+%\title{}
+%\author{Toshiya Tanaka}
+%\date{\today}
+%
+%\begin{document}
+%	\maketitle
+%
+%	\bibliography{books}
+%	\bibliographystyle{ytamsalpha}
+%\end{document}
+%

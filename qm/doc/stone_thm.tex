@@ -1,0 +1,65 @@
+\begin{abstract}
+		量子力学では，\sa が物理量に対応している．
+		また，運動量やHamiltonianといった物理量は
+		空間並進や時間発展などの操作を与えるunitary作用素を与える．
+		物理では，作用素の定義域を気にすることは少ないが，
+		数学的には定義域が重要で，``定義できるところで定義する''ことが大切になる．
+		定義域を直接議論することはむずかしいが，Stoneの定理により\onepara から定義域を含めた\sa を構成することができる\cite{Hall2013}．
+
+		なお，本稿の内容はspm22ndの特別講演で教わった．
+\end{abstract}
+\section{Stoneの定理}
+\begin{defn}[\onepara]
+		$\Hilb$上の\onepara とは，$t\in\R$でパラメトライズされたunitary作用素の族$\qty{U(t)}_{t\in\R}$で，
+		\begin{itemize}
+				\item $U(0) = 1_{\Hilb}$
+				\item $U(s)U(t) = U(s+t) $
+				\item 任意の$\psi\in\Hilb$に対し，$\|\lim_{t\to0}U(t)\psi\|=\|\psi\| $
+		\end{itemize}
+		を満たすものをいう．
+\end{defn}
+\begin{thm}[Stone's theorem]
+	$\qty{U(t)}_{t\in\R}$を$\Hilb$上の\onepara とする．
+	$\psi\in\Hilb$に対し，
+	\begin{align}
+			\Dom A &\coloneqq \qty{\psi\in\Hilb \mid \lim_{t\to0}\frac{\|U(t)\psi - \psi \|}{it} = 0}, \\
+			A\psi &\coloneqq \lim_{t\to0}\frac{U(t)\psi - \psi}{it}
+	\end{align}
+	と定めると，組$(A, \Dom A)$は$\Hilb$上denseに定義された\sa になる．
+
+	この形から，\sa に対する\onepara を$\qty{e^{itA}}_{t\in\R}$と書く．
+\end{thm}
+
+\section{位置}
+以下，$\Hilb =\Lsq$として考える．
+
+\onepara を
+\begin{align}
+		\qty(e^{itX}\psi)(x) \coloneqq e^{itx}\psi(x)
+\end{align}
+と定める．これは\onepara である．
+これにより
+\begin{align}
+		X\psi(x) &\coloneqq \lim_{t\to0}\frac{e^{itx}\psi(x) - \psi(x)}{it}\\
+		  &= \left.\frac{\psi(x)}{i}\dv{e^{itx}}{t}\right|_{t=0}\\
+		  &= x\psi(x)
+\end{align}
+と定めた$X\sim x$は\sa である．
+
+これが位置演算子である．
+
+\section{運動量}
+\onepara を
+\begin{align}
+		\qty(e^{itP}\psi(x))(x) &\coloneqq \psi(x + \hbar t)
+\end{align}
+と定める．
+これは\onepara である．
+
+これにより，
+\begin{align}
+		P\psi(x) &= \lim_{t\to 0}\frac{\psi(x+\hbar t)-\psi(x)}{it}\\
+		  &= -i\hbar\dv{\psi(x)}{x}
+\end{align}
+と定めた$P \sim -i\hbar\dv*{}{x}$は運動量演算子である．
+%\footnote{Stone - von Neumannの定理というのがあって，CCRを満たすものは一意であることが言える．}
