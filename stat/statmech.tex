@@ -1,4 +1,4 @@
-\documentclass[dvipdfmx,a4paper]{jsarticle}
+\documentclass[dvipdfmx,a4paper, english]{jsreport}
 \usepackage[utf8]{inputenc}
 \usepackage[dvipdfmx]{hyperref} %リンクを有効にする
 %\usepackage{tikz}
@@ -83,6 +83,7 @@
 \newcommand{\problem}[1]{Prob. \ref{#1}}
 
 \renewcommand{\O}{\mathcal{O}}
+\newcommand{\mf}{\mathsf{H}}
 \usepackage{comment}
 \makeatletter
 \@addtoreset{equation}{section}
@@ -97,9 +98,15 @@
 
 \begin{document}
 \maketitle
-\input{doc/intro_to_stat.tex}
+\chapter{物理で確率を使うこと}
+\input{doc/chebyshev.tex}
+\chapter{Legendre変換について}
+\input{doc/legendre.tex}
+\chapter{磁性体の統計力学}
+\input{doc/magnet.tex}
 
-\bibliography{books, link, papers}
-\bibliographystyle{ytamsalpha}
+\nocite{BA88185786}
+\bibliography{booklist}
+\bibliographystyle{jalpha}
 
 \end{document}

@@ -1,0 +1,192 @@
+\documentclass[dvipdfmx, a4paper]{jsarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[top=10truemm, bottom=20truemm, left=15truemm, right=15truemm]{geometry} % mergin
+\renewcommand{\headfont}{\bfseries}
+
+% graphics
+\usepackage{graphicx}
+\usepackage{here}
+
+% link
+
+\usepackage{url}
+\usepackage[dvipdfmx, linktocpage]{hyperref} 
+\usepackage{xcolor}
+\usepackage{pxjahyper}
+\hypersetup{
+	colorlinks=true,
+	citecolor=blue,
+	linkcolor=teal,
+	urlcolor=orange,
+}
+
+% math
+
+\usepackage{amsmath, amssymb} 
+\usepackage{physics}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+
+% theoremstyle
+\usepackage{amsthm}
+\newtheoremstyle{break}
+{\topsep}{\topsep}%
+{}{}%
+{\bfseries}{}%
+{\newline}{}%
+\theoremstyle{break}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{eg}[thm]{Example}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{prob}{Problem}[section]
+
+\makeatletter
+\newenvironment{pr}[1][\proofnam]{\par
+\topsep6\p@\@plus6\p@ \trivlist
+\item[\hskip\labelsep{\itshape #1}\@addpunct{\bfseries}]\ignorespaces
+}{%
+\endtrivlist
+}
+\newcommand{\proofnam}{\underline{Derivation.}}
+\makeatother
+
+
+% my command
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\eq}[1]{Eq. \eqref{#1}}
+\newcommand{\theorem}[1]{Thm. \ref{#1}}
+\newcommand{\definition}[1]{Def. \ref{#1}}
+\newcommand{\proposition}[1]{Prop. \ref{#1}}
+\newcommand{\example}[1]{e.g.\ref{#1}}
+\newcommand{\claim}[1]{Cl. \ref{#1}}
+\newcommand{\corolary}[1]{Cor. \ref{#1}}
+\newcommand{\remark}[1]{Rem. \ref{#1}}
+\newcommand{\problem}[1]{Prob. \ref{#1}}
+
+\renewcommand{\O}{\mathcal{O}}
+
+\newcommand{\mf}{\mathsf{H}}
+% number
+
+%\makeatletter
+%\@addtoreset{equation}{section}
+%\makeatother
+%\numberwithin{equation}{section}
+%\renewcommand{\thefootnote}{\roman{footnote}.}
+%\renewcommand{\appendixname}{Appendix }
+
+
+%English
+
+\renewcommand{\tablename}{Tab. }
+\renewcommand{\figurename}{Fig. }
+\renewcommand{\refname}{References}
+
+
+\title{磁性体の統計力学}
+\author{Toshiya Tanaka}
+\date{\today}
+
+\begin{document}
+	\maketitle
+
+	\section{方針}
+	大まかな流れは，次のようである．
+	\begin{enumerate}
+			\item 分配関数の計算
+			\item エネルギー，磁化，磁化率の期待値の計算
+			\item 温度，磁場に対する振る舞いを考察
+	\end{enumerate}
+	この方針は変えず，個々の系に対し様々なテクニックを使う．
+
+	\section{すべてのspinが独立にある場合}
+	$N$粒子系を考える．
+	粒子$j$のspinを$\sigma_j = \pm 1$で指定し，スピン角運動量の固有値は$\pm\mu_0$とする．
+	磁場$\mf$中にある系のエネルギー固有値は
+	\begin{equation}
+			E = -\sum_{j=1}^{N}\mu_0\sigma_j\mf
+	\end{equation}
+	で，一つの粒子だけに注目したとき
+	\begin{align}
+			E_j = -\mu_0\sigma_j\mf
+	\end{align}
+	である．
+	spin1つの期待値は期待値の定義から
+	\begin{align}
+			\expval{\sigma_j} &= \frac{1}{Z_j(\beta)}\qty(\mu_0e^{\beta\mu_0\mf} - \mu_0e^{\beta\mu_0\mf})\\
+							  &= \mu_0\tanh(\beta\mu_0\mf)\label{eq:onespin}
+	\end{align}
+	である．
+
+	独立なので，一粒子の情報がわかれば十分で，一粒子の分配関数は
+	\begin{align}
+			Z_j(\beta) &= e^{\beta\mu_0\mf} + e^{-\beta\mu_0\mf}\\
+				&= 2\cosh(\beta\mu_0\mf)
+	\end{align}
+	である．よって，$N$粒子あったとき，分配関数は
+	\begin{equation}
+			Z(\beta) = \qty(2\cosh(\beta\mu_0\mf))
+	\end{equation}
+	となる．
+	エネルギー期待値は
+	\begin{align}
+			\langle H\rangle &= -\pdv{}{\beta}\log(2\cosh(\beta\mu_0\mf))\\
+							 &= -N\mu_0\mf\tanh(\beta\mu_0\mf)
+	\end{align}
+	である．
+
+	\begin{defn}[磁化]
+			磁化を
+			\begin{equation}
+					m = \frac{1}{N}\sum_{j = 1}^{N}\mu_0\sigma_j
+			\end{equation}
+			と定める．スピンの平均値と思ってよい．
+	\end{defn}
+	磁化の期待値は，\eq{eq:onespin}と期待値の線形性から
+	\begin{align}
+			\expval{m} &= \frac{1}{N}\sum_{j = 1}^{N}\mu_0\expval{\sigma_j}\\
+					   &= \mu_0\tanh(\beta\mu_0\mf)
+	\end{align}
+	である．
+
+	\begin{defn}[$\mf=0$での磁化率]
+			磁化率$\chi$を
+			\begin{equation}
+					\chi = \left.\pdv{m}{\mf}\right|_{\mf=0}
+			\end{equation}
+			と定める．
+			磁場$\mf$を揺すったときの磁石になりやすさと解釈できる．
+	\end{defn}
+
+	磁化率も計算する．
+	\begin{equation}
+			\chi &= \frac{\mu_0^2}{k_{\text{B}}T}\label{eq:single_suscep}
+	\end{equation}
+	となる．
+
+	本筋とは外れるが，エントロピーを計算する．そのためにまず，Helmholtz free energyの計算をする．
+	\begin{align}
+			F(\beta, \mf, N)&= -\frac{1}{\beta}\log Z(\beta)\\
+							&= -Nk_{\text{B}}T\log\qty(2\cosh\qty(\frac{\mu_0\mf}{k_{\text{B}}T}))
+	\end{align}
+	ここから，エントロピーが計算できて，
+	\begin{align}
+			S(\beta, \mf, N) &= -\pdv{}{T}F(\beta, \mf, N)\\
+							 &= Nk_{\text{B}}\frac{\mu_0\mf}{k_{\text{B}}T}\qty(\cosh\qty(\frac{\mu_0\mf}{k_{\text{B}}T}) - \log \qty(2\cosh\qty(\frac{\mu_0\mf}{k_{\text{B}}T})))
+	\end{align}
+	となり，$\mf/k_{\text{B}}$単位で現れる．これを用いて，$(T_1, \mf_1)\rightarrow(T_2, H_2)$の断熱準静操作を行うとき，エントロピーが普遍なので，この単位も不変である．磁場$\mf$をゆっくり変えることで温度を変えることが\footnote{主に低温を作る．}できる．これを断熱消磁と呼ぶ．
+
+	\nocite{BA88185786}
+	\bibliography{booklist}
+	\bibliographystyle{jalpha}
+	%\bibliographystyle{ytamsbeta}
+\end{document}
+
