@@ -58,9 +58,12 @@
 % my command
 \newcommand{\up}{\ket{\uparrow}}
 \newcommand{\down}{\ket{\downarrow}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\thefootnote}{\roman{footnote}}
 % title
-\author[T. Tanaka]{Toshiya Tanaka}
-\institute[Univ. Toyama]{富山大学理学部物理学科}
+\author[@tos\_shiii]{}
+\institute[Twitter]{}
 \title[\textcolor{white}{SGEから始めるQM}]{数物系サーバー新歓ミニセミナー\\
 Stern--Gerlachの実験から始める量子力学}
 
@@ -107,32 +110,38 @@ Stern--Gerlachの実験から始める量子力学}
 
 \begin{frame}{必要な古典論}
 		本講演では，古典ではだめで量子論が必要であるということを感覚的に
-		理解することが目的である．そのために必要な古典論の感覚を共有したい．
+		理解することが目的である．
+
+		そのために必要な古典論の感覚を共有したい．
 
 		\begin{columns}
 				\begin{column}{0.7\textwidth}
 						\begin{itemize}
 								\item 電流は電子の流れであると考える．
-								\item 電流のループがあると磁気モーメント$\vec{\mu}$が発生する．
-								\item これをz方向の磁場$\vec{B}={}^{t}(0, 0, B_z)$の中に入れると，力$\vec{\nabla}(\vec{\mu}\cdot\vec{B})$を受ける．
-								\item とにかく，力を受けること，それが内積で与えられることが大事．
+								\item 電流のループがあると磁気モーメント$\vec{\mu}$が発生する．棒磁石みたいなイメージ．
+								\item これを不均一磁場
+%\footnote{不均一なのは，力を受けるようにするため．均一なら，偶力になって「回転」するだけだが，上下に強い磁石と弱い磁石を入れておくと強い方に力を受けて磁気モーメントの向きにより異なる力を受ける．}
+										$\vec{B}$中に入れると，力$\vec{\nabla}(\vec{\mu}\cdot\vec{B})$を受ける．
+								\item とにかく，\alert{力を受ける}こと，それが\alert{内積}で与えられることが大事．
 								\item 内積なので，$\vec{\mu}$と$\vec{B}$のなす角$\theta\in[0, 2\pi)$による．
-								\item $\theta=0$のときに受ける力の大きさを$F$とすると，$\theta$の値によって$-F$から$F$の力が考えられる．
 						\end{itemize}
 				\end{column}
 				\begin{column}{0.3\textwidth}
-						fig
+						\begin{figure}
+								\centering
+								\includegraphics[scale=0.13, keepaspectratio]{./img/sg.png}
+						\end{figure}
 				\end{column}
 		\end{columns}
 \end{frame}
 
 
-\begin{frame}{SGEの装置}
+\begin{frame}[allowframebreaks]{SGの実験}
 		\begin{columns}
 		\begin{column}{0.6\textwidth}
 		\begin{figure}[t]
 				\centering
-				\includegraphics[keepaspectratio, scale=0.3]{./img/sg.png}
+				\includegraphics[keepaspectratio, scale=0.25]{./img/device.png}
 				\caption{SGの実験装置．\href{https://en.wikipedia.org/wiki/Stern\%E2\%80\%93Gerlach_experiment}{Wikipedia}より拝借．}
 		\end{figure}
 		\end{column}
@@ -153,17 +162,16 @@ Stern--Gerlachの実験から始める量子力学}
 						\item 実際は\alert{上下二点のみ}に\alert{等しい強度}で現れる．(SG\ref{sge_qm})
 				\end{itemize}
 		\end{result}
+		連続と思われていたものが実は離散だった，というのは他の導入にも共通している．
+
 		この電子は二種類に分類できて，上の点にゆくものを$\up$，下の点にゆくものを$\down$と書くことにする．
-\end{frame}
 
 
-\begin{frame}[allowframebreaks]
 		\begin{result}
 				同じ設定で装置(SG\ref{sge_dev})を90度傾け，x方向の測定，y方向の測定，また，どれでもない斜めの方向の測定を行う．
 				
 				このとき，結果\ref{sgx}と同様に測定した方向に二点に分かれる．
 		\end{result}
-		最初にz軸と名付けるのは我々の勝手だから，どの方向を選んでも同じなのは当然のように思うが，古典的にz方向に決まった磁気モーメントを持っているわけではないということである．
 		\begin{result}
 				装置を二つ用意して，z方向の測定を行った後$\up$だったものに対して，再びz方向の測定を行うと，$\up$しか観測できない．$\down$に関しても同様．
 		\end{result}
@@ -178,20 +186,64 @@ Stern--Gerlachの実験から始める量子力学}
 		\begin{result}
 				装置を三つ用意して，z方向の測定を行った後$\up$だったものに対して，x方向の測定を行う．この測定で$\ket{\rightarrow}$だったものに対して再びz方向の測定を行うと電子は二点に分かれる．
 
-				ややこしいので簡単に図にすると次のようになる．
-		\begin{align*}
-				\xymatrix@R=2pt{
-						& & \up\\
-						&\ket{\rightarrow}\ar[ru]\ar[rd] & \\
-						& & \down\\
-						\up\ar[rdd]\ar[ruu] & & \\
-						& & \up\\
-						&\ket{\leftarrow}\ar[ru]\ar[rd] & \\
-						& & \down
-				}
-		\end{align*}
 		\end{result}
+%		\begin{align*}
+%				\xymatrix@R=-10pt{
+%						& & \up\\
+%						&\ket{\rightarrow}\ar[ru]\ar[rd] & \\
+%						& & \down\\
+%						\up\ar[rdd]\ar[ruu] & & \\
+%						& & \up\\
+%						&\ket{\leftarrow}\ar[ru]\ar[rd] & \\
+%						& & \down
+%				}
+%		\end{align*}
 \end{frame}
+
+
+\begin{frame}[allowframebreaks]{定式化}
+		さて，以上のことは量子力学では次のように定式化される．
+
+		\begin{block}{量子力学の定式化の一部}
+				\begin{itemize}
+						\item 電子の状態$\ket{\psi}$は$\up$, $\down$の線形結合でかける．すなわち$\ket{\psi}=c\up + d\down$, $c, d\in \C$．(重ね合わせ)
+						\item $\up$, $\down$は次の意味で直交する．$\braket{\uparrow}{\downarrow} = \braket{\downarrow}{\uparrow} = 0$．ここで$\braket{\bullet}{\bullet}$は内積である．
+						\item 状態$\ket{\psi}$の電子にz方向の測定をしたとき，状態$\up$は確率$\abs{\braket{\uparrow}{\psi}}^2=\abs{c}^2$で観測される．$\down$についても同様．(確率解釈)
+						\item $\up$を観測した場合，測定後の状態は$\up$になる．$\down$を観測した場合，$\down$になる．
+				\end{itemize}
+		\end{block}
+		\newpage
+		これを用いるとSGの実験結果は次のように説明できる．
+
+		\begin{itemize}
+				\item 一度目のz方向の測定では，$\up$, $\down$も完全にランダムにあると思うと，出現確率は$1/2$．
+				\item 以降，一度目の測定で$\up$を観測したとする．
+				\item 二度目にz方向の測定をすると，$\up$を観測する確率は$\abs{\braket{\uparrow}{\uparrow}}^2 = 1$, $\down$を観測する確率は$\abs{\braket{\uparrow}{\downarrow}}^2 = 0$．
+				\item 二度目にx方向の測定を行うと，確率$1/2$で$\ket{\rightarrow}$, 確率$1/2$で$\ket{\leftarrow}$を観測した．これより
+						\begin{align*}
+								\ket{\rightarrow} = \frac{1}{\sqrt{2}}\up + \frac{1}{\sqrt{2}}\down,\quad
+								\ket{\leftarrow} = \frac{1}{\sqrt{2}}\up - \frac{1}{\sqrt{2}}\down
+						\end{align*}
+						と構成できる．実際，先に述べたルールに従うと$\ket{\rightarrow}$が観測される確率は$\abs{\braket{\rightarrow}{\uparrow}}^2 = 1/2$である．
+				\item 二度目に$\ket{\rightarrow}$だったとすると，測定後は$\ket{\rightarrow}$である．これより，三度目にz方向の測定を行うと，$\up$, $\down$がそれぞれ$1/2$の確率で出現する．
+		\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Summary}
+		\begin{itemize}
+				\item SGの実験は古典論では連続と思われるものが，離散的に分布することを見た．
+				\item さらに，方向を変えたSGの実験を連続で行うと「不思議なこと」が起こった．
+
+				\item これを量子力学の枠組みでどのように説明しているのかを述べ，具体的に計算した．
+
+				\item 線形代数を習うと，この枠組みは二次元の計量付き線形空間論であることがわかる．
+				\item 物理では，量子力学がその舞台であるミクロな素粒子などでもあらわれるのはもちろん，統計力学や低温のマクロなものにも本質的役割を果たす．
+				\item 一般の量子力学は無限次元で議論されるので，数学の人はこれがHilbert空間やそのうえの作用素論になる．(勉強して教えて〜．)
+				\item 以降の発展を示唆して，講演を終える．どうもありがとうございました．
+		\end{itemize}
+\end{frame}
+
 \begin{frame}[allowframebreaks]{参考文献}
 		\beamertemplatetextbibitems
 		\bibliography{booklist}
