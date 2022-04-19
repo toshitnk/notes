@@ -6,7 +6,7 @@
 %		微分を用いた定義をするが，相転移点も含めた熱力学を議論するとき，$\max$, $\min$
 %		\footnote{厳密には$\sup$, $\inf$で与えるが，存在は保証されるそうである\url{https://mathlog.info/articles/829}．}で与える必要がある\cite[付録H]{Tasaki_thermo}, \cite[Chap.11]{thermo_shimizu}．
 %\end{abstract}
-\section{Legendre変換について}
+\subsection{Legendre変換について}
 導出として，凸関数$f$に対して，傾き$\alpha$の線を引いたとき，$f$との交点を
 持った状態で直線の切片を最小にすることを考える．
 $x =x^{*}$を通る直線を引くとき，直線の方程式は
@@ -46,10 +46,7 @@ $x =x^{*}$を通る直線を引くとき，直線の方程式は
 
 		\footnote{この例は\url{https://ja.wikipedia.org/wiki/\%E3\%83\%AB\%E3\%82\%B8\%E3\%83\%A3\%E3\%83\%B3\%E3\%83\%89\%E3\%83\%AB\%E5\%A4\%89\%E6\%8F\%9B}による．}
 \end{eg}
-Figure. \ref{fig:before_legendre}の青い線部分が，
-Figure. \ref{fig:after_legendre}の一点に潰れていて，微分不可能点になっている．
-熱力学関数にこのようなことが起こるとき，相転移が起こっていることがわかる．
-\begin{figure}[htbp]
+	\begin{figure}[tb]
 		\centering
 		\begin{minipage}{0.45\linewidth}
 				\centering
@@ -63,4 +60,8 @@ Figure. \ref{fig:after_legendre}の一点に潰れていて，微分不可能点
 				\caption{$f$をLegendre変換した関数$f^{*}$}
 				\label{fig:after_legendre}
 		\end{minipage}
+
+Figure. \ref{fig:before_legendre}の青い線部分が，
+Figure. \ref{fig:after_legendre}の一点に潰れていて，微分不可能点になっている．
+熱力学関数にこのようなことが起こるとき，相転移が起こっていることがわかる．
 \end{figure}

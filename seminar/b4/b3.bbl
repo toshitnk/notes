@@ -7,12 +7,11 @@
 \providecommand{\href}[2]{#2}
 \providecommand{\doihref}[2]{\href{#1}{#2}}
 \providecommand{\arxivfont}{\tt}
-\begin{thebibliography}{KW41}
+\begin{thebibliography}{Pes19}
 
-\bibitem[KW41]{PhysRev.60.252}
-H.~A. Kramers and G.~H. Wannier, \emph{Statistics of the two-dimensional
-  ferromagnet. part i},
-  \href{https://link.aps.org/doi/10.1103/PhysRev.60.252}{Phys. Rev. \textbf{60}
-  (1941) 252--262}.
+\bibitem[Pes19]{1130282270643311616}
+M.~E. Peskin, \emph{Concepts of elementary particle physics}, Oxford master
+  series in particle physics, astrophysics, and cosmology, Oxford University
+  Press, 2019.
 
 \end{thebibliography}

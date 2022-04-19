@@ -1,4 +1,4 @@
-\documentclass[dvipdfmx,a4paper, english]{jsreport}
+\documentclass[dvipdfmx,a4paper, english]{jsarticle}
 \usepackage[utf8]{inputenc}
 \usepackage[dvipdfmx]{hyperref} %リンクを有効にする
 %\usepackage{tikz}
@@ -81,7 +81,7 @@
 \newcommand{\corolary}[1]{Cor. \ref{#1}}
 \newcommand{\remark}[1]{Rem. \ref{#1}}
 \newcommand{\problem}[1]{Prob. \ref{#1}}
-
+\newcommand{\tab}[1]{Table. \ref{#1}}
 \renewcommand{\O}{\mathcal{O}}
 \newcommand{\mf}{\mathsf{H}}
 \usepackage{comment}
@@ -98,15 +98,14 @@
 
 \begin{document}
 \maketitle
-\chapter{物理で確率を使うこと}
-\input{doc/chebyshev.tex}
-\chapter{Legendre変換について}
-\input{doc/legendre.tex}
-\chapter{磁性体の統計力学}
+%\section{物理で確率を使うこと}
+%\input{doc/chebyshev.tex}
+%\section{Legendre変換について}
+%\input{doc/legendre.tex}
+\section{磁性体の統計力学}
 \input{doc/magnet.tex}
 
-\nocite{BA88185786}
-\bibliography{booklist}
-\bibliographystyle{jalpha}
+\bibliography{booklist, condmat, link}
+\bibliographystyle{ytamsalpha}
 
 \end{document}

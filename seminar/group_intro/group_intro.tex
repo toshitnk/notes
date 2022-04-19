@@ -1,0 +1,303 @@
+\documentclass[dvipdfmx, a4paper, english]{jsarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[top=10truemm, bottom=20truemm, left=15truemm, right=15truemm]{geometry} % mergin
+\renewcommand{\headfont}{\bfseries}
+
+% graphics
+\usepackage{graphicx}
+\usepackage{here}
+
+% link
+
+\usepackage{url}
+\usepackage[dvipdfmx, linktocpage]{hyperref} 
+\usepackage{xcolor}
+\usepackage{pxjahyper}
+\hypersetup{
+	colorlinks=true,
+	citecolor=blue,
+	linkcolor=teal,
+	urlcolor=orange,
+}
+
+% math
+
+\usepackage{amsmath, amssymb} 
+\usepackage{physics}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+
+% theoremstyle
+\usepackage{amsthm}
+\newtheoremstyle{break}
+{\topsep}{\topsep}%
+{}{}%
+{\bfseries}{}%
+{\newline}{}%
+\theoremstyle{break}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{eg}[thm]{Example}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{prob}{Problem}[section]
+
+\makeatletter
+\newenvironment{pr}[1][\proofnam]{\par
+\topsep6\p@\@plus6\p@ \trivlist
+\item[\hskip\labelsep{\itshape #1}\@addpunct{\bfseries}]\ignorespaces
+}{%
+\endtrivlist
+}
+\newcommand{\proofnam}{\underline{Derivation.}}
+\makeatother
+
+
+% my command
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\eq}[1]{Eq. \eqref{#1}}
+\newcommand{\theorem}[1]{Thm. \ref{#1}}
+\newcommand{\definition}[1]{Def. \ref{#1}}
+\newcommand{\proposition}[1]{Prop. \ref{#1}}
+\newcommand{\example}[1]{e.g.\ref{#1}}
+\newcommand{\claim}[1]{Cl. \ref{#1}}
+\newcommand{\corolary}[1]{Cor. \ref{#1}}
+\newcommand{\remark}[1]{Rem. \ref{#1}}
+\newcommand{\problem}[1]{Prob. \ref{#1}}
+
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\hilb}{\mathcal{H}}
+\newcommand{\GL}{\mathrm{GL}}
+\newcommand{\SL}{\mathrm{SL}}
+\renewcommand{\sl}{\mathfrak{sl}}
+\newcommand{\Mat}{\mathrm{Mat}}
+\newcommand{\SO}{\mathrm{SO}}
+\newcommand{\so}{\mathfrak{so}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\su}{\mathfrak{su}}
+\newcommand{\g}{\mathfrak{g}}
+
+\DeclareMathOperator{\Dom}{Dom}
+% number
+
+\makeatletter
+\@addtoreset{equation}{section}
+\makeatother
+\numberwithin{equation}{section}
+\renewcommand{\thefootnote}{\roman{footnote}.}
+\renewcommand{\appendixname}{Appendix }
+
+
+%English
+
+\renewcommand{\tablename}{Tab. }
+\renewcommand{\figurename}{Fig. }
+\renewcommand{\refname}{References}
+\renewcommand{\abstractname}{注意}
+
+\title{物理のための群と表現論}
+\author{Toshiya Tanaka}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	\begin{abstract}
+			これは書きかけです．正しくないことが書いてあります．あくまで気分として...．
+	\end{abstract}
+%	\section{Notations}
+%	\begin{itemize}
+%			\item $\Z$を整数，$\R$を実数，$\C$を複素数全体の集合とする．
+%			\item $\hilb$をHilbert空間とする．
+%	\end{itemize}
+	\section{群そのものについて}
+	物理では，対称性という物が重要である．
+	対称性とはある変換のもとで変わらない性質のことである．
+
+	\begin{eg}
+
+			変換として2次元空間での回転をとる．回転の中心を中心とした円は2次元回転に対して対称性を持つ．
+			具体的に回転として$r_1 = 30^{\circ}$回転, $r_2 = 60^{\circ}$回転を考える．
+			$r_1$, $r_2$を続けて行うことを考える．これを$r_2 \circ r_1 $と書くことにする．これは回転である．
+		
+			なにも動かさないことも$e = 0^{\circ}$回転と言える．
+		
+			逆回転も考えられる．たとえば，$r_1$に対しては$r'_1 = -30^{\circ}$回転で$r_1\circ r'_1 = r'_1\circ r_1 = e$となる．
+	\end{eg}
+
+	群とは対称性に関わる変換の性質を抜き出したものと思える．
+
+	\begin{defn}[群(group)]
+			集合$G$と演算$\circ \colon G \times G \to G; (g, h)\mapsto g\circ h$の組$(G, \circ)$で次を満たすものを群という．
+			\begin{itemize}
+					\item 任意の$g_1, g_2, g_3 \in G$に対して，$(g_1 \circ g_2)\circ g_3 = g_1 \circ (g_2 \circ g_3)$が成り立つ．(結合律)
+					\item 任意の$g\in G$に対して，$g\circ e = e \circ g = g$を満たす$e\in G$が存在する．(単位元の存在)
+					\item 任意の$g\in G$に対して，$g\circ h = h\circ g = e$となる$h\in G$が存在して，この$h$のことを$g^{-1}$と書く．(逆元の存在)
+			\end{itemize}
+
+			演算の記号$\circ$はしばしば省略され，$g \circ h = gh$と書かれることもある．
+
+			また，上の性質に加え，次の性質を満たすときAbel群という．
+			\begin{itemize}
+					\item 任意の$g, h \in G$に対して，$g \circ h = h \circ g$を満たす．
+			\end{itemize}
+			この場合，演算は$+$で書かれることが多い．
+	\end{defn}
+
+	このような構造をもつものはたくさんある．
+
+	\begin{eg}[$\Z/2\Z$]
+			整数を$\mod 2$で考えたものを$\Z/2\Z$とか$\Z_2$と書く．\footnote{$\Z/n\Z$の理解には「同値類で割る」という概念が必要であるが，雰囲気の理解には必要ないと思う．}
+			小さい群なので，要素をすべて書き出すことができて，
+			$\Z/2\Z = {\bar{0}, \bar{1}}$で演算は$\bar{0} \dot{+} \bar{0} = \bar{0}$, $\bar{0} \dot{+} \bar{1} = \bar{1}$, $\bar{1} \dot{+} \bar{0} = \bar{1}$, $\bar{1} \dot{+} \bar{1} = \bar{0}$である．
+	\end{eg}
+
+	これは要素が有限個で有限群とよばれる．物理でも結晶などを考えると有限群は必要になるが，
+	素粒子論では無限個でしかも連続な群をしばしば考える．
+	
+	\begin{defn}[Lie群]
+			可微分多様体\footnote{$n$次元多様体とは位相空間で，開集合が$\R^n$の開集合と同相であるもののことである．可微分とは座標近傍を取り替える写像(これは$\R^n\to\R^n$)が可微分(通常$C^{\infty}$級を考える気がする)であることである．}かつ群であり，群演算が可微分であるものをLie群という．
+	\end{defn}
+
+	気分としては，群で微分ができるくらいなめらかに要素があるものと思える．物理としては具体例を見るのが重要である．
+
+	\begin{eg}[$\SO(3)$]
+			\begin{equation}
+					\SO(3) \coloneqq \qty{M\in\Mat(3, \R)\mid MM^{\top} = M^{\top}M = 1_{3\times3}}
+			\end{equation}
+			を特殊直交群(\underline{S}pecial \underline{O}rthogonal group)といい，これはLie群を成す．
+
+			気分としては，
+			\begin{align}
+					\begin{pmatrix}
+							\cos\theta & -\sin\theta & 0\\
+							\sin\theta & \cos\theta & 0\\
+							0 & 0 & 1
+					\end{pmatrix},
+					\begin{pmatrix}
+							1 & 0 & 0\\
+							0 & \cos\theta &- \sin\theta\\
+							0 & \sin\theta & \cos\theta
+					\end{pmatrix}, 
+					\begin{pmatrix}
+							-\sin\theta & 0 & \cos\theta\\
+							0 & 1 & 0 \\
+							\cos\theta & 0 & \sin\theta
+					\end{pmatrix},\quad \theta\in[0, 2\pi)
+			\end{align}
+			が生成するので，微分などもできそうである．
+	\end{eg}
+
+	物理では微小変化を考える．Lie群$G$による微小変換を考えたいが，このときに現れるのがLie環(Lie代数)である．
+%	気分としては，$g\in G$を
+%	\begin{equation}
+%			g = e^{itA} = \sum _{n = 0}^{\infty} \frac{A^n}{n!}t^n
+%	\end{equation}
+%	と表して，パラメータ$t$で微分を行う．
+
+	\begin{defn}[Lie環(Lie algebra)]
+			$\g$を$\mathbb{K}$上線形空間とする．$(\g, [\bullet, \bullet])$がLie環とは，双線形写像
+			$[\bullet, \bullet]\colon \g \times \g \to \g$で次を満たすことをいう．
+			\begin{itemize}
+					\item 任意の$X, Y\in \g$に対して，$[X, Y] = - [Y, X]$．(反対称性)
+					\item 任意の$X, Y, Z \in \g$に対して，$[X,[Y, Z]] + [Y, [Z, X]] + [Z, [X, Y]] = 0$．(Jacobi identity)
+			\end{itemize}
+	\end{defn}
+
+	\begin{eg}
+			$f, g\in \GL(V)$に対し，$[f, g] \coloneqq fg - gf$と定めたものはLie環を成す．
+	\end{eg}
+
+	\section{Lie群の表現論}
+
+	\begin{defn}[準同型写像(homomorphism)]
+			$(G, \circ_G)$, $(H, \circ_{H})$を群とする．写像$f \colon G \to H$が群準同型とは
+			任意の$g_1, g_2 \in G$に対して，$f(g_1\circ_{G}g_2) = f(g_1)\circ_Hf(g_2)$をみたすことをいう．
+	\end{defn}
+	
+	\begin{defn}[表現(representation)]
+			群$G$の表現$(\rho , \hilb)$とは，準同型$\rho\colon G\to \GL(\hilb)$と線形空間$\hilb$の組のことである．
+	\end{defn}
+
+	$\GL(\hilb) = \{A\colon \hilb \to \hilb\mid\det A \neq 0\}$で一般線形群という．適当に$\hilb$の基底を取れば，$\C^n$と思えるので，$\rho(g),\ (g\in G)$は行列と思える．つまり，群の表現とは，群を行列で表現することで，群の構造をたもったまま群の各元$g\in G$に行列を対応させて，計算できるようにすることであると思える．
+
+	Lie群の表現を微分したものは，自然にLie環の表現\footnote{Lie環の表現の定義は別にあって，微分したものがそれであることが示せる．\cite{Yanagida:2020}}になる．微小変換を考える際は，おもにこれを考える．
+
+	さらに，compact simple Lie algebraあたりを考えると，Lie環は分類されていて，ある意味で$\su(2)$の貼り合わせでかけることが知られている\cite{BB03663366}．$\su(2)$とは物理の言葉でいうと角運動量代数$[J_i, J_k] = i\epsilon_{ijk}J_k$である．だから，物理屋としては$\su(2)$を調べるのが先決．
+
+	話が少し代わって，量子力学ではHilbert空間上の自己共役作用素を考える．
+	\begin{defn}[Hilbert space]
+			$\hilb$を線形空間とする．$\hilb$がHilbert空間とは$\hilb$に内積$\braket{\bullet}{\bullet}$が定まっていて，完備であることである．
+	\end{defn}
+	\begin{defn}[自己共役作用素(self-adjoint operator)]
+			$\hilb$上の線形作用素$A$が自己共役とは，任意の$\psi, \phi \in \hilb$に対し，$\braket{\phi}{A\psi} = \braket{A\phi}{\psi}$が成り立つ，すなわち$A = A^{\dagger}$で$\Dom A = \Dom A^{\dagger}$のことである．
+	\end{defn}
+
+	状態はHilbert空間の元\footnote{複素数倍を同一視する同値関係で割った商が状態に対応するのだが，まあ...．}で，自己共役作用素が物理量であった．
+
+	量子力学でも回転対称性などがほしい．ここで，回転群$\SU(2)$\footnote{通常回転というと$\SO(3)$でよいと思うが，量子力学ではspinがあるので半奇数の固有値がでなければいけないのでこうする．}の表現空間として，量子力学の状態空間$\hilb$があると思う．$\SU(2)$の元を$e^{i\vec{\theta}\cdot\vec{J}}$とすると，$\vec{J}$は自己共役\footnote{エルミート性はそれはそうだが，Domainも等しくなるらしい．c.f., stoneの定理．}になる．
+	この$\vec{J}$たちは$\su(2)$代数を成し，$[J_{i}, J_{j}] = i\epsilon_{ijk}J_k$を満たす．
+
+	これの既約表現を決定するのは量子力学でやっていて，$\ket{j, m}$で$-j\leq m \leq j$の成す$2j+1$次元空間がそれである．
+
+	
+	%\bibliography{booklist, link}
+	%\bibliographystyle{jalpha}
+	%%\bibliographystyle{ytamsbeta}
+\begin{thebibliography}{Howa10}
+
+\bibitem[HFH91]{harris1991representation}
+W.F.J. Harris, W.~Fulton, and J.~Harris.
+\newblock {\em Representation Theory: A First Course}.
+\newblock Graduate Texts in Mathematics. Springer New York, 1991.
+
+\bibitem[Howa10]{BB03663366}
+Howard Georgi, 九後汰一郎.
+\newblock 物理学におけるリー代数 : アイソスピンから統一理論へ.
+\newblock 物理学叢書 / 小谷正雄 [ほか] 編, No. 107. 吉岡書店, 2010.
+
+\bibitem[佐藤92]{BN08491535}
+佐藤光.
+\newblock 物理数学特論群と物理.
+\newblock パリティ物理学コース / 牧二郎 [ほか] 編. 丸善, 1992.
+
+\bibitem[山内10]{BB03560137}
+山内恭彦, 杉浦光夫.
+\newblock 連続群論入門.
+\newblock 新数学シリーズ / 吉田洋一監修, No.~18. 培風館, 2010.
+
+\bibitem[上田16]{Ueda:2016mp}
+上田正人.
+\newblock 物理数学iii (2016) 講義ノート, 2016.
+\url{http://cat.phys.s.u-tokyo.ac.jp/lecture/MP3_16/MP3_16.html}
+\bibitem[池田22]{BC13565134}
+池田岳.
+\newblock テンソル代数と表現論 : 線形代数続論 = Tensor algebra representation
+  theory : a second course in linear algebra.
+\newblock 東京大学出版会, 2022.
+
+\bibitem[柳田20]{Yanagida:2020}
+柳田伸太郎.
+\newblock 2020年度数理科学展望i 講義ノート, 2020.
+\url{https://www.math.nagoya-u.ac.jp/~yanagida/2020MP1.html}
+\bibitem[立川18]{Tachikawa:2018mp}
+立川裕二.
+\newblock 物理数学iii (2018) 講義ノート, 2018.
+\url{https://member.ipmu.jp/yuji.tachikawa/lectures/2018-butsurisuugaku3/}
+\end{thebibliography}
+
+	数学と物理で毛並みが違う．物理で群論というものの多くが群の表現論だったりLie群，Lie環の表現論なので，数学の文献を参照するときは注意が必要である．
+
+	数学の本としては，最近でた\cite{BC13565134}は線形代数を知っていたら読めそう．洋書だと\cite{harris1991representation}が表現論の決定版っぽい．ほしい．
+	回転群は\cite{BB03560137}が詳しい．これを元にした\cite{Yanagida:2020}もわかりやすい．
+
+	物理屋向けの文献としては，\cite{BB03663366}, \cite{BN08491535}が定番だが独学には向いていないと思う．
+	講義録としては\cite{Ueda:2016mp}が上記二つと同程度よい．\cite{Tachikawa:2018mp}もわかりやすかった．
+
+\end{document}
+

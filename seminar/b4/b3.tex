@@ -1,0 +1,106 @@
+\documentclass[dvipdfmx, a4paper]{jsarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[top=10truemm, bottom=20truemm, left=15truemm, right=15truemm]{geometry} % mergin
+\renewcommand{\headfont}{\bfseries}
+
+% graphics
+\usepackage{graphicx}
+\usepackage{here}
+
+% link
+
+\usepackage{url}
+\usepackage[dvipdfmx, linktocpage]{hyperref} 
+\usepackage{xcolor}
+\usepackage{pxjahyper}
+\hypersetup{
+	colorlinks=true,
+	citecolor=blue,
+	linkcolor=teal,
+	urlcolor=orange,
+}
+
+% math
+
+\usepackage{amsmath, amssymb} 
+\usepackage{physics}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+
+% theoremstyle
+\usepackage{amsthm}
+\newtheoremstyle{break}
+{\topsep}{\topsep}%
+{}{}%
+{\bfseries}{}%
+{\newline}{}%
+\theoremstyle{break}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{eg}[thm]{Example}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{prob}{Problem}[section]
+
+\makeatletter
+\newenvironment{pr}[1][\proofnam]{\par
+\topsep6\p@\@plus6\p@ \trivlist
+\item[\hskip\labelsep{\itshape #1}\@addpunct{\bfseries}]\ignorespaces
+}{%
+\endtrivlist
+}
+\newcommand{\proofnam}{\underline{Derivation.}}
+\makeatother
+
+
+% my command
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\eq}[1]{Eq. \eqref{#1}}
+\newcommand{\theorem}[1]{Thm. \ref{#1}}
+\newcommand{\definition}[1]{Def. \ref{#1}}
+\newcommand{\proposition}[1]{Prop. \ref{#1}}
+\newcommand{\example}[1]{e.g.\ref{#1}}
+\newcommand{\claim}[1]{Cl. \ref{#1}}
+\newcommand{\corolary}[1]{Cor. \ref{#1}}
+\newcommand{\remark}[1]{Rem. \ref{#1}}
+\newcommand{\problem}[1]{Prob. \ref{#1}}
+
+\renewcommand{\O}{\mathcal{O}}
+
+
+% number
+
+%\makeatletter
+%\@addtoreset{equation}{section}
+%\makeatother
+%\numberwithin{equation}{section}
+%\renewcommand{\thefootnote}{\roman{footnote}.}
+%\renewcommand{\appendixname}{Appendix }
+
+
+%English
+
+\renewcommand{\tablename}{Tab. }
+\renewcommand{\figurename}{Fig. }
+\renewcommand{\refname}{References}
+
+
+\title{B4セミナー}
+\author{Toshiya Tanaka}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	\input{./doc/prepare}
+	\nocite{1130282270643311616}
+	\bibliography{engbook}
+	\bibliographystyle{ytamsalpha}
+	%\bibliographystyle{ytamsbeta}
+\end{document}
+

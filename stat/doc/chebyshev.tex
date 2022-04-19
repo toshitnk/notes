@@ -4,7 +4,7 @@
 %  物理的解釈から議論する．なお，
 %  本稿の議論は，ほとんど\cite{Tasaki_statmech}の焼き直しである．
 %\end{abstract}
-\section{測定精度と確率}
+\subsection{測定精度と確率}
   \begin{thm}[Chebyshev不等式]
     確率分布$\vec{p}$，物理量$f$とする．
     任意の$\varepsilon>0$に対し，次の不等式が成り立つ．
@@ -37,7 +37,7 @@
   測定精度より十分小さければ，すなわち$\sigma_{vec{p}}[f]/\varepsilon \ll 1$ならば，
   測定値$f$の期待値$\langle f \rangle_{\vec{p}}$からのずれが有意に現れる\footnote{測定の分解能$\varepsilon$より大きく現れる．}確率は
   a.s.\footnote{almost surely}ゼロである．
-\section{試行回数と確率}
+\subsection{試行回数と確率}
   \begin{thm}[大数の法則]
     $f$を物理量，$\vec{p}$を一つの系の確率分布とし，同じ系を$N$個考える．全系の確率分布が$\tilde{\vec{p}}$とする．このとき，任意の$\varepsilon>0$に対し，
     \begin{align}
@@ -108,7 +108,7 @@
     が成り立つ．
   \end{cor}
   この系は，$N$が大きいとき，$N_A/N$の比という物理的なものが，確率$p$とa.s.で等しいと解釈できる．
-\section{結論}
+\subsection{結論}
   \begin{itemize}
     \item Chebyshev不等式\eqref{chebyshev}より，測定値が期待値からずれる確率を具体的に評価できる．
     \item 大数の法則およびその系より，たくさんあれば物理量の比と確率がa.s.で等しい．
