@@ -4,6 +4,9 @@
 %\usepackage{tikz}
 %\usepackage[all]{xy}
 \usepackage{here}
+\usepackage[hang,small,bf]{caption}
+\usepackage[subrefformat=parens]{subcaption}
+\captionsetup{compatibility=false}
 \usepackage{url} %同上
 \usepackage{amsmath,amssymb} %数式とか
 \usepackage{mathtools} 
@@ -98,10 +101,10 @@
 
 \begin{document}
 \maketitle
-%\section{物理で確率を使うこと}
-%\input{doc/chebyshev.tex}
-%\section{Legendre変換について}
-%\input{doc/legendre.tex}
+\section{物理で確率を使うこと}
+\input{doc/chebyshev.tex}
+\section{Legendre変換について}
+\input{doc/legendre.tex}
 \section{磁性体の統計力学}
 \input{doc/magnet.tex}
 

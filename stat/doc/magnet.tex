@@ -82,7 +82,7 @@
 			S(\beta, \mf, N) &= -\pdv{}{T}F(\beta, \mf, N)\\
 							 &= Nk_{\text{B}}\frac{\mu_0\mf}{k_{\text{B}}T}\qty(\cosh\qty(\frac{\mu_0\mf}{k_{\text{B}}T}) - \log \qty(2\cosh\qty(\frac{\mu_0\mf}{k_{\text{B}}T})))
 	\end{align}
-	となり，$\mf/k_{\text{B}}$単位で現れる．これを用いて，$(T_1, \mf_1)\rightarrow(T_2, \mf_2)$の断熱準静操作を行うとき，エントロピーが普遍なので，この単位も不変である．磁場$\mf$をゆっくり変えることで温度を変えることが\footnote{主に低温を作る．}できる．これを断熱消磁と呼ぶ．
+	となり，$\mf/k_{\text{B}}$単位で現れる．これを用いて，$(T_1, \mf_1)\rightarrow(T_2, \mf_2)$の断熱準静操作を行うとき，エントロピーが不変なので，この単位も不変である．磁場$\mf$をゆっくり変えることで温度を変えることが\footnote{主に低温を作る．}できる．これを断熱消磁と呼ぶ．
 
 	\subsection{ペアを形成し，ペア同士は独立な場合}
 	次に，二つの粒子が相互作用しペアを形成していて，ペア同士は相互作用していない状況を考える．
@@ -99,10 +99,9 @@
 	以上の設定で考える．
 
 	まず，ペアたちは独立なので，$(\sigma_1, \sigma_2)$だけ選んで考える．
-	\eq{eq:exchange}にでてくる量を計算し，\tab{tab:exchange_interaction}
+	\eq{eq:exchange}にでてくる量を計算し，Table \ref{tab:exchange_interaction}にまとめておく．
 	\begin{table}[tbp]
 			\centering
-			\label{tab:exchange_interaction}
 			\caption{\eq{eq:exchange}のスピンを含む箇所の計算結果．}
 			\begin{tabular}{c|cccc}\hline
 					$(\sigma_1, \sigma_2)$ & $(1, 1)$ & $(1, -1)$ & $(-1, 1)$ & $(-1, -1)$\\\hline
@@ -110,6 +109,7 @@
 					$\sigma_1 + \sigma_2$ & $2$ & $0$ & $0$ & $-2$\\
 					$E_{N=2}$ & $-J-2\mu_0\mf$ & $J$ & $J$ & $-J+2\mu_0\mf$\\\hline
 			\end{tabular}
+			\label{tab:exchange_interaction}
 	\end{table}
 
 	これで，分配関数が計算できる．
@@ -210,14 +210,81 @@
 	\subsection{2-d Ising model}
 	二次元では相転移を起こす．しかし，直接解くのは大変である\footnote{2022/04/19時点では私は解けていない．}．
 
-	他の状況でも使える，かなり雑だが有用な近似である平均場近似の方法と相転移温度を正しく導出できるKramers--Wannier双対性を用いた議論を行うことにする．
+	他の状況でも使える，かなり雑だが有用な近似である平均場近似の方法と相転移温度を正しく導出できるKramers--Wannier双対性を用いた議論\footnote{元ネタは2020年度現代物理学第9回．\url{https://member.ipmu.jp/yuji.tachikawa/lectures/2020-komaba/}}を行うことにする．
 
-%	\subsubsection{平均場近似}
+
+	\subsubsection{平均場近似}
+	
+	$d$次元のIsing模型を考える．
+	任意に格子点を選び，その上のスピン変数を$\sigma_0$と呼ぶことにする．
+	このスピンの最近接の点は$2d$個ある．これらを$\sigma_i,\ i=1,\ldots,2d$と呼び，$\sigma_0$に着目したエネルギーを考えると
+	\begin{equation}
+			E_{\sigma_0} = \qty(-J\sum_{i=1}^{2d}\sigma_i -\mu_0\mf)\sigma_0
+	\end{equation}
+	である．ここで，$\sum_{i=1}^{2d}\sigma_i \to 2d\psi$と置き換える．$\psi = \sum_{i=1}^{2d}\sigma_i/(2d)$でスピンの期待値である．ゆらぎのある確率変数を定数で置き換えたもので，これが平均場近似の第一ステップである．
+
+
+	この分配関数は
+	\begin{equation}
+			Z_{\sigma_0}(\beta) = 2\cosh(2d\beta J\psi + \beta\mu_0\mf)
+	\end{equation}
+	であり，$\sigma_0$の期待値は
+	\begin{equation}
+			\langle\sigma_0\rangle = \tanh(2d\beta J \psi + \beta \mu_0\mf)
+	\end{equation}
+	である．
+	ところが，$\sigma_0$は任意に取ったので，期待値は$\langle \sigma_0 \rangle = \psi$のように思える．これが平均場近似の第二ステップである．
+
+	結局，平均場近似では
+	\begin{equation}
+			\psi = \tanh(2d\beta J \psi)
+	\end{equation}
+	を$\psi$について解くことに帰着する．このような方程式をbootstrap方程式\footnote{self-consistent方程式というほうが多い気もするが，bootstrapのほうがおしゃれで好き．沼に落ちたとき自分で自分の靴紐を引っ張って脱出することが語原らしい．}という．
+
+	特に，$\mf = 0$, $d = 2$の状況を考える．
+	bootstrap方程式は
+	\begin{equation}
+			\psi = \tanh(4\beta J \psi)\label{fig:2d-bootstrap}
+	\end{equation}
+	である．
+	\begin{figure}
+			\centering
+			\includegraphics[width=10cm]{./doc/src/img/mean_field.png}
+			\caption{bootstrap方程式\eqref{fig:2d-bootstrap}の左辺と右辺の概形．白丸が解で，パラメータ$\beta$によって解の振る舞いが変わることがわかる．対称性があるにもかかわらず，低温領域では$\psi=0$ではない部分にnon trivialな解をもつ．このような状況をSSB(Spontaneous Symmetry Breaking)という．}
+	\end{figure}
+	この解はFigure \ref{fig:2d-bootstrap}のようにパラメータ$\beta$によって振る舞いがかわり，$\tanh$の原点での傾き$ 4\beta_{\text{mf}} J = 1$が分岐点になっている．
+	すなわち，平均場近似での臨界点は
+	\begin{equation}
+			\beta_{\text{mf}} J= \frac{1}{4} = 0.25
+	\end{equation}
+	であり，後述する正しい値(Eq. \eqref{Tc_2d-Ising})とは異なる．
+
 	\subsubsection{Kramers--Wannier双対性}
+	
 	ここでは見やすさの都合上，分配関数を$\beta J \eqqcolon K$の関数と見て考えることにする．
 	また，外部磁場$\mf = 0$とする．
+\begin{figure}[thbp]
+		\begin{minipage}[t]{0.32\linewidth}
+				\centering
+				\includegraphics[keepaspectratio, scale=0.3]{./doc/img/KW_duality.png}
+				\subcaption{2次元Ising模型．格子「点」上にスピンが並んでいる．}
+		\end{minipage}
+		\begin{minipage}[t]{0.32\linewidth}
+				\centering
+				\includegraphics[keepaspectratio, scale=0.3]{./doc/img/KW_duality-Page-2.drawio.png}
+				\subcaption{各辺に$0, 1$を割り当てる(Eq. \eqref{KW01})．この図においては太線が1と思うことにする．}
+		\end{minipage}
+		\begin{minipage}[t]{0.32\linewidth}
+				\centering
+				\includegraphics[keepaspectratio, scale=0.3]{./doc/img/KW_duality-Page-3.drawio.png}
+				\subcaption{寄与があるのは太い閉曲線のみ(Eq. \eqref{close_KW})．閉曲線の中と外という二つの状態があるので，格子の「中」に黒丸と白丸の新しいスピンがあると思える(Eq. \eqref{new_spin})．}
+		\end{minipage}
+		\caption{Kramers--Wanneir双対性の分配関数の操作の概略．}
+		\label{fig:KW_load}
+\end{figure}
 
-	ひたすら分配関数を書き換えてゆく．まず，
+
+	ひたすら分配関数を書き換えてゆく．Figure \ref{fig:KW_load}に操作の手順をまとめた．まず，
 	\begin{equation}
 			e^{K\sigma_i \sigma_j} = \cosh K \sum_{t\in\qty{0, 1}}\qty(\sigma_i \sigma_j \tanh K)^t
 	\end{equation}
@@ -226,7 +293,7 @@
 	\begin{align}
 			Z(K) &= \sum_{\sigma} e^{K\sum_{\langle i, j\rangle}\sigma_i\sigma_j}\\
 				 &= \sum_{\sigma} \prod_{\langle i, j \rangle}e^{K\sigma_i \sigma_j}\\
-				 &= \qty(\cosh K)^{2N} \sum_{\sigma}\sum_{\qty{t}}\prod_{\text{辺}}\qty(\sigma_i \sigma_j\tanh K)^t
+				 &= \qty(\cosh K)^{2N} \sum_{\sigma}\sum_{\qty{t}}\prod_{\text{辺}}\qty(\sigma_i \sigma_j\tanh K)^t\label{KW01}
 	\end{align}
 	$\sum_{\qty{t}}$は，各辺に$0, 1$を割り当てるすべての配位に関する和で，$\prod_{\text{辺}}$は一つ選んだ配位に関して積をとる操作である．
 	この積について，$t=0$が与えれられた辺は$1$で寄与する．
@@ -242,7 +309,7 @@
 	結局，分配関数は
 	\begin{align}
 			Z(K) &= \qty(\cosh K)^{2N}\sum_{\qty{\text{閉曲線}}}\qty(2\tanh K)^{\text{閉曲線の長さ}}\\
-				 &= \qty(2\cosh K)^{2N}\sum_{\qty{\text{閉曲線}}}\qty(2\tanh K)^{\text{閉曲線の長さ}}
+				 &= \qty(2\cosh K)^{2N}\sum_{\qty{\text{閉曲線}}}\qty(2\tanh K)^{\text{閉曲線の長さ}}\label{close_KW}
 	\end{align}
 	となる．ここで，格子には閉曲線の中と外という二つの状態ができる．これをスピンの上下に対応させることを考える．このスピン配位を$\mu$と書くことにする．
 
@@ -252,7 +319,7 @@
 	\begin{align}
 			Z(K) &= \qty(2\cosh K)^{2N} \sum_{\qty{\mu}} \prod_{\text{辺}}(\tanh K)^{(1-\mu_i\mu_j)/2}\\ 
 			&= \qty(2\cosh K)^{2N}(\tanh K)^N\sum_{\mu}\prod_{\langle i, j \rangle}\qty(\tanh K)^{\mu_i\mu_j/2}\\
-			&= (\sinh 2K)^{N/2}Z(K')
+			&= (\sinh 2K)^{N/2}Z(K')\label{new_spin}
 	\end{align}
 	と変形できる．ここで，$e^{K'} = \tanh^{-1/2} K$とおいた．つまり，パラメータ$K$の二次元イジングモデルは$K'$の二次元イジングモデルと関係していることがわかる．この関係をKramers--Wanneir双対性\cite{PhysRev.60.252}という．
 
@@ -263,17 +330,9 @@
 	となるので，$\sinh 2K \sinh 2K' = 1$でないといけない．$\sinh$は単調関数なので，変なことが起こるとすれば$K = K'$と予想できる．
 	これを解くと，
 	\begin{equation}
-			K_{\text{c}} = \frac{1}{2}\log(1 + \sqrt{2})
+			K_{\text{c}} = \frac{1}{2}\log(1 + \sqrt{2}) \sim 0.4407 \label{Tc_2d-Ising}
 	\end{equation}
 	となる．この解は正しい臨界温度を与えることが知られている．
-
-
-
-
-
-
-
-
 
 
 
