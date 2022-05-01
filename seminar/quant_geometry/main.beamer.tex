@@ -1,0 +1,270 @@
+\documentclass[dvipdfmx]{beamer}
+
+\usepackage{pxjahyper}
+\setlength{\parindent}{11pt}
+
+% theme
+\usefonttheme{professionalfonts}
+\usetheme{Madrid}
+\usecolortheme{default}
+\setbeamertemplate{enumerate item}[default]
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{navigation symbols}{}
+\usepackage[scaled]{helvet}
+\renewcommand{\sfdefault}{phv}
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\setbeamertemplate{theorems}[numbered]
+\definecolor{Crimson}{HTML}{dc143c}
+\setbeamercolor{alerted text}{fg=Crimson}
+
+% graphics
+\usepackage{graphicx}
+\usepackage{here}
+
+% math
+\usepackage{amsmath, amssymb}
+\usepackage{physics}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs=true}
+\usepackage{tikz}
+\usepackage[all]{xy}
+\mathversion{bold}
+\definecolor{math}{HTML}{100080}
+\everymath{\color{math}}
+
+% theoremstyle
+\usepackage{amsthm}
+\newtheoremstyle{break}
+{\topsep}{\topsep}%
+{}{}%
+{\bfseries}{}%
+{\newline}{}%
+\theoremstyle{break}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{eg}[thm]{Example}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{ax}[thm]{Axiom}
+\newtheorem{prob}{Problem}
+
+\makeatletter
+\newenvironment{pr}[1][\proofnam]{\par
+\topsep6\p@\@plus6\p@ \trivlist
+\item[\hskip\labelsep{\itshape #1}\@addpunct{\bfseries}]\ignorespaces
+}{%
+\endtrivlist
+}
+\newcommand{\proofnam}{\underline{Derivation.}}
+\makeatother
+
+
+
+% link
+
+\usepackage{url}
+\usepackage{hyperref} 
+\usepackage{xcolor}
+\usepackage{pxjahyper}
+\definecolor{link}{HTML}{4b0082}
+\hypersetup{
+	colorlinks=true,
+	citecolor=link,
+	linkcolor=link,
+	urlcolor=orange,
+}
+
+% my command
+\newcommand{\hilb}{\mathcal{H}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\renewcommand{\L}{\mathcal{L}}
+
+
+% title
+\author{谷村省吾}
+\institute[名大情報]{名古屋大学情報学研究科}
+\date[April 30, 2022]{2022年4月28, 29日}
+%\author[田中]{田中寿弥}
+%\institute[富大理物]{富山大学理学部物理学科}
+\title[\textcolor{white}{保存量の一般化}]{
+保存量の一般化}
+\subtitle{関数から微分形式へ}
+\begin{document}
+\begin{frame}
+				「量子と古典の物理と幾何」研究会\ @オンライン
+		\maketitle
+\end{frame}
+
+\begin{frame}{微分方程式で定められる力学系}
+		\begin{itemize}
+				\item 力学変数 
+						\begin{align}
+								\vec{x}\colon \R\ni t \mapsto \vec{x}(t) = \qty(x^1(t),x^2(t),  \ldots, x^n(t)) \in \R^n
+						\end{align}
+				\item ベクトル場 
+						\begin{align}
+								\vec{V}\colon \R^n \ni \vec{x}\mapsto \vec{V}(\vec{x}) = \qty(V^1(\vec{x}), V^2(\vec{x}), \ldots, V^n(\vec{x}))\in \R^n 
+						\end{align}
+				\item 運動方程式 
+						\begin{align}
+								\dv{\vec{x}}{t} = \vec{V}(\vec{x}(t))
+						\end{align}
+				\item 初期値問題の解(flow)
+						\begin{align}
+								\vec{x}(t) &= \vec{F}(\vec{x}(0), t)\\
+										   &= \phi_t(\vec{x}(0))
+						\end{align}
+		\end{itemize}
+\end{frame}
+
+\begin{frame}
+		\begin{itemize}
+				\item 関数(物理量，observable) $A\colon \R^n \ni x \mapsto A(x)\in \R $
+				\item $A $の時間変化
+						\begin{align}
+								\dv{}{t}A(x(t)) &= \sum_{i=1}^n\pdv{A}{x^i}\dv{x^i}{t}\\
+												&= \sum_i\pdv{A}{x^i}V^i\\
+												&= \vec{V}\cdot \operatorname{grad}A\\
+												&= \langle \dd{A}, \vec{V}\rangle\\
+												&= i_V\dd{A}
+						\end{align}
+				\item 保存量 $\displaystyle\dv{A}{t} = 0 $
+		\end{itemize}
+\end{frame}
+
+\begin{frame}
+		\begin{itemize}
+				\item 保存量$A $があると，解軌道は保存量の定値面に限定される．
+				\item $A $の値$c $の等値集合$A^{-1}(c) = \qty{\vec{x}\mid A(\vec{x}) = c} $
+				\item 独立な保存量$A_1, A_2, \ldots, A_k $があれば，解軌道の存在領域を$(n-k) $次元に下げられる．
+				\item $k = n-1 $個の保存量が見つかれば1次元的な解軌道が決まる．\alert{超可積分}
+		\end{itemize}
+\end{frame}
+
+\begin{frame}{多様体上の力学系}
+		\begin{itemize}
+				\item $M\colon $ $n $次元多様体，$x\in M $
+				\item $\vec{V}\colon $$M $上のベクトル場
+				\item 運動方程式
+						\begin{align}
+								\dv{x}{t} = \vec{V}(x)
+						\end{align}
+				\item 解としてのフロー $x(t) = \phi_t(x(0)) $
+				\item $\omega\colon $ $M $上の$p $-form
+				\item $\phi_t^{*}\omega\colon $ $\phi_t $による$\omega $のpullback
+				\item Lie微分(ベクトル場$\vec{V})$に沿った$\omega $の時間変化)
+						\begin{align}
+								\left.\dv{}{t}\phi_t^{*}\omega\right|_{t=0} \eqqcolon \L _V\omega
+						\end{align}
+		\end{itemize}
+\end{frame}
+
+\begin{frame}
+		\begin{eg}
+				$1 $-form $\omega =\omega_i\dd{x^i}$, $\vec{V} = V^{k}\pdv{}{x^{k}} $であれば，
+				\begin{align}
+						\L_{\vec{V}}\omega = V^k\pdv{\omega_i}{x^k}\dd{x^i} + \omega_k\pdv{V^k}{x^i}\dd{x^i}
+				\end{align}
+		\end{eg}
+\end{frame}
+
+\begin{frame}{保存微分形式}
+		\begin{itemize}
+				\item $\L_{\vec{V}}\omega = 0 $を満たす$\omega  $のこと
+		\end{itemize}
+		\begin{align}
+				 &\L_{\vec{V}}\omega = 0\\
+				\Leftrightarrow\quad &\phi_t^{*} \omega = \omega \\
+				\Leftrightarrow\quad & \int_{\alert{C(t)}}\omega  = \int_{\phi_tC(0)}\omega = \int_{C(0)}\phi_t^{*}\omega = \int_{\alert{C(0)}}\omega
+		\end{align}
+		\begin{itemize}
+				\item $C(t) $はこの意味で保存量
+				\item 特に$p=0 $の場合が，$A(x(t)) = A(x(0)) $
+		\end{itemize}
+\end{frame}
+
+\begin{frame}{cohomology保存量}
+		\begin{itemize}
+				\item $p $-form $\omega $がclosed($\dd{\omega}=0)$)かつ$\L_{\vec{{V}}}\omega = \dd{\alpha} $なる$(p-1) $-form $\alpha $が存在．
+				\item この場合，$\phi_t^{*}\omega - \omega = \dd{\beta} $なる$(p-1) $-form $\beta $が存在．
+		\end{itemize}
+		\begin{align}
+				\int_{C(t)}\omega &= \int_{\phi_t C(0)}\omega \\
+								  &= \int_{C(0)}\phi_t^{*}\omega\\
+								  &= \int_{C(0)}(\omega + \dd{\beta})\\
+								  &= \int_{C(0)}\omega + \int_{\partial C(0)}\beta\\
+								  &= \int_{C(0)} +0.
+		\end{align}
+\end{frame}
+
+\begin{frame}
+			\begin{block}{保存微分形式}
+					$\L_{\vec{V}}\omega = 0 $, $\phi_t^{*} \omega = \omega$
+			\end{block}
+			\begin{block}{積分保存量，保存積分}
+					\begin{align}
+							\int_{C(t)}\omega = \int_{C(0)}\omega
+					\end{align}
+					特に$0 $-form $A $の場合$A(x(t)) = A(x(0)) $
+			\end{block}
+			\begin{itemize}
+					\item 一本の解軌道に関する保存量ではなく，無数の解軌道族に対する保存量になっている．
+
+					\item ただ，このような保存量があったからといって解軌道の絞り込み・決定に役立つか？
+
+					\item レベルセットみたいなものはないか？
+
+					\item cotangent bundle にはあると言えるか？
+			\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Hamilton力学系の場合}
+		\begin{itemize}
+				\item $M\colon $ $2n $次元manifold
+				\item $\omega\colon $ symplectic-form
+
+						$M $上での$2 $-formで$\dd{\omega} = 0 $ non degenerate
+				\item $H\colon M\to \R $ Hamiltonian
+				\item $\vec{V}_H\colon $ Hamilton vector field
+				\begin{align}
+						\vec{V}_H = \sum_i\qty(\pdv{H}{p_i}\pdv{}{q^i} - \pdv{H}{q^i}\pdv{}{p_i})
+				\end{align}
+		\end{itemize}
+\end{frame}
+
+
+\begin{frame}{symplectic form $\color{white}{\omega}$由来の保存量$\color{white}{Q = \displaystyle\int_C\omega \wedge \cdots\wedge\omega} $}
+		$Q $のよいところ．
+		\begin{itemize}
+				\item Hamiltonianがexplicitにtime-dependent $H(q, p, \lambda(t)) $であっても保存量であり続けること．
+				\item 外場や制御変数$\lambda(t) $を時間変化させるシステムといえば，
+		\end{itemize}
+		\begin{center}
+		\alert{熱力学系(熱機関)だ！}
+		\end{center}
+\end{frame}
+
+\begin{frame}{純粋力学の立場から見た熱力学}
+		\begin{align}
+				\xymatrix{
+						& \overset{\textcolor{black}{\text{少自由度，シンプル}}}{\text{work reservor, 変数$\vec{w}$}}\\
+						\text{object system, 変数$\vec{S}$}\ar[rd]^{\text{エネルギーのやり取り}}\ar[ru] _{\text{相互作用}}& \\
+															& \underset{\color{black}{\text{大自由度，複雑，力学的挙動がよくわからない}}}{\text{heat reservor, 変数$\vec{h}$}}
+				}
+		\end{align}
+\end{frame}
+
+
+\begin{frame}{課題}
+		\begin{enumerate}
+				\item symplectic form以外の保存微分形式を持つ力学系
+		\end{enumerate}
+\end{frame}
+\end{document}
+
