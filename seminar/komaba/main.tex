@@ -1,0 +1,110 @@
+\documentclass[english, dvipdfmx, a4paper]{jsarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[top=10truemm, bottom=20truemm, left=15truemm, right=15truemm]{geometry} % mergin
+\renewcommand{\headfont}{\bfseries}
+
+% graphics
+\usepackage{graphicx}
+\usepackage{here}
+
+% link
+
+\usepackage{url}
+\usepackage[dvipdfmx, linktocpage]{hyperref} 
+\usepackage{xcolor}
+\usepackage{pxjahyper}
+\hypersetup{
+	colorlinks=true,
+	citecolor=blue,
+	linkcolor=teal,
+	urlcolor=orange,
+}
+
+% math
+\usepackage{tikz}
+\usepackage[all]{xy}
+\usepackage{amsmath, amssymb} 
+\usepackage{physics}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+
+% theoremstyle
+\usepackage{amsthm}
+\newtheoremstyle{break}
+{\topsep}{\topsep}%
+{}{}%
+{\bfseries}{}%
+{\newline}{}%
+\theoremstyle{break}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{eg}[thm]{Example}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{prob}{Problem}[section]
+
+\makeatletter
+\newenvironment{pr}[1][\proofnam]{\par
+\topsep6\p@\@plus6\p@ \trivlist
+\item[\hskip\labelsep{\itshape #1}\@addpunct{\bfseries}]\ignorespaces
+}{%
+\endtrivlist
+}
+\newcommand{\proofnam}{\underline{Proof.}}
+\makeatother
+
+
+% my command
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\eq}[1]{Eq. \eqref{#1}}
+\newcommand{\theorem}[1]{Thm. \ref{#1}}
+\newcommand{\definition}[1]{Def. \ref{#1}}
+\newcommand{\proposition}[1]{Prop. \ref{#1}}
+\newcommand{\example}[1]{e.g.\ref{#1}}
+\newcommand{\claim}[1]{Cl. \ref{#1}}
+\newcommand{\corolary}[1]{Cor. \ref{#1}}
+\newcommand{\remark}[1]{Rem. \ref{#1}}
+\newcommand{\problem}[1]{Prob. \ref{#1}}
+\newcommand{\slashed}[1]{#1\!\!\!/}
+\renewcommand{\O}{\mathcal{O}}
+
+
+% number
+
+%\makeatletter
+%\@addtoreset{equation}{section}
+%\makeatother
+%\numberwithin{equation}{section}
+%\renewcommand{\thefootnote}{\roman{footnote}.}
+%\renewcommand{\appendixname}{Appendix }
+
+\title{ブラックホールの情報喪失問題}
+\author{Yuji Tachikawa}
+\date{\today}
+
+\begin{document}
+	\maketitle
+	\begin{abstract}
+			一般相対論，熱統計力学，量子力学の三つのそれぞれには自己矛盾はないが，三つを組み合わせると矛盾しているように思われる．この例がブラックホールの情報喪失問題である．このような状況は現在の理論物理では珍しい．
+
+			一般相対論によると，とても重くて小さいものは光も吸い込むブラックホールとよばれる天体になる\cite{Schwarzschild:1916uq}．そのブラックホールを量子力学的に扱うと熱的な放射があることがわかる\cite{Hawking:1974rv}．
+			ブラックホールは熱的な放射によりエネルギーを失い，やがて消滅すると思われている．
+
+			さて，ブラックホールは古典一般相対論では何を圧縮してつくっても全質量$M $にしかよらない．Hawking輻射も$M $にしかよらない．蒸発すると，もともと何でできていたかという情報が失われてしまう．ところが，量子力学では原理的に情報は失われないはずである．これがブラックホールの情報喪失問題である．
+
+			この問題は現時点でも解決されておらず，本稿では一体どういう問題なのか理解することを目標にする．
+	\end{abstract}
+	\tableofcontents
+	\input{lec3}
+	\input{lec4}
+	\bibliography{komaba}
+	\bibliographystyle{ytamsalpha}
+	%\bibliographystyle{ytamsbeta}
+\end{document}
+

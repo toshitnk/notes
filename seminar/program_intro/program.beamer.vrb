@@ -1,0 +1,24 @@
+\begin{columns}
+^^I^^I^^I^^I\begin{column}{0.45\textwidth}
+^^I^^I^^I^^I^^I^^I\begin{block}{julia}
+\begin{semiverbatim}
+using SpecialFunctions
+using Plots
+
+x = 1:5
+y = factorial.(x)
+scatter(x, y)
+plot!(x->gamma(x+1),
+    ylims=(0, 130))
+savefig("gamma.png")
+\end{semiverbatim}
+^^I^^I^^I^^I^^I^^I\end{block}
+^^I^^I^^I^^I\end{column}
+^^I^^I^^I^^I\begin{column}{0.45\textwidth}
+^^I^^I\begin{figure}
+^^I^^I^^I^^I\centering
+^^I^^I^^I^^I\includegraphics[width=5cm]{./plot/gamma.png}
+^^I^^I^^I^^I\caption{$n!$と$\Gamma(x+1) $}
+^^I^^I\end{figure}
+^^I^^I^^I^^I\end{column}
+^^I^^I\end{columns}

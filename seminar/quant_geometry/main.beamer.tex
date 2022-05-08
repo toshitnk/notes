@@ -232,10 +232,29 @@
 						$M $上での$2 $-formで$\dd{\omega} = 0 $ non degenerate
 				\item $H\colon M\to \R $ Hamiltonian
 				\item $\vec{V}_H\colon $ Hamilton vector field
+						\begin{align}
+								\dd{H} &= \omega (\bullet, \vec{V}_H) = -\omega (\vec{V}_H, \bullet)\\
+									   &= \pdv{H}{q^i}\dd{q^i} + \pdv{H}{p_i}\dd{p_i}
+						\end{align}
 				\begin{align}
 						\vec{V}_H = \sum_i\qty(\pdv{H}{p_i}\pdv{}{q^i} - \pdv{H}{q^i}\pdv{}{p_i})
 				\end{align}
 		\end{itemize}
+\end{frame}
+
+\begin{frame}
+		\begin{align}
+				\L_{\vec{V}_H}\omega &= \dd{i_\vec{V}_H}\omega + i_{\vec{V}_H}\dd{\omega}\\
+									 &= \dd(-\dd{H}) + 0\\
+									  &= 0
+		\end{align}
+%		また，局所的には$\omega = \dd{\alpha} $と書けて，
+%		\begin{align}
+%				0 &= \L_{\vec{V}_H}\omega\\
+%				  &= \L_{\vec{V}_H}\dd{\alpha}\\
+%				  &= \dd\qty(\L_{\vec{V}_H}\alpha)
+%		\end{align}
+%		なので，
 \end{frame}
 
 
@@ -250,6 +269,7 @@
 		\end{center}
 \end{frame}
 
+
 \begin{frame}{純粋力学の立場から見た熱力学}
 		\begin{align}
 				\xymatrix{
@@ -260,6 +280,9 @@
 		\end{align}
 \end{frame}
 
+\begin{frame}
+a
+\end{frame}
 
 \begin{frame}{課題}
 		\begin{enumerate}

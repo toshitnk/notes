@@ -1,0 +1,138 @@
+\documentclass[english, dvipdfmx, a4paper]{jsarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[top=10truemm, bottom=20truemm, left=15truemm, right=15truemm]{geometry} % mergin
+\renewcommand{\headfont}{\bfseries}
+
+% graphics
+\usepackage{graphicx}
+\usepackage{here}
+
+% link
+
+\usepackage{url}
+\usepackage[dvipdfmx, linktocpage]{hyperref} 
+\usepackage{xcolor}
+\usepackage{pxjahyper}
+\hypersetup{
+	colorlinks=true,
+	citecolor=blue,
+	linkcolor=teal,
+	urlcolor=orange,
+}
+
+% math
+
+\usepackage{amsmath, amssymb} 
+\usepackage{physics}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+
+% theoremstyle
+\usepackage{amsthm}
+\newtheoremstyle{break}
+{\topsep}{\topsep}%
+{}{}%
+{\bfseries}{}%
+{\newline}{}%
+\theoremstyle{break}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{eg}[thm]{Example}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{prob}{Problem}[section]
+
+\makeatletter
+\newenvironment{pr}[1][\proofnam]{\par
+\topsep6\p@\@plus6\p@ \trivlist
+\item[\hskip\labelsep{\itshape #1}\@addpunct{\bfseries}]\ignorespaces
+}{%
+\endtrivlist
+}
+\newcommand{\proofnam}{\underline{Derivation.}}
+\makeatother
+
+
+% my command
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\eq}[1]{Eq. \eqref{#1}}
+\newcommand{\theorem}[1]{Thm. \ref{#1}}
+\newcommand{\definition}[1]{Def. \ref{#1}}
+\newcommand{\proposition}[1]{Prop. \ref{#1}}
+\newcommand{\example}[1]{e.g.\ref{#1}}
+\newcommand{\claim}[1]{Cl. \ref{#1}}
+\newcommand{\corolary}[1]{Cor. \ref{#1}}
+\newcommand{\remark}[1]{Rem. \ref{#1}}
+\newcommand{\problem}[1]{Prob. \ref{#1}}
+\newcommand{\slashed}[1]{#1\!\!\!/}
+\renewcommand{\O}{\mathcal{O}}
+
+
+% number
+
+%\makeatletter
+%\@addtoreset{equation}{section}
+%\makeatother
+%\numberwithin{equation}{section}
+%\renewcommand{\thefootnote}{\roman{footnote}.}
+%\renewcommand{\appendixname}{Appendix }
+
+\title{相対論的量子力学}
+\author{Toshiya Tanaka}
+\date{\today}
+
+\begin{document}
+	\maketitle
+
+	\section{Klein--Gordon方程式}
+	Klein--Gordon方程式は
+	\begin{equation}
+			\qty(\partial_\mu\partial^{\mu} + m^2)\phi(t, \vec{x}) = 0\label{eq:klein-gordon}
+	\end{equation}
+	で，電荷$q $をもつときは共変微分$D_{\mu}\coloneqq \partial_{\mu} + iqA_{\mu} $を用いて
+	\begin{equation}
+			\qty(D_\mu D^{\mu} + m^2)\phi(t, \vec{x}) = 0\label{eq:covariantKG}
+	\end{equation}
+	である．
+
+	\subsection{非相対論極限}
+	Eq.\eqref{eq:covariantKG}の非相対論極限をとるとSchr\"{o}dinger方程式が出ることを議論する．非相対論極限では静止エネルギーよりもポテンシャルや運動などのエネルギーが小さいことをいう．$m \gg qA^0, \dd{\phi}/\dd{t}. $
+	相対論特有の静止エネルギー項を消すため，Klein--Gordon方程式の解$\phi(t, \vec{x}) $とSchr\"{o}dinger方程式の解$\psi(t, \vec{x}) $は$\phi(t, \vec{x}) = e^{-imt}\psi(t, \vec{x}) $と細工をしなければならない．
+
+	$\psi(t, \vec{x}) $をEq. \eqref{eq:covariantKG}に代入して，
+	\begin{equation}
+			\qty(\pdv{}{t} + iqA^0)^2\phi = \qty((\vec{\nabla} - iq\vec{A})^2 -m^2)\phi
+	\end{equation}
+	となる．
+	左辺を計算すると\footnote{\cite[p.55]{BB17130464}では，関数$f(t) $に対して成り立つ公式
+	\begin{equation*}
+			\qty(\pdv{}{t})^ne^{-imt}f(t) = e^{-imt}\qty(\pdv{}{t} - im)^n f(t)
+	\end{equation*}
+	を用いる，と書いてあるが，微分と関数の和の冪$\qty(\pdv*{}{t} + A^0(t))^n $に対しても成り立つのだろうか．
+}，
+	\begin{align}
+			\qty(\pdv{}{t} + iqA^0)^2 \phi 
+			&= \qty(\pdv{}{t} + iqA^0)e^{-imt}\qty(-im\psi + \dv{\psi}{t} + iqA^0\psi)\\
+			&= e^{-imt}\qty(-m^2\psi -2im\pdv{\psi}{t} + \pdv[2]{\psi}{t} + iq\pdv{A^0}{t}\psi + iqA^0\pdv{\psi}{t} + 2mqA^0\psi + iqA^0\pdv{\psi}{t} - q^2\qty(A^0)^2\psi)
+	\end{align}
+	である．非相対論極限では$m $が支配的で他のエネルギーは小さいので，小さい量が単独で存在する項\footnote{$-2im\pdv*{\psi}{t} $などは$m $がかかっているので残すが，$iq\pdv*{A^0}{t} $は落とす．}を無視して
+	\begin{equation}
+			\to e^{-imt}\qty(-m^2\psi -2im\dv{\psi}{t} + 2mqA^0\psi  iqA^0\dv{\psi}{t} - q^2\qty(A^0)^2\psi)
+	\end{equation}
+	となり，
+	\begin{equation}
+			i\pdv{}{t}\psi = \qty(-\frac{1}{2m}\qty(\vec{\nabla} - iq\vec{A})^2 +qA^0)\psi
+	\end{equation}
+	のようにSchr\"{o}dinger方程式に帰着する．
+	\bibliography{booklist}
+	\bibliographystyle{jalpha}
+	%\bibliographystyle{ytamsalpha}
+	%\bibliographystyle{ytamsbeta}
+\end{document}
+

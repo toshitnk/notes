@@ -1,0 +1,104 @@
+\documentclass[dvipdfmx]{beamer}
+
+\usepackage{pxjahyper}
+\setlength{\parindent}{11pt}
+
+% theme
+\usefonttheme{professionalfonts}
+\usetheme{Madrid}
+\usecolortheme{default}
+\setbeamertemplate{enumerate item}[default]
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{navigation symbols}{}
+\usepackage[scaled]{helvet}
+\renewcommand{\sfdefault}{phv}
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\setbeamertemplate{theorems}[numbered]
+\definecolor{Crimson}{HTML}{dc143c}
+\setbeamercolor{alerted text}{fg=Crimson}
+
+% graphics
+\usepackage{graphicx}
+\usepackage{here}
+
+% math
+\usepackage{amsmath, amssymb}
+\usepackage{physics}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+%\usepackage{tikz}
+%\usepackage[all]{xy}
+\mathversion{bold}
+\definecolor{math}{HTML}{100080}
+\everymath{\color{math}}
+
+% theoremstyle
+\usepackage{amsthm}
+\newtheoremstyle{break}
+{\topsep}{\topsep}%
+{}{}%
+{\bfseries}{}%
+{\newline}{}%
+\theoremstyle{break}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{eg}[thm]{Example}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{ax}[thm]{Axiom}
+\newtheorem{prob}{Problem}[section]
+
+\makeatletter
+\newenvironment{pr}[1][\proofnam]{\par
+\topsep6\p@\@plus6\p@ \trivlist
+\item[\hskip\labelsep{\itshape #1}\@addpunct{\bfseries}]\ignorespaces
+}{%
+\endtrivlist
+}
+\newcommand{\proofnam}{\underline{Derivation.}}
+\makeatother
+
+
+
+% link
+
+\usepackage{url}
+\usepackage{hyperref} 
+\usepackage{xcolor}
+\usepackage{pxjahyper}
+\definecolor{link}{HTML}{4b0082}
+\hypersetup{
+	colorlinks=true,
+	citecolor=link,
+	linkcolor=link,
+	urlcolor=orange,
+}
+
+% my command
+\newcommand{\hilb}{\mathcal{H}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+
+
+
+% title
+
+\author[T. Tanaka]{Toshiya Tanaka}
+\institute[Univ. Toyama]{University of Toyama}
+%\author[田中]{田中寿弥}
+%\institute[富大理物]{富山大学理学部物理学科}
+\title[\textcolor{white}{Ising model}]{Ising modelの数理}
+%\subtitle{}
+\begin{document}
+\begin{frame}
+		\maketitle
+\end{frame}
+
+\
+\end{document}
+
+
+
