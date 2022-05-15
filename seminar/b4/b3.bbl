@@ -1,17 +1,29 @@
-\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
-\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
-% \MRhref is called by the amsart/book/proc definition of \MR.
-\providecommand{\MRhref}[2]{%
-  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
-}
-\providecommand{\href}[2]{#2}
-\providecommand{\doihref}[2]{\href{#1}{#2}}
-\providecommand{\arxivfont}{\tt}
-\begin{thebibliography}{Pes19}
+\begin{thebibliography}{Howa10}
 
-\bibitem[Pes19]{1130282270643311616}
-M.~E. Peskin, \emph{Concepts of elementary particle physics}, Oxford master
-  series in particle physics, astrophysics, and cosmology, Oxford University
-  Press, 2019.
+\bibitem[Howa10]{BB03663366}
+Howard Georgi, 九後汰一郎.
+\newblock 物理学におけるリー代数 : アイソスピンから統一理論へ.
+\newblock 物理学叢書 / 小谷正雄 [ほか] 編, No. 107. 吉岡書店, 2010.
+
+\bibitem[九後89]{九後1989}
+九後汰一郎.
+\newblock ゲージ場の量子論.
+\newblock 新物理学シリーズ / 山内恭彦監修, No. 23-24. 培風館, 1989.
+
+\bibitem[坂本14]{BB17130464}
+坂本眞人.
+\newblock 場の量子論 : 不変性と自由場を中心にして.
+\newblock 量子力学選書 / 坂井典佑, 筒井泉監修. 裳華房, 2014.
+
+\bibitem[池田22]{BC13565134}
+池田岳.
+\newblock テンソル代数と表現論 : 線形代数続論 = Tensor algebra representation
+  theory : a second course in linear algebra.
+\newblock 東京大学出版会, 2022.
+
+\bibitem[猪木94]{BN10398292}
+猪木慶治, 川合光.
+\newblock 量子力学.
+\newblock 講談社, 1994.
 
 \end{thebibliography}

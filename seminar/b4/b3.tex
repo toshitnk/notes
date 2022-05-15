@@ -73,6 +73,11 @@
 
 \renewcommand{\O}{\mathcal{O}}
 
+\newcommand{\su}{\mathfrak{su}}
+\newcommand{\SU}{\mathrm{SU}}
+\newcommand{\g}{\mathfrak{g}}
+\newcommand{\so}{\mathfrak{su}}
+\newcommand{\SO}{\mathrm{SO}}
 
 % number
 
@@ -97,10 +102,28 @@
 
 \begin{document}
 	\maketitle
-	\input{./doc/prepare}
-	\nocite{1130282270643311616}
-	\bibliography{engbook}
-	\bibliographystyle{ytamsalpha}
+	\section{Introduction}
+	\begin{itemize}
+			\item この文書では教科書の誤植や説明不足だと感じたことをまとめています．
+			\item 公式の誤植リストは\href{https://www.slac.stanford.edu/~mpeskin/ConceptsBook.html}{ここ}にあります\footnote{数式がtex記法でベタ打ちなのでつらい．MathJax使ってほしかった．}．ここにあるものも書きますが．公式文書を書くことをおすすめします．
+			\item 「\href{https://www.ms.u-tokyo.ac.jp/~yasuyuki/sem.htm}{セミナーの準備の仕方について(河東泰之)}」はゼミ準備の心構えとして有名な文書なので一読するとよいでしょう．
+					特に
+					\begin{quote}
+							黙って「何々である」とか，``It is easy to see...", ``We may assume that...", ``It is enough to show..."などと書いてあるのはすべて，なぜなのか徹底的に考えなくてはいけません．「本に書いてあるから」とか「先生がそう言うから」などの理由で，なんとなく分かったような気になるのは絶対にアウトです．そういうところは「なぜですか」と聞かれるに決まっているんですから，どうきかれてもすぐに答えられるように準備をしておく必要があります．
+					\end{quote}
+					ということは意識すべきです．
+			\item この文書についても同じで，「この文書に書いてあるから」というのは根拠にはなりません．\footnote{誤植を訂正しているはずが，さらに誤植だったということは大いにありえます．}
+	\end{itemize}
+
+	\input{prepare}
+	\input{relqm}
+	\input{hydrogen}
+	\nocite{BB17130464}
+%	\nocite{1130282270643311616}
+%	\bibliography{engbook}
+%	\bibliographystyle{ytamsalpha}
 	%\bibliographystyle{ytamsbeta}
+	\bibliography{booklist}
+	\bibliographystyle{jalpha}
 \end{document}
 

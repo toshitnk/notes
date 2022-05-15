@@ -1,0 +1,26 @@
+\section{The Hydrogen Atom and Positronium}
+\subsection{The ideal hydrogen atom}
+\subsection{Fine structure and hyperfine structure}
+\begin{itemize}
+		\item Eq. (4.12)はBiot--Savartの法則を使えばよい．
+				電子の静止系からみると，陽子は$-\vec{v} $で運動している．これを電流だと思って，また，線素$\dd{\vec{l}}=-\vec{v}\dd{t} $と時間$t $でパラメトライズすると
+				\begin{align}
+						\vec{B} &= \frac{1}{4\pi}\int\frac{(-e)(-\vec{v})\dd{t}\times\vec{r}'}{(r')^3}\vec{r'}\delta(\vec{r} - \vec{r'})\\
+								&= -\vec{v}\times \frac{-e}{4\pi r^2}\frac{\vec{r}}{r}\\
+								&= -\vec{v} \times \vec{E}
+				\end{align}
+				となる．
+		\item Exercise (4.3)では一般の方向へのLorentz変換が必要になる．これは速度$\vec{beta} $に平行な方向と直行する方向に位置ベクトルを分解して，平行な成分に関してLorentz変換を考えればよい．分解はGram--Schmidtの要領で
+				\begin{align}
+						\vec{x} &= \vec{x}_{\parallel}+\vec{x}_{\perp},\\
+						\vec{x}_{\parallel} &= \frac{\vec{\beta}\cdot\vec{x}}{|\vec{\beta}^2|}\vec{\beta}\\
+						\vec{x}_{\perp} &= \vec{x} - \vec{x}_{\parallel}
+				\end{align}
+				として，Lorentz変換は
+				\begin{align}
+						t' &= \gamma(t + \beta \cdot \vec{x})\\
+						\vec{x}' &= \vec{x}_{\perp} + \gamma(\vec{x}_{\parallel} + \beta t)
+				\end{align}
+				となる．
+\end{itemize}
+\subsection{Positronium}

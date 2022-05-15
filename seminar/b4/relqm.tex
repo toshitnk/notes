@@ -1,0 +1,89 @@
+\section{Relativistic Wave Equations}
+\subsection{The Klein--Gordon equation}
+\subsection{Fields and particles}
+\subsection{Maxwell's equations}
+\subsection{The Dirac equations}
+\begin{itemize}
+		\item Dirac表現
+				\begin{equation}
+						\gamma^0 
+						=
+						\begin{pmatrix}
+								1_2 & 0\\
+								0 & -1_2
+						\end{pmatrix},\quad
+						\gamma^i
+						=
+						\begin{pmatrix}
+								0 & \gamma^i\\
+								-\gamma^i & 0
+						\end{pmatrix}
+				\end{equation}
+				とChiral表現
+				\begin{equation}
+						\gamma^0
+						=
+						\begin{pmatrix}
+								0 & 1_2\\
+								1_2 & 0
+						\end{pmatrix},\quad
+						\gamma^i
+						=
+						\begin{pmatrix}
+								0 & \gamma^i\\
+								-\gamma^i & 0
+						\end{pmatrix}
+				\end{equation}
+				の間のユニタリ変換は
+				\begin{equation}
+						U =
+				\begin{pmatrix}
+						1 & 0 & -1 & 0\\
+						0 & 1 & 0 & -1\\
+						1 & 0 & 1 & 0\\
+						0 & 1 & 0 & 1
+				\end{pmatrix}
+				\end{equation}
+				ととり，$U^{\dagger}\gamma^{\mu}U $でDirac表現に移る．
+				他の流儀でchiral表現を
+				\begin{equation}
+						\gamma^i = 
+						\begin{pmatrix}
+								0 & -\sigma^i\\
+								\sigma^i & 0
+						\end{pmatrix}
+				\end{equation}
+				ととる本もある\cite{BB17130464}がこの場合はUnitary行列を
+				\begin{equation}
+				\begin{pmatrix}
+						1 & 0 & 1 & 0\\
+						0 & 1 & 0 & 1\\
+						1 & 0 & -1 & 0\\
+						0 & 1 & 0 & -1
+				\end{pmatrix}
+				\end{equation}
+				ととればよい．こちらのほうが最初に思いつく対角化だと思う．
+\end{itemize}
+\subsection{Relaticistic narmalization of states}
+\begin{itemize}
+		\item 公式(3.82)$\delta(g(x)) = \delta(x)/\lvert\dv*{g}{x}\rvert$について．
+				$\delta $関数は
+				\begin{align}
+						\int \dd{x} \delta(x) &= 1, \\
+						\int \dd{x} f(x)\delta(x-a) &= f(a)
+				\end{align}
+				を満たすなにか\footnote{超関数}と思うことが大事．積分すれば$\delta $の引数がゼロになるところの関数の値だけを返す．
+				今，$y=g(x)  $とおくと，$\dd{y} = g'(x)\dd{x} $の関係で変数変換して，
+				\begin{equation}
+						1 = \int\dd{y} \delta(x) = \int \dd{x}g'(x)\delta(g(x))
+				\end{equation}
+				となる．公式はこの被積分関数を比較した場合を言っている．\footnote{$g'(x)$がゼロになる場合はどうか？また，$g(x) $がゼロになる点が複数存在した場合どうなるか．今考えている場合では単調関数なので，問題にならない．}
+		\item この小節ではベクトルの添字とスピノルの添字を区別しなければならない．\footnote{ベクトル添字には$\mu $, $\nu $, $\ldots $あたりのギリシア文字，スピノル添字には$\alpha$, $\beta $, $\ldots $あたりのギリシア文字や$a $, $b $, $\ldots $あたりのアルファベットを使いたい気持ちがある．}Gamma行列$\gamma^{\mu} $は$4\times 4 $行列で$4 $つある．このとき，$\mu $はベクトルの添字である．
+				スピノル添字は$a, b,\ldots $や$\alpha, \beta,\ldots $あたりの文字をよく使う．通常の行列$A $を添字をexplicitに$A = (a_{ab}) $と書くことに倣うと$\gamma^{\mu} =(( \gamma^{\mu})_{b}^{a}) $とかける．上付き下付きはあまり気にしなくて良いが，意味はある\cite[Chap.1]{九後1989}, \cite{BB17130464}．
+		\item Dirac方程式$\qty(i\gamma^\mu \partial_\mu - m)\psi(x) = 0 $は四成分スピノルの方程式であることに注意せよ．とくに$m $の後ろには$4\times 4 $単位行列が省略されている．また，スピノル添字をexplicitにかけるか？\footnote{正方行列$A =(a_{\alpha\beta})$, $B= (b_{\alpha\beta}) $の積$AB $を添字を用いて表すと$(AB)_{\alpha\gamma} = A_{\alpha\beta}B_{\beta\gamma} $とかけることを思い出すと}
+				\begin{equation}
+				\qty(i\gamma^{\mu}\partial_{\mu} -m)_{\beta}^{\alpha}\psi(x)^\beta = 0^{\alpha}
+				\end{equation}
+				である．
+\end{itemize}
+\subsection{Spin and statistics}
