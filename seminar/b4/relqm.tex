@@ -78,6 +78,26 @@
 						1 = \int\dd{y} \delta(x) = \int \dd{x}g'(x)\delta(g(x))
 				\end{equation}
 				となる．公式はこの被積分関数を比較した場合を言っている．\footnote{$g'(x)$がゼロになる場合はどうか？また，$g(x) $がゼロになる点が複数存在した場合どうなるか．今考えている場合では単調関数なので，問題にならない．}
+		\item 上の注で述べたとおり，単調関数なら問題にならないのだが，そうでない場合を示すことも求められる．
+
+				今，$g(x) $の零点を$\alpha_i \ (i=1, 2, \ldots, n)$とする．これに対して，$g $が微分可能ならば各$i $にたいして区間$[\alpha_i-\varepsilon_i, \alpha_i + \varepsilon_i] $に他の零点を含まないように$\varepsilon_i $を選ぶ．
+				任意の(性質のよい)関数$f $をとり，積分
+				\begin{equation}
+						\int_{-\infty}^{\infty}\dd{x}f(x)\delta(x)
+				\end{equation}
+				において，$x' = g(x) $の変数変換を考える．このとき，$\varepsilon_i $を区間$[\alpha_i-\varepsilon, \alpha_i+\varepsilon] $で微分係数$\dv*{g}{x} $の符号が変わらないようにとると，積分区間は
+				\begin{table}[htbp]
+						\centering
+						\begin{tabular}{c|c}\hline
+								$x $ & $a \to b$\\\hline
+								 $x' $ $(\dv*{g(\alpha_i)}{x}>0 )$ & $\alpha_i-\varepsilon_i \to \alpha_i + \varepsilon_i $\\\hline
+								 $x' $ $(\dv*{g(\alpha_i)}{x}<0 )$& $\alpha_i+\varepsilon_i \to \alpha_i-\varepsilon_i$\\\hline
+						\end{tabular}
+				\end{table}
+
+				となる．
+
+
 		\item この小節ではベクトルの添字とスピノルの添字を区別しなければならない．\footnote{ベクトル添字には$\mu $, $\nu $, $\ldots $あたりのギリシア文字，スピノル添字には$\alpha$, $\beta $, $\ldots $あたりのギリシア文字や$a $, $b $, $\ldots $あたりのアルファベットを使いたい気持ちがある．}Gamma行列$\gamma^{\mu} $は$4\times 4 $行列で$4 $つある．このとき，$\mu $はベクトルの添字である．
 				スピノル添字は$a, b,\ldots $や$\alpha, \beta,\ldots $あたりの文字をよく使う．通常の行列$A $を添字をexplicitに$A = (a_{ab}) $と書くことに倣うと$\gamma^{\mu} =(( \gamma^{\mu})_{b}^{a}) $とかける．上付き下付きはあまり気にしなくて良いが，意味はある\cite[Chap.1]{九後1989}, \cite{BB17130464}．
 		\item Dirac方程式$\qty(i\gamma^\mu \partial_\mu - m)\psi(x) = 0 $は四成分スピノルの方程式であることに注意せよ．とくに$m $の後ろには$4\times 4 $単位行列が省略されている．また，スピノル添字をexplicitにかけるか？\footnote{正方行列$A =(a_{\alpha\beta})$, $B= (b_{\alpha\beta}) $の積$AB $を添字を用いて表すと$(AB)_{\alpha\gamma} = A_{\alpha\beta}B_{\beta\gamma} $とかけることを思い出すと}
