@@ -66,7 +66,7 @@
 \end{itemize}
 \subsection{Relaticistic narmalization of states}
 \begin{itemize}
-		\item 公式(3.82)$\delta(g(x)) = \delta(x)/\lvert\dv*{g}{x}\rvert$について．
+		\item 公式(3.82) $\delta(g(x)) = \delta(x)/\lvert\dv*{g}{x}\rvert$について．
 				$\delta $関数は
 				\begin{align}
 						\int \dd{x} \delta(x) &= 1, \\
@@ -96,7 +96,11 @@
 				\end{table}
 
 				となる．
-
+			微分係数が負の場合は積分区間を入れ替えたときのマイナスがつく．まとめると，微分係数の絶対値をとって，
+			\begin{equation}
+					\delta(x) = \sum_{i}\abs{\dv{g(\alpha_i)}{x}}\delta(g(x))
+			\end{equation}
+			となり，求める式を得る．
 
 		\item この小節ではベクトルの添字とスピノルの添字を区別しなければならない．\footnote{ベクトル添字には$\mu $, $\nu $, $\ldots $あたりのギリシア文字，スピノル添字には$\alpha$, $\beta $, $\ldots $あたりのギリシア文字や$a $, $b $, $\ldots $あたりのアルファベットを使いたい気持ちがある．}Gamma行列$\gamma^{\mu} $は$4\times 4 $行列で$4 $つある．このとき，$\mu $はベクトルの添字である．
 				スピノル添字は$a, b,\ldots $や$\alpha, \beta,\ldots $あたりの文字をよく使う．通常の行列$A $を添字をexplicitに$A = (a_{ab}) $と書くことに倣うと$\gamma^{\mu} =(( \gamma^{\mu})_{b}^{a}) $とかける．上付き下付きはあまり気にしなくて良いが，意味はある\cite[Chap.1]{九後1989}, \cite{BB17130464}．

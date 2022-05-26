@@ -2,7 +2,19 @@
 \subsection{The ideal hydrogen atom}
 \begin{itemize}
 		\item ゼミでは水素原子のSch\"{o}dinger方程式を解けることが求められる．
-				エネルギー固有値が離散的で整数でラベル付けられるのはなぜか，など．
+				エネルギー固有値が離散的で整数でラベル付けられるのはなぜか，など．細かいところは\cite{BN10398292}など，標準的な量子力学の教科書を参照のこと．
+		\item Bohr半径$a_0 $は水素原子の基底状態の電子がどれくらいの範囲に広がっているかを特徴づける量といえる．この良い指標として，位置の分散
+				\begin{equation}
+						\langle r^2 \rangle \coloneqq \int_{0}^{\infty}\dd{r} \int_{0}^{\pi} \dd{\theta}\int_{0}^{2\pi}\dd{\phi}r^2\sin\theta R^{*}(r)r^2R(r)\label{eq:pos_var}
+				\end{equation}
+				を考える．$R(r) $は動径波動関数でLaguerre微分方程式の解である．基底状態ではこれは$R(r) = Ce^{-r/a_0} $である．ここで$C $は規格化定数．規格化も考えておくこと\footnote{確か，$\pi a_0^2 $だった気がする．}．Eq. \eqref{eq:pos_var}の値は$3a_0^2 $となり，その平方根は大体$a_0 $である．
+
+				もう一つ，よくされる議論として位置の期待値でなく存在確率そのものを考える．球座標で積分するとJacobianのなかの$r^2 $が出てきて，これを含めて\footnote{距離$r $の一点ではなく，半径$r $の球殻上の}存在確率$p(r) $を考えると，
+				\begin{equation}
+						p(r) \propto \int_{0}^{\infty}\dd{r}r^2R^*(r)R(r)
+				\end{equation}
+				となる．波動関数および絶対値の二乗は原点で極大だが，これを考えると$r=a_0 $で極大であることがわかる．
+		\item 上の1つ目の議論は$v/c \sim \alpha $の導出でも使える．量子力学では速度というより，$p/m $を考えるべきで，$\sqrt{\langle p^2\rangle} $を計算すると$\sqrt{3}\alpha $となって，$\alpha \sim 1/137 $なので，非相対論極限でよさそう，ということ．
 \end{itemize}
 \subsection{Fine structure and hyperfine structure}
 \begin{itemize}

@@ -30,6 +30,7 @@ h2 {position: absolute; left: 50px; top: 40px;}
 ## 量子力学のイントロダクション
 
 ---
+## SG実験装置   
 ![bg vertical right:60% 120%](./img/Stern-Gerlach_experiment_svg.svg)
 
 
