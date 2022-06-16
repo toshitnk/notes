@@ -18,7 +18,7 @@
 \end{itemize}
 \subsection{Fine structure and hyperfine structure}
 \begin{itemize}
-		\item Eq. (4.12)はBiot--Savartの法則を使えばよい．
+		\item CEPP (4.12)はBiot--Savartの法則を使えばよい．
 				電子の静止系からみると，陽子は$-\vec{v} $で運動している．これを電流だと思って，また，線素$\dd{\vec{l}}=-\vec{v}\dd{t} $と時間$t $でパラメトライズすると
 				\begin{align}
 						\vec{B} &= \frac{1}{4\pi}\int\frac{(-e)(-\vec{v})\dd{t}\times\vec{r}'}{(r')^3}\vec{r'}\delta(\vec{r} - \vec{r'})\\
@@ -38,5 +38,36 @@
 						\vec{x}' &= \vec{x}_{\perp} + \gamma(\vec{x}_{\parallel} + \beta t)
 				\end{align}
 				となる．
+				
+				結果は演習問題(4.3)のようになる．
+				$(S)_{ij}=$
 \end{itemize}
 \subsection{Positronium}
+\begin{itemize}
+		\item 換算質量$\mu = m_1m_2/(m_1 + m_2) $はどこから出てくるか．古典論ではなく，量子論でSche\"{o}dinger方程式から導けることを見よ．重心$\vec{R}\coloneqq (m_1\vec{r}_2+m_2\vec{r}_2)/(m_1m_2) $, 相対$\vec{r}\coloneqq \vec{r}_1-\vec{r}_2$と定め，元のHamiltonian $H = -\Delta_1/(2m_1)-\Delta_2/(2m_2)+V(\abs{\vec{r}}) $を$\vec{r} $と$\vec{R} $の微分で書き直せばよい．
+		\item 反粒子が粒子に対して反対のパリティーをもつ理由はDirac方程式からわかる．
+				今，パリティーのもとで，Dirac方程式が不変であると思う．つまり，
+				\begin{equation}
+						\qty(i\gamma^{\mu}\partial_{\mu} - m)\psi(t, \vec{x}) = 0\label{eq:parity_dirac}
+				\end{equation}
+				をパリティー変換したものをプライムをつけて表すと
+				\begin{equation}
+						\qty(i\gamma^{\mu}\partial_{\mu}-m)\psi'(t, \vec{x})
+				\end{equation}
+				も満たしていてほしい．
+
+				Eq. \eqref{eq:parity_dirac}を直接parity変換すると
+				\begin{equation}
+						\qty(i\gamma^{0}\partial_0 - \gamma^{i}\partial_{i}-m)\psi(t, -\vec{x})
+				\end{equation}
+				であるが，これがDiracであるには$\gamma^0 $と交換して$\gamma^i $と反可換であるものをかければ戻るが，それは$\gamma^0 $である．具体的に行列を書くと
+				\begin{equation}
+						\gamma^{0} = \begin{pmatrix}
+								1 & 0\\
+								0 & -1
+						\end{pmatrix}
+				\end{equation}
+				なので，Dirac方程式の上の二成分が通常の粒子，下の二成分が反粒子だったことを思い出せば，パリティーは逆になることがわかる．
+		\item ポジトロニウムの崩壊でE1とM1でパリティーが違うのは，それぞれ電気，磁気双極子と磁場のcoupleがHamiltonianに組み込まれることによる．
+				電場がvector, 磁場がpseudo vectorなので逆になることがわかる．
+\end{itemize}
