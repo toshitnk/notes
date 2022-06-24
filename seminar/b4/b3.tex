@@ -81,12 +81,12 @@
 
 % number
 
-%\makeatletter
-%\@addtoreset{equation}{section}
-%\makeatother
-%\numberwithin{equation}{section}
-%\renewcommand{\thefootnote}{\roman{footnote}.}
-%\renewcommand{\appendixname}{Appendix }
+\makeatletter
+\@addtoreset{equation}{section}
+\makeatother
+\numberwithin{equation}{section}
+\renewcommand{\thefootnote}{\roman{footnote}.}
+\renewcommand{\appendixname}{Appendix }
 
 
 %English
@@ -122,15 +122,16 @@
 			\item この文書についても同じで，「この文書に書いてあるから」というのは根拠にはなりません．\footnote{誤植を訂正しているはずが，さらに誤植だったということは大いにありえます．}
 	\end{itemize}
 
+	
 	\input{prepare}
 	\input{relqm}
 	\input{hydrogen}
-	\nocite{BB17130464}
+	\input{charm}
 %	\nocite{1130282270643311616}
 %	\bibliography{engbook}
 %	\bibliographystyle{ytamsalpha}
 	%\bibliographystyle{ytamsbeta}
-	\bibliography{booklist}
+	\bibliography{CEPP, booklist}
 	\bibliographystyle{jalpha}
 \end{document}
 
