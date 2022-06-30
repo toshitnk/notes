@@ -43,6 +43,7 @@
 				$(S)_{ij}=$
 \end{itemize}
 \subsection{Positronium}
+ポジトロニウムは京都大学の課題演習の題材にあるようで，\href{https://www-he.scphys.kyoto-u.ac.jp/gakubu/a1a2.html}{課題演習A1・A2}や\href{https://www-he.scphys.kyoto-u.ac.jp/gakubu/p1p2.html}{課題研究P1・P2}にある資料が参考になる．
 \begin{itemize}
 		\item 換算質量$\mu = m_1m_2/(m_1 + m_2) $はどこから出てくるか．古典論ではなく，量子論でSche\"{o}dinger方程式から導けることを見よ．重心$\vec{R}\coloneqq (m_1\vec{r}_2+m_2\vec{r}_2)/(m_1m_2) $, 相対$\vec{r}\coloneqq \vec{r}_1-\vec{r}_2$と定め，元のHamiltonian $H = -\Delta_1/(2m_1)-\Delta_2/(2m_2)+V(\abs{\vec{r}}) $を$\vec{r} $と$\vec{R} $の微分で書き直せばよい．
 		\item 反粒子が粒子に対して反対のパリティーをもつ理由はDirac方程式からわかる．
@@ -76,5 +77,11 @@
 				電場がvector, 磁場がpseudo vectorなので逆になることがわかる．
 				
 		\item CEPP (4.43), (4.44)は導出は求められないが，数値を代入して確かめることと解の意味を考えることは求められる．
-				$S=0 $のパラポジトロニウムでは$\alpha^5 $に比例するが，この理由は何故か
+		$S=0 $のパラポジトロニウムでは$\alpha^5 $に比例するが，これは何故か
+		\footnote{
+				説明されたが，よくわからなかった．
+				散乱断面積$\sigma = (4\pi/v)(\alpha/m_{e})^2$で$\alpha/m_e = e^2/(4\pi m) $は古典半径で面積を表す．
+				$\alpha^3 $は波動関数の規格化$1/\sqrt{\pi a^3}, (a\coloneqq 2/(m\alpha)) $から出てきそうである．
+				3 photon decayはphotonが増える分$\alpha $が掛かりそうな気がする．らしい．
+		}?
 \end{itemize}

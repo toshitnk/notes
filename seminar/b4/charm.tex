@@ -1,2 +1,41 @@
 \section{Charmonium}
+この章は実験の説明が多く含まれる．図を読み取ることと，Particle Data Groupなどをみて実験値の確認をすることが求められる．また，必要に応じて引用されている論文を読むと勉強になる．
+\subsection{The discovery of the hadrons}
+\begin{itemize}
+		\item Yukawa potentialをKlein--Gordon方程式のGreen関数として導出できるか．$(\Laplace-m^2)G(\vec{x}) = -\delta(\vec{x}) $で$G(\vec{x}) $を求めよ．方針はFourier変換して，複素積分をする．
+				
+\end{itemize}
 
+\subsection{Charmonium}
+\begin{itemize}
+		\item 粒子の崩壊は$e^{-\Gamma t} $に比例して崩壊する．$\Gamma $は崩壊幅\footnote{``width''とだけ書いてあるが，エネルギーの幅である．}で，$\tau \coloneqq 1/\Gamma $は崩壊の特徴的な時間で寿命と呼ばれる．崩壊幅が広いと寿命が短く，狭いと長寿命で安定という関係である．詳しい定義などは\cite[Chap.7]{Peskin:2019iig}でやる．
+		\item Annihilation rateが$1/E_{\mathrm{CM}^2}$で減少するのは，場の理論の本を見れば書いてあるが導出は長そう\cite[Chap1, Chap5]{Peskin:1995ev}．ただし，次元解析はできて，散乱断面積$\unit{L^2} = \unit{E^{-2}} $なので．
+		\item $\Upsilon $の最も軽いものは$9600\unit{MeV} $とあるが，$9460\unit{MeV} $である．
+		\item $\vec{j} = \bar{\psi}\vec{\gamma}\psi $がspin $1 $なのは$3 $成分あるので$3 $次元表現だからである．$P=-1 $なのはベクトルだからで，$C=-1 $は簡単には説明できそうにないが，場の理論の本を見ると$\bar{\psi}\gamma^{\mu}\psi $が$C=-1 $であることが示されている\cite[Chap.3]{Peskin:1995ev}．
+		\item CEPP Eq. (5.8)は$\psi' $のdecayが$\psi'\to \gamma + \chi, \ \chi \to \gamma + J/\psi $と二段階で起こることを示す．
+				1つ目のdecayで$\chi $は$\gamma $と反跳し運動量を持つ．
+				この$\chi $がdecayすることでエネルギー幅に広がりを持つため，
+				$\chi $がdecayした低エネルギー側のphotonは広がる\footnote{
+						静止系で$E + \delta $程度広がっているとする．
+						速度を持った系でのdecayを静止系からみて$(E + \delta)/\sqrt{1-\beta^2} $と広がると思う．
+						引用元\cite{Tanenbaum1978}をみるとこれを``Doppler効果''と書いてあり，
+						解説記事\cite{1979342}も見つけた．
+				}．
+				CEPP Fig. 5.6でこれが言及されている．
+		\item $J/\psi(1^{--}) $の幅が狭いことはオルソポジトロニウム$(1^{--}) $の寿命が長いことから説明できる．charmoniumでもポジトロニウムでも寿命に関して
+				\begin{equation}
+						\frac{(1^{--})}{(0^{-+})} \sim 1000
+				\end{equation}
+				であることから比較できる．\footnote{幅で計算するか，寿命で計算するかに注意しないと，幅と寿命は逆数の関係なので逆になる．}
+\end{itemize}
+\subsection{The light meson}
+\begin{itemize}
+		\item $\pi^0 \to 2\gamma $の反応は宇宙物理でよく使うプロセス．出てきたphotonを地上で捉え，そのスペクトラムを用いて，どのプロセスか，どのようにpionがあるのかを調べたりするそうである．
+		\item strangenessの保存や$(u, d, s) $の$\SU(3) $は\cite{BB03663366}などに詳しい．逆にこの本は，物理としてこれらを知っている人向けの本なので，覚えておくとこの本を読むときに役立つ．
+		\item mesonというのは(ほとんど)$q\bar{q} $のペアなので\footnote{$q $はquark.}，
+				spin $1/2 $のparticle-antiparticle boundstateとして，ポジトロニウム($e^{+}e^{-})$のmass spectrumの構造を持つ．例えば，$1^{--} $状態の$\rho.\ \omega,\ \phi $がphotonを出して$0^{-+} $状態の$\pi^{0} $にdecayするなど．
+		\item strangenessは$s $に$S=\color{red}{-}\color{black}{1}  $，$\textcolor{red}{\bar{\color{black}{s}}} $に$S = \color{red}{+}\color{black}{1} $を与える．
+		\item Isospinは二成分，例えば$(p, n) $を$p \sim \ket{\uparrow}(1, 0) $, $n\sim \ket{\downarrow} \sim (0, 1)$と思って．spinと同じように扱う．もともとは原子核の$(p, n) $についてのアイデアだったが，これをquark $(u, s) $にも応用できる．さらにstrangeも加えて，$\SU(3) $対称性を考えることが有用である．
+		\item $\SO(3) $と$\SU(2) $が同型という記述があるが嘘．数学の本を見ると$\SU(2)/\Z_2 \cong \SO(3)$という同型があって，もし$\SU(2) \cong \SO(3) $ならば推移律より$\SU(2) \cong\SU(2)/\Z_2 $だが，この間の同型写像は構成できない．
+
+\end{itemize}

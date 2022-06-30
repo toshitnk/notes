@@ -1,9 +1,35 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
 \begin{thebibliography}{Howa10}
 
 \bibitem[Howa10]{BB03663366}
 Howard Georgi, 九後汰一郎.
 \newblock 物理学におけるリー代数 : アイソスピンから統一理論へ.
 \newblock 物理学叢書 / 小谷正雄 [ほか] 編, No. 107. 吉岡書店, 2010.
+
+\bibitem[Pes19]{Peskin:2019iig}
+Michael~E. Peskin.
+\newblock {\em {Concepts of Elementary Particle Physics}}.
+\newblock Oxford Master Series in Physics. Oxford University Press, 9 2019.
+
+\bibitem[PS95]{Peskin:1995ev}
+Michael~E. Peskin and Daniel~V. Schroeder.
+\newblock {\em {An Introduction to quantum field theory}}.
+\newblock Addison-Wesley, Reading, USA, 1995.
+
+\bibitem[T{\etalchar{+}}78]{Tanenbaum1978}
+William~M. Tanenbaum, et~al.
+\newblock {Radiative Decays of the psi-prime (3684) Into High Mass States}.
+\newblock {\em Phys. Rev. D}, Vol.~17, p. 1731, 1978.
+
+\bibitem[W{\etalchar{+}}]{Workman:2022}
+R.L. Workman, et~al.
+\newblock {Review of Particle Physics}.
+\newblock to be published (2022).
+
+\bibitem[吉沢79]{1979342}
+吉沢康和.
+\newblock 陽電子消滅ガンマ線のドップラー効果.
+\newblock 日本結晶学会誌, Vol.~21, No.~6, pp. 342--349, 1979.
 
 \bibitem[九後89]{九後1989}
 九後汰一郎.

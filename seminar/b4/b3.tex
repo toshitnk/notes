@@ -1,3 +1,4 @@
+\RequirePackage{plautopatch}
 \documentclass[dvipdfmx, a4paper]{jsarticle}
 \usepackage[utf8]{inputenc}
 \usepackage[top=10truemm, bottom=20truemm, left=15truemm, right=15truemm]{geometry} % mergin
@@ -79,6 +80,9 @@
 \newcommand{\so}{\mathfrak{su}}
 \newcommand{\SO}{\mathrm{SO}}
 
+\newcommand{\unit}[1]{\mathrm{[#1]}}
+\newcommand{\Laplace}{\bigtriangleup}
+
 % number
 
 \makeatletter
@@ -127,6 +131,7 @@
 	\input{relqm}
 	\input{hydrogen}
 	\input{charm}
+	\nocite{Workman:2022}
 %	\nocite{1130282270643311616}
 %	\bibliography{engbook}
 %	\bibliographystyle{ytamsalpha}
