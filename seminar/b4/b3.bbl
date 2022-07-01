@@ -1,6 +1,11 @@
 \newcommand{\etalchar}[1]{$^{#1}$}
 \begin{thebibliography}{Howa10}
 
+\bibitem[BM15]{Bransden2015}
+B.~H. Bransden and R.~G. Moorhouse.
+\newblock {\em The Pion-Nucleon System}.
+\newblock Princeton University Press, 2015.
+
 \bibitem[Howa10]{BB03663366}
 Howard Georgi, 九後汰一郎.
 \newblock 物理学におけるリー代数 : アイソスピンから統一理論へ.

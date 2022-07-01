@@ -38,4 +38,42 @@
 		\item Isospinは二成分，例えば$(p, n) $を$p \sim \ket{\uparrow}(1, 0) $, $n\sim \ket{\downarrow} \sim (0, 1)$と思って．spinと同じように扱う．もともとは原子核の$(p, n) $についてのアイデアだったが，これをquark $(u, s) $にも応用できる．さらにstrangeも加えて，$\SU(3) $対称性を考えることが有用である．
 		\item $\SO(3) $と$\SU(2) $が同型という記述があるが嘘．数学の本を見ると$\SU(2)/\Z_2 \cong \SO(3)$という同型があって，もし$\SU(2) \cong \SO(3) $ならば推移律より$\SU(2) \cong\SU(2)/\Z_2 $だが，この間の同型写像は構成できない．
 
+		\item CG(Clebsh--Gordan)係数に依る素粒子過程への制限は\cite[Chap.4]{BB03663366}が参考になる．量子力学の基本的な教科書にも記述はあると思う．CG係数は$\ket{J, M} $という状態を持った粒子が$\ket{j_1, m_1} $と$\ket{j_2, m_2} $という状態の$2 $粒子にdecayするとき，decayの仕方により
+				\begin{equation}
+						\ket{J, M} = \sum (\bra{j_1, m_1}\otimes\bra{j_2, m_2})\ket{J, M} \ket{j_1, m_1}\otimes\ket{j_2, m_2}
+				\end{equation}
+				となるが，その一つに対する確率振幅を表す$ (\bra{j_1, m_1}\otimes\bra{j_2, m_2})\ket{J, M}$のことである．
+		\item G-parityの定義$G = C\e^{\i\pi I_2} $の$I_2 $は$2\times 2 $単位行列ではなくIsospinの第二成分の意味である．スピンで言えば$J_2 $のことである．今，pionを考えているので，Isospin $1 $表現でIsospinの(群としての)作用は通常の空間回転と同じで
+				\begin{equation}
+						G = CR_2(\pi)  = C\operatorname{diag}(-1, 1, -1)
+				\end{equation}
+				とy軸周りの$\pi $回転となる．
+		\item CEPP Eq. (5.28)からどのようにCEPP Eq. (5.29)が導かれるかだが,
+				通常pionと行ったときは$\SU(2) $の随伴表現の$3 $成分の固有状態をいうようで
+				\footnote{最初，$3 $成分を対角化する表現だと思って混乱した．}\cite{Bransden2015}，表現のとり方はCEPP Eq. (1.59)のとおりである．
+				今，Isospin第三成分は
+				\begin{equation}
+						I_3 = \begin{pmatrix}
+								0 & -i & 0\\
+								i & 0 & 0\\
+								0 & 0 & 0
+						\end{pmatrix}
+				\end{equation}
+				と取っていて，pionは
+				\begin{equation}
+						\ket{\pi^{\pm}} = 
+						\begin{pmatrix}
+								1\\\pm \i\\0
+						\end{pmatrix},\quad
+						\ket{\pi^{0}} = 
+						\begin{pmatrix}
+								0\\0\\1
+						\end{pmatrix}
+				\end{equation}
+				と表現されている．これがわかれば目標の式変形は明らか．
+		\item $q\bar{q} $ タイプのmesonのエネルギーの限界値は$1300\unit{\textcolor{red}{M}eV} $である．
+\end{itemize}
+\subsection{The heavy meson}
+\begin{itemize}
+		\item 何を比較して\footnote{クオークの重さを直接比べよ，と言われたが，この節のタイトルからしてmesonで比べるべきでは？と思ったが．}重い，軽いと言っているのか．PDGでクオークについての欄があるので，調べること．
 \end{itemize}
