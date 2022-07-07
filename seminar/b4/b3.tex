@@ -118,6 +118,7 @@
 							黙って「何々である」とか，``It is easy to see...", ``We may assume that...", ``It is enough to show..."などと書いてあるのはすべて，なぜなのか徹底的に考えなくてはいけません．「本に書いてあるから」とか「先生がそう言うから」などの理由で，なんとなく分かったような気になるのは絶対にアウトです．そういうところは「なぜですか」と聞かれるに決まっているんですから，どうきかれてもすぐに答えられるように準備をしておく必要があります．
 					\end{quote}
 					ということは意識すべきです．
+			\item この文書についても同じで，「この文書に書いてあるから」というのは根拠にはなりません．\footnote{誤植を訂正しているはずが，さらに誤植だったということは大いにありえます．}
 			\item ゼミの準備の仕方として，もう少し易しめに書かれているものとして，
 					「\href{https://speakerdeck.com/kaityo256/book-reading}{輪講の準備の仕方(渡辺宙志)}」
 					も参考になります．特に，12ページの
@@ -125,7 +126,8 @@
 							先生からの質問は詰問ではない
 					\end{quote}
 					ということは心に留めておくとよいと思います．
-			\item この文書についても同じで，「この文書に書いてあるから」というのは根拠にはなりません．\footnote{誤植を訂正しているはずが，さらに誤植だったということは大いにありえます．}
+
+			\item Part Iは自分で導くべき式と事実を書いてある式とがあり，わからないことは積極的に人に聞くと良いと思います．
 	\end{itemize}
 
 	
@@ -133,12 +135,191 @@
 	\input{relqm}
 	\input{hydrogen}
 	\input{charm}
+	\input{detector}
 	\nocite{Workman:2022}
 %	\nocite{1130282270643311616}
 %	\bibliography{engbook}
 %	\bibliographystyle{ytamsalpha}
 	%\bibliographystyle{ytamsbeta}
-	\bibliography{CEPP, booklist}
-	\bibliographystyle{jalpha}
+
+%	\bibliography{CEPP, booklist}
+%	\bibliographystyle{jalpha}
+\newcommand{\etalchar}[1]{$^{#1}$}
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\providecommand{\doihref}[2]{\href{#1}{#2}}
+\providecommand{\arxivfont}{\tt}
+\begin{thebibliography}{慶光94}
+
+\bibitem[Bet30]{Bethe1930}
+H.~Bethe, \emph{{Theory of the Passage of Fast Corpuscular Rays Through
+  Matter}}, \doihref{http://dx.doi.org/10.1002/andp.19303970303}{Annalen Phys.
+  \textbf{5} (1930) 325--400}.
+
+\bibitem[BM15]{Bransden2015}
+B.~H. Bransden and R.~G. Moorhouse,
+  \doihref{http://dx.doi.org/doi:10.1515/9781400867448}{\emph{The pion-nucleon
+  system}}, Princeton University Press, 2015.
+  \url{https://doi.org/10.1515/9781400867448}.
+
+%\bibitem[G汰10]{BB03663366}
+%H.~Georgi and 九. 汰一郎, \emph{物理学におけるリー代数 :
+%  アイソスピンから統一理論へ}, 物理学叢書 / 小谷正雄 [ほか] 編, no. 107,
+%  吉岡書店, 2010.
+
+\bibitem[Pes19]{Peskin:2019iig}
+M.~E. Peskin,
+  \doihref{http://dx.doi.org/10.1093/oso/9780198812180.001.0001}{\emph{{Concepts
+  of Elementary Particle Physics}}}, Oxford Master Series in Physics, Oxford
+  University Press, 9 2019.
+
+\bibitem[PS95]{Peskin:1995ev}
+M.~E. Peskin and D.~V. Schroeder, \emph{{An Introduction to quantum field
+  theory}}, Addison-Wesley, Reading, USA, 1995.
+
+%\bibitem[P信22]{Pes:2022}
+%M.~E. Peskin and 丸. 信人, \emph{ペスキン 素粒子物理学}, 森北出版, 2022.
+
+\bibitem[T{\etalchar{+}}78]{Tanenbaum1978}
+W.~M. Tanenbaum et~al., \emph{{Radiative Decays of the psi-prime (3684) Into
+  High Mass States}},
+  \doihref{http://dx.doi.org/10.1103/PhysRevD.17.1731}{Phys. Rev. D \textbf{17}
+  (1978) 1731}.
+
+\bibitem[W{\etalchar{+}}]{Workman:2022}
+{\bf Particle Data Group} Collaboration, R.~Workman et~al., \emph{{Review of
+  Particle Physics}}. to be published (2022).
+\bibitem[Geo10]{BB03663366}
+Howard Georgi, 九後汰一郎.
+\newblock 物理学におけるリー代数 : アイソスピンから統一理論へ.
+\newblock 物理学叢書 / 小谷正雄 [ほか] 編, No. 107. 吉岡書店, 2010.
+
+\bibitem[Pes22]{Pes:2022}
+Michael~E. Peskin, 丸信人.
+\newblock ペスキン 素粒子物理学.
+\newblock 森北出版, 2022.
+
+%\bibitem[岳22]{BC13565134}
+%池. 岳, \emph{テンソル代数と表現論 : 線形代数続論 = tensor algebra
+%  representation theory : a second course in linear algebra}, 東京大学出版会,
+%  2022.
+
+%\bibitem[慶光94]{BN10398292}
+%猪. 慶治 and 川. 光, \emph{量子力学}, 講談社, 1994.
+
+%\bibitem[康79]{1979342}
+%吉. 康和, \emph{陽電子消滅ガンマ線のドップラー効果},
+%  \doihref{http://dx.doi.org/10.5940/jcrsj.21.342}{日本結晶学会誌 \textbf{21}
+%  (1979) 342--349}.
+
+%\bibitem[汰89]{九後1989}
+%九. 汰一郎, \emph{ゲージ場の量子論}, 新物理学シリーズ / 山内恭彦監修, no.
+%  23-24, 培風館, 1989.
+
+%\bibitem[眞14]{BB17130464}
+%坂. 眞人, \emph{場の量子論 : 不変性と自由場を中心にして}, 量子力学選書 /
+%  坂井典佑, 筒井泉監修, 裳華房, 2014.
+\bibitem[吉沢79]{1979342}
+吉沢康和.
+\newblock 陽電子消滅ガンマ線のドップラー効果.
+\newblock 日本結晶学会誌, Vol.~21, No.~6, pp. 342--349, 1979.
+
+\bibitem[九後89]{九後1989}
+九後汰一郎.
+\newblock ゲージ場の量子論.
+\newblock 新物理学シリーズ / 山内恭彦監修, No. 23-24. 培風館, 1989.
+
+\bibitem[坂本14]{BB17130464}
+坂本眞人.
+\newblock 場の量子論 : 不変性と自由場を中心にして.
+\newblock 量子力学選書 / 坂井典佑, 筒井泉監修. 裳華房, 2014.
+
+\bibitem[池田22]{BC13565134}
+池田岳.
+\newblock テンソル代数と表現論 : 線形代数続論 = Tensor algebra representation
+  theory : a second course in linear algebra.
+\newblock 東京大学出版会, 2022.
+
+\bibitem[猪木94]{BN10398292}
+猪木慶治, 川合光.
+\newblock 量子力学.
+\newblock 講談社, 1994.
+\end{thebibliography}
+%%%%%%%%%%%%%%
+%\newcommand{\etalchar}[1]{$^{#1}$}
+%\begin{thebibliography}{Howa10}
+%
+%\bibitem[Bet30]{Bethe1930}
+%H.~Bethe.
+%\newblock {Theory of the Passage of Fast Corpuscular Rays Through Matter}.
+%\newblock {\em Annalen Phys.}, Vol.~5, pp. 325--400, 1930.
+%
+%\bibitem[BM15]{Bransden2015}
+%B.~H. Bransden and R.~G. Moorhouse.
+%\newblock {\em The Pion-Nucleon System}.
+%\newblock Princeton University Press, 2015.
+%
+%\bibitem[Howa10]{BB03663366}
+%Howard Georgi, 九後汰一郎.
+%\newblock 物理学におけるリー代数 : アイソスピンから統一理論へ.
+%\newblock 物理学叢書 / 小谷正雄 [ほか] 編, No. 107. 吉岡書店, 2010.
+%
+%\bibitem[Mich22]{Pes:2022}
+%Michael~E. Peskin, 丸信人.
+%\newblock ペスキン 素粒子物理学.
+%\newblock 森北出版, 2022.
+%
+%\bibitem[Pes19]{Peskin:2019iig}
+%Michael~E. Peskin.
+%\newblock {\em {Concepts of Elementary Particle Physics}}.
+%\newblock Oxford Master Series in Physics. Oxford University Press, 9 2019.
+%
+%\bibitem[PS95]{Peskin:1995ev}
+%Michael~E. Peskin and Daniel~V. Schroeder.
+%\newblock {\em {An Introduction to quantum field theory}}.
+%\newblock Addison-Wesley, Reading, USA, 1995.
+%
+%\bibitem[T{\etalchar{+}}78]{Tanenbaum1978}
+%William~M. Tanenbaum, et~al.
+%\newblock {Radiative Decays of the psi-prime (3684) Into High Mass States}.
+%\newblock {\em Phys. Rev. D}, Vol.~17, p. 1731, 1978.
+%
+%\bibitem[W{\etalchar{+}}]{Workman:2022}
+%R.L. Workman, et~al.
+%\newblock {Review of Particle Physics}.
+%\newblock to be published (2022).
+%
+%\bibitem[吉沢79]{1979342}
+%吉沢康和.
+%\newblock 陽電子消滅ガンマ線のドップラー効果.
+%\newblock 日本結晶学会誌, Vol.~21, No.~6, pp. 342--349, 1979.
+%
+%\bibitem[九後89]{九後1989}
+%九後汰一郎.
+%\newblock ゲージ場の量子論.
+%\newblock 新物理学シリーズ / 山内恭彦監修, No. 23-24. 培風館, 1989.
+%
+%\bibitem[坂本14]{BB17130464}
+%坂本眞人.
+%\newblock 場の量子論 : 不変性と自由場を中心にして.
+%\newblock 量子力学選書 / 坂井典佑, 筒井泉監修. 裳華房, 2014.
+%
+%\bibitem[池田22]{BC13565134}
+%池田岳.
+%\newblock テンソル代数と表現論 : 線形代数続論 = Tensor algebra representation
+%  theory : a second course in linear algebra.
+%\newblock 東京大学出版会, 2022.
+%
+%\bibitem[猪木94]{BN10398292}
+%猪木慶治, 川合光.
+%\newblock 量子力学.
+%\newblock 講談社, 1994.
+%
+%\end{thebibliography}
 \end{document}
 

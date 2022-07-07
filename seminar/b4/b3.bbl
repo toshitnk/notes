@@ -1,6 +1,11 @@
 \newcommand{\etalchar}[1]{$^{#1}$}
 \begin{thebibliography}{Howa10}
 
+\bibitem[Bet30]{Bethe1930}
+H.~Bethe.
+\newblock {Theory of the Passage of Fast Corpuscular Rays Through Matter}.
+\newblock {\em Annalen Phys.}, Vol.~5, pp. 325--400, 1930.
+
 \bibitem[BM15]{Bransden2015}
 B.~H. Bransden and R.~G. Moorhouse.
 \newblock {\em The Pion-Nucleon System}.
@@ -10,6 +15,11 @@ B.~H. Bransden and R.~G. Moorhouse.
 Howard Georgi, 九後汰一郎.
 \newblock 物理学におけるリー代数 : アイソスピンから統一理論へ.
 \newblock 物理学叢書 / 小谷正雄 [ほか] 編, No. 107. 吉岡書店, 2010.
+
+\bibitem[Mich22]{Pes:2022}
+Michael~E. Peskin, 丸信人.
+\newblock ペスキン 素粒子物理学.
+\newblock 森北出版, 2022.
 
 \bibitem[Pes19]{Peskin:2019iig}
 Michael~E. Peskin.
