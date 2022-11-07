@@ -7,7 +7,7 @@
 \providecommand{\href}[2]{#2}
 \providecommand{\doihref}[2]{\href{#1}{#2}}
 \providecommand{\arxivfont}{\tt}
-\begin{thebibliography}{GR80}
+\begin{thebibliography}{Sak14}
 
 \bibitem[GR80]{GRA80}
 I.~S. Gradshteyn and I.~M. Ryzhik, \emph{Table of integrals, series, and
@@ -16,5 +16,9 @@ I.~S. Gradshteyn and I.~M. Ryzhik, \emph{Table of integrals, series, and
 \bibitem[PS95]{Peskin1995}
 M.~E. Peskin and D.~V. Schroeder, \emph{{An Introduction to quantum field
   theory}}, Addison-Wesley, Reading, USA, 1995.
+
+\bibitem[Sak14]{Sakamoto2014}
+M.~Sakamoto, \emph{場の量子論 : 不変性と自由場を中心にして}, 量子力学選書 /
+  坂井典佑, 筒井泉監修, 裳華房, 2014.
 
 \end{thebibliography}

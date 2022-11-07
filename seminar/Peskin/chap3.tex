@@ -1,11 +1,101 @@
 \section{The Dirac Field}
 \begin{itemize}
-	\item \textref{3.20}の不変性の書き方が，分かりづらく感じる．
+	\item \textref{3.2}の不変性の書き方が，分かりづらく感じる．
 		Lorentz変換$\Lambda$により，位置は$x\mapsto x'= \Lambda x$と変換し，
 		場は$\phi(x) \mapsto \phi'(x')$と変換するが，座標は動かさず，場を動かすという立場を取っていて，変換後も変換前と同じ$x$を使うと思うと，$x' = x$
 		と起き直して，もとの$x$は$\Lambda^{-1}x$になるので，$\phi'(x)=\phi(\Lambda^{-1}x)$という書き方をしている．
-	\item \textref{3.17}の定義は，他の本だと片方$g_{\mu\nu}$になっているが，
+
+	\item 微分に関しては，$y\coloneqq \Lambda^{-1}x$と思うと，
+		\begin{align}
+			\partial_{\mu}\phi'(x) &= \pdv{}{x}\phi(y)\\
+								   &= \pdv{y}{x}\pdv{}{y}\phi(y)\\
+								   &= \Lambda_{\nu}^{\mu}\partial_{\mu}\phi(\Lambda^{-1}x)
+		\end{align}
+		となり，右辺は$x$で微分したものに，$\Lambda^{-1}x$を代入していると思える．
+		例えば，$f(x)= x + x^2$という関数があって，$f(ax) = (ax) + (ax)^2$
+		の微分は，$\dv*{f}{x} = x+2x$に$\dv*{(ax)}{x}=a$をかけて，$ax$を代入したものであると思える．
+
+	\item Maxwell理論のLagrangian$\mathcal{L}_{\text{Maxwell}} = -(F_{\mu\nu})^2$からEuler--Lagrange方程式を計算して，Maxwell方程式
+		を導出する際は，場の微分で微分するときに注意が必要である．
+		特に，二乗のまま計算するとややこしいので，$(F_{\mu\nu})^2=F_{\mu\nu}F^{\mu\nu}$であることと，
+		$\pdv*{(\partial_{\rho}A_{\sigma})}{(\partial_{\mu}A_{\nu})} = \delta^{\mu}_{\rho}\delta^{\nu}_{\sigma}$や$\pdv*{(\partial^{\rho}A^{\sigma})}{(\partial_{\mu}A_{\nu})} = g^{\mu\rho}g^{\nu\sigma}$に注意して，計算する．
+
+	\item \textref{3.16}が\textref{3.17}の交換関係を満たすことを確認するとき，
+		$[AB, C]= A[B,C] + [A, C]B$などを使うと簡単に計算できる．
+		例えば，$[x^{\mu}\partial^{\nu}, x^{\rho}\partial^{\sigma}]$の項は
+		$[x^{\mu}\partial^{\nu}, x^{\rho}\partial^{\sigma}] = x^{\mu}x^{\rho}[\partial^{\nu}, \partial^{\sigma}] + x^{\mu}[\partial^{\nu}, x^{\rho}] \partial^{\sigma} + x^{\rho}[x^{\mu}, \partial^{\sigma}]\partial_\nu + [x^{\mu}, x^{\rho}]\partial^{\sigma}\partial^{\nu}$
+		とすると，微分同士，$x$同士は可換なので消えて，$[\partial^{\mu}, x^{\nu}] = g^{\mu\nu}$から，すぐにわかる．
+			\item \textref{3.17}の定義は，他の本だと片方$g_{\mu\nu}$になっているが，
 		これは足を片方上げた状態であるのでconsistent．
 		これにより，$\alpha, \beta$などは単なる行列の足ではなく，
 		Lorentzベクトルの足なので，\textref{3.20}, \textref{3.21}を計算するときは，足の上下に応じて，空間成分ならマイナスをかけないといけない．
+	\item \textref{3.17}のLorentz代数の交換関係は，複雑だが，$g^{\mu\nu}$と$J^{\mu\nu}$の和で作ること，
+		一項目は$[J^{\mu\nu}, J^{\rho\sigma}]$の添字の縮約が$\nu$と$\rho$の真ん中で組まれて$g^{\nu\rho}$になり，
+		係数が$\i$であることを覚えると，$J^{\mu\nu}$が反対称であることから，
+		残りの三項の符号と添字は決まる．
+	\item \textref{3.23}で$S^{\mu\nu}\coloneqq \i\qty[\gamma^{\mu}, \gamma^{\nu}]/4$
+		がLorentz代数を満たすことをチェックするには，
+		上のGamma行列の反交換関係の形に持ち込み，
+		Gammaの数を減らすしかない．
+		交換関係から反交換関係を作る式$[AB, C] = A\{B, C\} - \{A, C\}B$, 
+		$[A, BC] = \{A, B\}C - B\{A, C\}$を使う\footnote{私は後者の式をしばらく符号違いで覚えていた．}．
+	\item $4$次元時空のgamma行列は$4\times4$が最小であることの説明は\cite[pp.92-94]{Sakamoto2014}に書かれている\footnote{
+			$2\times 2$がダメであることは，Pauli行列に付け足すことができない
+			との説明があるが，それで十分なのか気になる．
+		}．
+	\item PS. p41, 最後から二行目のfaithfulな表現とは，表現が単射であること．
+	\item \textref{3.28}のKlein--Gordon方程式がLorentz共変である説明で，
+		「internal spaceの変換だから，微分はスルーする」という説明は，
+		微分はスピノルの添字を持っていないので今考えているスピノルの変換には
+		関係ないということで，通常のベクトルとしての変換はする．
+		添字が潰れているので，結果的にキャンセルする．
+	\item PS. p42の二つ目の式，$\qty[\gamma^{\mu}, S^{\rho\sigma}] = (J^{{\rho\sigma}})^{\mu}_{\nu}$
+		は微小Lorentz変換でgammma行列がベクトルの変換をすることがわかるが，
+		\textref{3.29}の有限Lorentz変換でも成り立つことは，そんなに自明でないと思う．\footnote{教科書には有限変換の無限小の形になっている，と記述があるので，無限小からつくることは要求さていないとして，逃げるということもできる．}
+
+		BCH formulaの親戚$\e^{A}B\e^{-A} = B + [A, B] + [A, [A, B]]/2!  + \cdots$を使うと示すことができる．
+		$[S^{\rho\sigma}, \gamma^{\mu}] = -(J^{\rho\sigma})\indices{^\mu_\nu}\gamma^{\mu}$, 
+		$[\omega_{\rho\sigma}S^{\rho\sigma},[\omega_{\tau\upsilon}S^{\tau\upsilon}, \gamma^{\mu}]] \allowbreak = (-1)^2\omega_{\rho\sigma}\omega_{\tau\upsilon}(J^{\tau\upsilon})\indices{^\mu_\nu}(J^{\rho\sigma})\indices{^\nu_\delta}\gamma^{\delta} = ((-\omega_{\rho\sigma}J^{\rho\sigma})^2)\indices{^\mu_\nu}\gamma{\nu}$
+		となることから，
+		\begin{equation}
+			\e^{\i\omega_{\rho\sigma}S^{\rho\sigma}/2}\gamma^{\mu}\e^{-\i\omega_{\tau\sigma}J^{\tau\sigma}/2} = \qty(\sum_{n=0}^{\infty}\frac{(-\i\omega_{\rho\sigma }S^{\rho\sigma})^n}{n!})\indices{^\mu_\nu}\gamma^{\nu}
+		\end{equation}
+		となり，無限小の合成により有限の変換が成り立っていることがわかる．
+	\item PS. p42の三つ目の式は$(1+\i\omega_{\rho\sigma}S^{\rho\sigma}/2)\gamma^{\mu}(1-\i\omega_{\tau\upsilon}S^{\tau\upsilon}/2)$のように縮約の文字を変えるべきだが，
+	結局展開した$\i\omega_{\rho\sigma}S^{\rho\sigma}\gamma^{\mu}-\i\gamma^{\mu}\omega_{\tau\upsilon}S^{\tau\upsilon}$は$\omega_{\mu\nu}$がただの数なので
+	くくって和をとると思うと同じ添字で良くなる．
+	\item \textref{3.48}の行列の指数関数は，
+		\begin{equation}
+			\begin{pmatrix}
+				0 & 1\\
+				1 & 0
+			\end{pmatrix}^2 = 
+			\begin{pmatrix}
+				1 & 0\\
+				0 &1
+			\end{pmatrix}
+		\end{equation}
+		であることから，冪展開して偶数冪と奇数冪に分けると$\cosh$と$\sinh$の
+		定義になることを使う．
+	\item rapidityを用いたLorentz変換の表式で，rapidityが加法的\footnote{研究室で借りている本には，additiveを添加物と訳していたが，文脈と合わなさすぎる．訳は加法的である．}なことは合成して，双曲線関数の加法定理を使えばわかる．
+	\item \textref{3.47}で$\sqrt{m}$のfactorをつけた理由が\textref{3.53}の後の文章に書かれているが，あまりしっくり来ない．
+		現時点での理解は，factorがないと思うと，全ての式に$1/\sqrt{m}$がつくので，特に\textref{3.53}を見ると$m\to0$で発散する．大きくboostして光速に近づけるということは，
+		そこで$m\to0$をとってmassless particleに一致してほしいので，ここを
+		上手く残すために必要であるということだと思っている．
+	\item \textref{3.49}で行列の平方根$\sqrt{p^{\mu}\sigma_{\mu} p^{\nu} \bar{\sigma}_{\nu}}$とまとめる必要があるが，これは$p^{\mu}\sigma_{\mu} = p^{\mu}\bar{\sigma}_{\mu}= m^2$で可換なので，同時対角化出来るのでやって良い操作である．
+		そうでない場合，出来ないと思う．
+	\item PS. subsection 3.3は途中で導出がたくさんあって全体像がわかりにくいので，
+		やっていることを簡潔にまとめる．
+		\begin{enumerate}
+			\item Dirac方程式の解を正エネルギー(正振動数)に限定して，$\psi(x) = u(p)e^{-ipx}$の形で探す．
+			\item 一般の場合では難しいので，静止系でまず考え，それをboostして
+				一般の運動量を持った状態に移す．
+			\item normalizationの条件を考える．
+			\item 二成分spinorの基底を書いて，直交を確かめる．
+			\item 考えていなかった負の振動数解を考える．
+			\item やりかたは全く同じだが，Dirac方程式に代入したときに$-(\gamma^{\mu}p_{\mu})v(p_0) = 0$となるので，
+				$v(p_0)=(\eta, -\eta)^{\top}$と符号違いに取らなければいけないところだけが違う．
+			\item $u$と$v$も直交していることを確かめる．
+		\end{enumerate}
+	\item masslessな場合の$u$と$v$の直交で$\vec{p}$の符号を入れ替えることは，$p^{\mu}\sigma_{\mu}$を$p^{\mu}\bar{\sigma}_{\mu}$に変えることと同じである．
 \end{itemize}

@@ -1,0 +1,187 @@
+\documentclass[english, dvipdfmx, a4paper]{jsarticle}
+\usepackage{docmute}
+\usepackage[utf8]{inputenc}
+\usepackage[top=10truemm, bottom=20truemm, left=15truemm, right=15truemm]{geometry} % mergin
+\renewcommand{\headfont}{\bfseries}
+
+% graphics
+\usepackage{graphicx}
+\usepackage{here}
+
+% link
+
+\usepackage{url}
+\usepackage[dvipdfmx, linktocpage]{hyperref} 
+\usepackage{xcolor}
+\usepackage{pxjahyper}
+\hypersetup{
+	colorlinks=true,
+	citecolor=blue,
+	linkcolor=teal,
+	urlcolor=orange,
+}
+
+% math
+
+\usepackage{amsmath, amssymb} 
+\usepackage{physics}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+
+% theoremstyle
+\usepackage{amsthm}
+\newtheoremstyle{break}
+{\topsep}{\topsep}%
+{}{}%
+{\bfseries}{}%
+{\newline}{}%
+\theoremstyle{break}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{eg}[thm]{Example}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{prob}{Problem}[section]
+\newtheorem{prop}{Property}
+
+\makeatletter
+\newenvironment{pr}[1][\proofnam]{\par
+\topsep6\p@\@plus6\p@ \trivlist
+\item[\hskip\labelsep{\itshape #1}\@addpunct{\bfseries}]\ignorespaces
+}{%
+\endtrivlist
+}
+\newcommand{\proofnam}{\underline{Derivation.}}
+\makeatother
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\renewcommand{\i}{\mathrm{i}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\Q}{\mathcal{Q}}
+\renewcommand{\P}{\mathcal{P}}
+% number
+
+%\makeatletter
+%\@addtoreset{equation}{section}
+%\makeatother
+%\numberwithin{equation}{section}
+%\renewcommand{\thefootnote}{\roman{footnote}.}
+%\renewcommand{\appendixname}{Appendix }
+
+\title{SUSYQM}
+\author{Toshiya Tanaka}
+\date{\today}
+
+\begin{document}
+\section{\texorpdfstring{$\N=2$}{N=2}超対称代数}
+	\subsection{一般性質}
+	\begin{defn}[実superchargeと$\N = 2$\footnote{$\N$はsuperchargeの数である．ところが，実(エルミート)で数える流儀と複素で数える流儀があり，文献を比較する際は確認する必要がある．今は実で数えている．}超対称代数]
+		最小超対称関係を満たす三つのエルミート演算子$H$, $Q$, $(-1)^{F}$から，
+		エルミート演算子\footnote{エルミートという意味で，実superchargeという．}
+		$Q_1 \coloneqq Q$, $Q_2\coloneqq -\i Q(-1)^{F}$
+		を定める．
+		$H$, $Q_1$, $Q_2$は，		\begin{align}
+			\qty{Q_i, Q_j} &= 2H\delta_{ij}\\
+			\qty[H, Q_i] &= 0
+		\end{align}
+		の関係を満たす．
+	\end{defn}
+	これは，最小超対称関係と等価だが，$(-1)^{F}$を加えて議論することが多い．
+	$(-1)^{F}$は余分な演算子なので，束縛関係$\i Q_1Q_2 = H(-1)^F$で結ばれる\footnote{$(-1)^{F}$という余分な演算子が現れたとき，$H$をかければ最小限の$Q_1$, $Q_2$のみで書けるということ．}．
+	\begin{defn}[複素superchargeと$\N = 2$超対称代数]
+		$\Q \coloneqq (Q_1 + \i Q_2)/\sqrt{2}$を定める．このとき，$\Q$, $H$は
+		\begin{align}
+			\qty{\Q^{\dag}, \Q} &= 2H\\
+			\qty{\Q, \Q} = \qty{\Q^{\dag}, \Q^{\dag}} &= 0 \label{eq:nilp}\\
+			\qty[H, \Q] = \qty[H, \Q^{\dag}] &= 0
+		\end{align}
+		の関係を満たす．
+	\end{defn}
+	Eq. \eqref{eq:nilp}は$\Q^2 = (\Q^{\dag})^2 = 0$と書け，$2$乗してゼロになるこの性質をnilpotencyという
+	\footnote{nilpotencyは場の理論のGlassmann数の対称性であるBRS対称性による保存量であるBRS charge, de Rham coholomogyなどでも重要な働きをするそう．実際SUSYQMで微分幾何をやるという話もある．}．
+	
+	複素の場合も，$\N = 2$超対称代数に$(-1)^F$を加え考えることが便利である．
+	この場合の束縛関係は
+	$\qty(\Q^{\dag}\Q - \Q\Q^{\dag})/2 = H(-1)^{F}$である．左辺を実superchargeで計算すれば，$iQ_1Q_2$になり，実の場合の束縛を使うと導ける．
+
+	複素superchargeで基本性質を見る．
+	\setcounter{prop}{0}
+	\begin{prop}
+		$E\geq0$.
+	\end{prop}
+	\begin{prop}
+		$E>0$なら次のsupermultipletの構造がある．
+		\begin{equation}
+			0\xleftarrow[\Q]{}\ket{E, -}\xleftrightarrow[\Q]{\Q^{\dag}}\ket{E, +} \xrightarrow[]{\Q^{\dag}} 0\label{eq:positive_spectrum}
+		\end{equation}
+	\end{prop}
+	\begin{prop}
+		$E=0$なら，$\Q$, $\Q^{\dag}$で消える．
+		\begin{equation}
+			0 \xleftarrow[\Q]{}\ket{E=0}\xrightarrow[]{\Q^{\dag}}0\label{eq:zero_spectrum}
+		\end{equation}
+	\end{prop}
+	\begin{prop}
+		Witten indexがトポロジカルな量．
+	\end{prop}
+	Witten indexについては全く同じ．
+	\subsection{\texorpdfstring{$S^1$}{S1}上自由粒子での具体例}
+	以下では，上で見た$\N=2$超対称代数を，具体的に$S^1$上の自由粒子の例について見る．
+
+
+	前回，この系は$H\coloneqq -1/(2m)\dv*[2]{}{x}$, $Q\coloneqq -\i/(2m)\dv*{}{x}$, $(-1)^{F}\coloneqq \mathcal{P}$が最小超対称関係を満たすことを見たが，もう少し具体的に見る．
+
+	この系では，周期的境界条件から，エネルギーは$E_n = n^2/(2mR^2),\ n\in\Z_{\geq0}$で対応する固有状態は二つあり，
+	\begin{align}
+		\psi_{n, +}(x) &= N_{n, +}\cos(nx/R)\quad n\in\Z_{\geq 0}\\
+		\psi_{n, -}(x) &= N_{n, -}\sin(nx/R)\quad n \in \Z_{>0}
+	\end{align}
+	であるが，これは，$Q$が一階微分演算子であり，
+	$\sin$と$\cos$が入れ替わることを考えると，$Q$を通して移り合う．
+
+	また，規格化定数のphaseを$N_{n, -} = \i N_{n, +} \eqqcolon \i N_n$ととると，
+	\begin{align}
+		Q\psi_{n, +} &= \sqrt{n^2/(2mR^2)}\i N_n\sin(nx/R)\\
+					 &= \sqrt{E_n}\psi_{n, -}
+	\end{align}
+	と規格化定数も含めて，一般の結果が再現できる．
+
+	次に，複素superchargeを用いて考える．以下では，具体的な微分などは考えず，
+	$H$と$\Q$と$\mathcal{P}$の代数的性質を用いて考察する．
+
+	今，$\P_{\pm}\coloneqq (1 \pm \P)/2$を定めると，
+	複素superchargeは$\Q = (Q + \i(-\i Q \mathcal{P}))/\sqrt{2}=\sqrt{2}Q/\P_+$, $\Q^{\dag} = \sqrt{2}Q\P_-$となる．
+	
+	\begin{thm}
+		$\P_{+}$, $\P_{-}$はそれぞれ関数$f(x)$の偶関数成分，奇関数成分を取り出す演算子である．
+	\end{thm}
+	$f(x) = (f(x) + f(-x))/2 + (f(x) - f(-x))/2$と書き直したとき，第一項は偶関数であり，
+	第二項は奇関数である．これらを偶関数成分，奇関数成分と呼ぶ．
+
+	$\P_{\pm}(f(x)) = (f(x) \pm f(-x))/2$は実際に成り立つ．\qed
+	\begin{thm}
+		$\P_{\pm}$は射影演算子である．すなわち，次の性質を満たす．
+		\begin{itemize}
+			\item $(\P_{\pm})^2 = \P_{\pm}$
+			\item $\P_+ + \P_- = 1$
+			\item $\P_+\P_- = 0$
+		\end{itemize}
+	\end{thm}
+
+	これを用いて，Eq. \eqref{eq:positive_spectrum}のスペクトラムは理解できる．
+	\begin{itemize}
+		\item $\psi_{n, +}$は偶関数なので，$\Q^{\dag}\sim\P_-$で消える．
+		\item $\psi_{n, -}$は奇関数なので，$\Q\sim\P_+$で消える．
+		\item $\psi_{n, +}$は偶関数なので，$\Q\sim Q$で奇関数に移る．
+		\item $\psi_{n, -}$は奇関数なので，$\Q^{\dag}\sim Q$で偶関数に移る．
+	\end{itemize}
+
+	また， Eq. \eqref{eq:zero_spectrum}のスペクトラムは次のように理解できる．
+	\begin{itemize}
+		\item ground stateは定数関数なので，微分で消える．
+		\item 偶関数でもあるので，$\P_-$でも消える．
+	\end{itemize}
+\end{document}

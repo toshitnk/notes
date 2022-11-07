@@ -1,0 +1,190 @@
+\documentclass[english, dvipdfmx, a4paper]{jsarticle}
+\usepackage[utf8]{inputenc}
+\usepackage[top=10truemm, bottom=20truemm, left=15truemm, right=15truemm]{geometry} % mergin
+\renewcommand{\headfont}{\bfseries}
+
+% graphics
+\usepackage{graphicx}
+\usepackage{here}
+
+% link
+
+\usepackage{url}
+\usepackage[dvipdfmx, linktocpage]{hyperref} 
+\usepackage{xcolor}
+\usepackage{pxjahyper}
+\hypersetup{
+	colorlinks=true,
+	citecolor=blue,
+	linkcolor=teal,
+	urlcolor=orange,
+}
+
+% math
+
+\usepackage{amsmath, amssymb} 
+\usepackage{physics}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+
+% theoremstyle
+\usepackage{amsthm}
+\newtheoremstyle{break}
+{\topsep}{\topsep}%
+{}{}%
+{\bfseries}{}%
+{\newline}{}%
+\theoremstyle{break}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{eg}[thm]{Example}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{prop}{Property}
+\newtheorem{prob}{Problem}[section]
+
+\makeatletter
+\newenvironment{pr}[1][\proofnam]{\par
+\topsep6\p@\@plus6\p@ \trivlist
+\item[\hskip\labelsep{\itshape #1}\@addpunct{\bfseries}]\ignorespaces
+}{%
+\endtrivlist
+}
+\newcommand{\proofnam}{\underline{Derivation.}}
+\makeatother
+\renewcommand{\i}{\mathrm{i}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\N}{\mathcal{N}}
+
+% number
+
+%\makeatletter
+%\@addtoreset{equation}{section}
+%\makeatother
+%\numberwithin{equation}{section}
+%\renewcommand{\thefootnote}{\roman{footnote}.}
+%\renewcommand{\appendixname}{Appendix }
+\title{}
+\author{Toshiya Tanaka}
+\date{\today}
+
+\begin{document}
+	\section{SUSY in QM}
+	\begin{defn}[最小超対称関係]
+		3種類のHermitian operator $H$: Hamiltonian, $Q$: Supercharge, $(-1)^F$: ???があって
+		\begin{align}
+			H &= Q^2\\
+			Q(-1)^{F} &= -(-1)^{F}Q,\quad  \text{or}\quad \{Q, (-1)^F\} =0\\
+			\qty((-1)^{F})^2 &=1
+		\end{align}
+		を満たす関係を最小超対称関係という．
+
+		超対称性がある系には，必ずこの関係がある．
+	\end{defn}
+	実は，簡単な量子力学系にもこの構造が隠れている．
+	\subsection{円周上の自由粒子}
+	半径$R$の円周上の自由粒子を考える．定義域を$-\pi R\leq x\leq \pi R$とし，
+	周期的境界条件$\psi(x+2\pi R) = \psi(x)$を入れる．
+	Hamiltonianは$H=-1/(2m)\dv*{}{x}$であるので，Schr\"{o}dinger方程式を解くと，固有関数として，次の固有関数を得る．
+	\begin{align}
+		\phi_{n,+}(x) &= N_{n,+}\cos\qty(\frac{n}{R}x)\\
+		\phi_{n,-}(x) &= N_{n, -} \sin\qty(\frac{n}{R}x).
+	\end{align}
+	これらの固有エネルギーは，
+	\begin{equation}
+		E=\frac{1}{2mR^2}n^2
+	\end{equation}
+	で，各固有空間は$2$次元あることがわかる．Hamiltonianを``因数分解''してsuperchargeを得る．
+	$H = (-\i/(\sqrt{2m})\dv*{}{x})^2$より，$Q\coloneqq-\i/(\sqrt{2m})\dv*{}{x}=p/\sqrt{2m}$とする．
+
+	また，parity $\mathcal{P}$は$(-1)^{F}$の働きをする．
+
+	よって，この系には，最小超対称関係を満たす演算子たちが存在することがわかる．
+	これらはHermitianであることも確かめられる\footnote{$A$がHermitianとは，
+	今定まっている内積$\langle\psi, \phi\rangle=\int\dd{x}\qty(\psi(x))^*\phi(x)$に対して，$\langle A\psi, \phi\rangle = \langle \psi , A\phi\rangle$が成り立つことである．}．
+
+	今，周期的境界条件で考えたが，ひねった境界条件$\psi(x+2\pi R) = \e^{\i\theta}\psi(x)$を入れると面白い\footnote{Aharanov--Bohmのように，磁場を使うと，実際に作ることができる．}．
+	$\theta$の連続変形でスペクトラムの構造は連続的に変化し
+	\footnote{spectral flowという．}，$\theta = n\pi$のところではSUSYの構造が現れるが，その他のところでは現れない．
+	実際計算すると，固有エネルギーと固有状態は
+	\begin{align}
+		\psi_n &= N_{n}\e^{\i(n+\theta/(2\pi))x/R}\\
+		E_n &= \frac{1}{2mR^2}\qty(n+\frac{\theta}{2\pi})^2
+	\end{align}
+	となる．
+
+	$\theta \neq n\pi$でSUSYが壊れているのは，parityが上手くいっていないからである．
+	境界条件を考えると，$\psi(x+2\pi R) = \e^{\i\theta}\psi(x)$だが，
+	$x' = -x-2\pi R$とおくと，$\psi(x'+2\pi R)=\e^{-\i\theta}\psi(x')$となって
+	しまい，$\theta\neq n\pi$ではparityで境界条件が不変でないので，同じ系の中で対応が作れない．
+	\subsection{超対称性の基本性質}
+
+	SUSYがある系は最小超対称関係
+	\begin{itemize}
+		\item $H=Q^2$
+		\item $\qty{Q, (-1)^{F}}=0$
+		\item $\qty((-1)^{F})=1$
+	\end{itemize}
+	が必ずある．
+
+	この関係から，$[H, Q]=0$, $[H, (-1)^F]$がなりたつので，$H$と$(-1)^{F}$の
+	同時固有状態$\ket{E, \lambda}$をとることができる．$\qty((-1)^{F})^2=1$
+	なので，$\lambda = \pm1$である．
+
+
+
+	以下の4つの性質が成り立つ．
+	\begin{prop}
+		エネルギー固有値が非負．$E\geq0$.
+	\end{prop}
+	次の式変形からわかる\footnote{$Q$がHermitianであることは本質的である．}．
+	\begin{align}
+		E &= \mel{E, \lambda}{H}{E, \lambda}\\
+		  &= \mel{E, \lambda}{Q^2}{E, \lambda}\\
+		  &= \|Q\ket{E, \lambda}\|^2\\
+		  &\geq0.
+	\end{align}\qed
+	\begin{prop}
+		正エネルギー状態は，$(-1)^{F}$の固有値が$\pm1$の固有状態$\ket{E, \pm}$で対を成し，エネルギー固有値は縮退する．
+	\end{prop}
+	まず，$E>0$として，$\ket{E, +}$を考える．
+	$(-1)^{F}Q\ket{E, +} = -Q(-1)^{F}\ket{E, +} = -Q\ket{E, +}$なので，$Q\ket{E, +}\propto\ket{E, -}$.
+	$\ket{E, -}$についても同様にして，$Q\ket{E, -}\propto\ket{E, +}$である．
+
+	また，比例定数は	
+	\begin{align}
+		\|Q\ket{E,+}\|^2 &= \mel{E, +}{Q^{\dag}Q}{E, +}\\
+						 &= \expval{H}{E, +}\\
+						 &= E
+	\end{align}
+	となるので\footnote{phaseは実にとると}，
+	\begin{equation}
+		Q\ket{E,\pm} = \sqrt{E}\ket{E, \mp}\label{eq:normalization}
+	\end{equation}
+	と決まる\footnote{$Q$は$H$を``因数分解''して作ったことを思い出すと，大きさは$\sqrt{E}$になると思える．}．
+	
+	このとき，$\ket{E, \pm}$は$Q$を通じて対を成しており，supermultipletを成すという．
+	この状況を模式的に$\ket{E, +}\overset{Q}{\longleftrightarrow}\ket{E, -}$と書く．\qed
+
+	\begin{prop}
+		ゼロエネルギー状態\footnote{SUSYの文脈でこのような状態をBPS stateという．}は必ずしも縮退しない．
+		ゼロエネルギー状態が存在するならば，$Q\ket{E=0}=0$を満たす．
+	\end{prop}
+	Eq. \eqref{eq:normalization}に$E=0$を代入すると直ちにわかる．
+	$E\neq0$のときとは異なり，$Q$を通じたsupermultipletをなさない．
+	この状況を$\ket{E=0, +}\overset{Q}{\longrightarrow} 0 \overset{Q}{\longleftarrow} \ket{E=0, -}$と書く．\qed
+
+	ゼロエネルギー状態が$Q\ket{E=0, \pm}$を満たすことは，ゼロエネルギー状態は1階の微分方程式の解であることを意味する．
+
+
+	\begin{prop}
+		Witten index $\Delta_{\text{W}} \coloneqq \N_{E=0}^{+}-\N_{E=0}^{-}$はtopological invariant.
+
+		ここで，$\N_{E=0}^{\pm}$は$(-1)^F$の固有値が$\pm1$の固有状態の数である．
+	\end{prop}
+	topological invariantとは，理論のパラメータの連続変形で不変な量という意味で用いる．
+	$S^1$上の自由粒子の例では$m$や$R$を大きくとると，$n\neq0$に置いても$E_n\to0$となるが，
+	もともとnon zeroであるものは対で存在するので，ゼロエネルギー状態の数の差は変わらない．\qed
+\end{document}
