@@ -58,7 +58,8 @@
 		$[\omega_{\rho\sigma}S^{\rho\sigma},[\omega_{\tau\upsilon}S^{\tau\upsilon}, \gamma^{\mu}]] \allowbreak = (-1)^2\omega_{\rho\sigma}\omega_{\tau\upsilon}(J^{\tau\upsilon})\indices{^\mu_\nu}(J^{\rho\sigma})\indices{^\nu_\delta}\gamma^{\delta} = ((-\omega_{\rho\sigma}J^{\rho\sigma})^2)\indices{^\mu_\nu}\gamma{\nu}$
 		となることから，
 		\begin{equation}
-			\e^{\i\omega_{\rho\sigma}S^{\rho\sigma}/2}\gamma^{\mu}\e^{-\i\omega_{\tau\sigma}J^{\tau\sigma}/2} = \qty(\sum_{n=0}^{\infty}\frac{(-\i\omega_{\rho\sigma }S^{\rho\sigma})^n}{n!})\indices{^\mu_\nu}\gamma^{\nu}
+			\e^{\i\omega_{\rho\sigma}S^{\rho\sigma}/2}\gamma^{\mu}\e^{-\i\omega_{\tau\sigma}S^{\tau\sigma}/2} = \qty(\sum_{n=0}^{\infty}\frac{(-\i\omega_{\rho\sigma }J^{\rho\sigma})^n}{n!})\indices{^\mu_\nu}\gamma^{\nu}
+			= \Lambda\indices{^\mu_\nu}\gamma^{\nu}
 		\end{equation}
 		となり，無限小の合成により有限の変換が成り立っていることがわかる．
 	\item PS. p42の三つ目の式は$(1+\i\omega_{\rho\sigma}S^{\rho\sigma}/2)\gamma^{\mu}(1-\i\omega_{\tau\upsilon}S^{\tau\upsilon}/2)$のように縮約の文字を変えるべきだが，
@@ -92,7 +93,7 @@
 				一般の運動量を持った状態に移す．
 			\item normalizationの条件を考える．
 			\item 二成分spinorの基底を書いて，直交を確かめる．
-			\item 考えていなかった負の振動数解を考える．
+			\item 考えていなかった負の振動数解$\psi(x) = v(p)\e^{\textcolor{red}{+}ipx}$を考える．
 			\item やりかたは全く同じだが，Dirac方程式に代入したときに$-(\gamma^{\mu}p_{\mu})v(p_0) = 0$となるので，
 				$v(p_0)=(\eta, -\eta)^{\top}$と符号違いに取らなければいけないところだけが違う．
 			\item $u$と$v$も直交していることを確かめる．
