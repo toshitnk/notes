@@ -1,0 +1,219 @@
+\documentclass[english, dvipdfmx, a4paper]{jsarticle}
+\usepackage{docmute}
+\usepackage[utf8]{inputenc}
+\usepackage[top=10truemm, bottom=20truemm, left=15truemm, right=15truemm]{geometry} % mergin
+\renewcommand{\headfont}{\bfseries}
+
+% graphics
+\usepackage{graphicx}
+\usepackage{here}
+
+% link
+
+\usepackage{url}
+\usepackage[dvipdfmx, linktocpage]{hyperref} 
+\usepackage{xcolor}
+\usepackage{pxjahyper}
+\hypersetup{
+	colorlinks=true,
+	citecolor=blue,
+	linkcolor=teal,
+	urlcolor=orange,
+}
+
+% math
+
+\usepackage{amsmath, amssymb} 
+\usepackage{physics}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+
+% theoremstyle
+\usepackage{amsthm}
+\newtheoremstyle{break}
+{\topsep}{\topsep}%
+{}{}%
+{\bfseries}{}%
+{\newline}{}%
+\theoremstyle{break}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{eg}[thm]{Example}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{prob}{Problem}[section]
+\newtheorem{prop}{Property}
+
+\makeatletter
+\newenvironment{pr}[1][\proofnam]{\par
+\topsep6\p@\@plus6\p@ \trivlist
+\item[\hskip\labelsep{\itshape #1}\@addpunct{\bfseries}]\ignorespaces
+}{%
+\endtrivlist
+}
+\newcommand{\proofnam}{\underline{Derivation.}}
+\makeatother
+% ordinary
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\C}{\mathbb{C}}
+	\newcommand{\Z}{\mathbb{Z}}
+	
+	
+	% Physics %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	% Feynman slash
+	\newcommand{\slashed}[1]{#1\!\!\!/}
+	% order
+	
+	%Lie algebra
+	\renewcommand{\O}{\mathcal{O}}
+	\newcommand{\SO}{\mathrm{SO}}
+	\newcommand{\so}{\mathfrak{so}}
+	\newcommand{\SU}{\mathrm{SU}}
+	\newcommand{\su}{\mathfrak{su}}
+	\newcommand{\SP}{\mathrm{SP}}
+	\renewcommand{\sp}{\mathfrak{sp}}
+	\newcommand{\SL}{\mathrm{SL}}
+	\renewcommand{\sl}{\mathfrak{sl}}
+	\newcommand{\GL}{\mathrm{GL}}
+	\newcommand{\gl}{\mathfrak{gl}}
+	\newcommand{\U}{\mathrm{U}}
+	\renewcommand{\u}{\mathfrak{u}}
+\renewcommand{\i}{\mathrm{i}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\Q}{\mathcal{Q}}
+\renewcommand{\P}{\mathcal{P}}
+% number
+
+%\makeatletter
+%\@addtoreset{equation}{section}
+%\makeatother
+%\numberwithin{equation}{section}
+%\renewcommand{\thefootnote}{\roman{footnote}.}
+%\renewcommand{\appendixname}{Appendix }
+
+\title{SUSYQM}
+\author{Toshiya Tanaka}
+\date{\today}
+
+\begin{document}
+	\section{Witten model}
+	\begin{defn}[Witten model]
+		Hamiltonianを2成分で
+		\begin{equation}
+			H = \mqty(A^{\dag}A & 0 \\ 0 & AA^{\dag}) = \mqty(H_+ & 0 \\ 0 & H_-)
+		\end{equation}
+		の形で与える量子力学系をWitten modelや$\N = 2$超対称量子力学($\N = 2$ SUSYQM)という．量子力学なので，具体的に$A$は
+		\begin{equation}
+			A \coloneqq \frac{1}{\sqrt{2m}}\qty(-\i\hbar\dv[2]{}{x} - \i W'(x))
+		\end{equation}
+		と書け，$W(x)$はsuperpotential\footnote{$W'(x)$のことをsuperpotentialという流儀もあって，実際Wittenの原論文はそうだが，$W(x)$のほうがふさわしいらしい．}という．
+		また，
+		\begin{align}
+			H_+ &= \frac{-\hbar^2}{2m}\dv[2]{}{x} + \frac{1}{2m}\qty(W'(x))^2 - \frac{\hbar}{2m}W''(x)\\
+			H_- &= \frac{-\hbar^2}{2m}\dv[2]{}{x} + \frac{1}{2m}\qty(W'(x))^2 + \frac{\hbar}{2m}W''(x)
+		\end{align}
+		である．
+		これに伴い，波動関数は二成分考える必要があり，$\Psi(x) = (\psi_+(x), \psi_-(x))^{\top}$と書く．
+	\end{defn}
+
+	Witten modelは定義した$H$に加え，
+	\begin{equation}
+		Q \coloneqq \mqty(0 & A^\dag \\ A & 0), \quad (-1)^{F} = \mqty(1 & 0\\ 0 & -1)
+	\end{equation}
+	を定めると，これらは最小超対称関係を満たす．
+
+	これから定義に従って計算すると，実superchargeは
+	\begin{equation}
+		Q_1 = \mqty(0 & A^\dag \\ A & 0), \quad Q_2 = \mqty(0 & \i A^\dag \\ -\i A & 0),
+	\end{equation}
+	複素superchargeは
+	\begin{align}
+		\Q &= \mqty(0 & 0 \\ \sqrt{2}A) = \sqrt{2}A\sigma_-\\
+		\Q^{\dag} &=\mqty(0 & \sqrt{2}A^{\dag} \\ 0 & 0) = \sqrt{2}A^{\dag}\sigma_+
+	\end{align}
+	となる．$\sigma_{\pm}$は冪零行列なので，複素superchargeの冪零性はここから
+	自然にわかる．
+
+	エネルギーの縮退の構造に関して，今までどおり，$H$と$(-1)^{F}$の同時固有状態を考える．
+	$(-1)^{F} = \sigma_3$の形から，固有状態は$(\psi_+(x), 0)^{\top}$, $(0, \psi_-(x))^{\top}$であり，$H\Psi_E(x) = E\Psi_E(x)$は
+	\begin{align}
+		A^{\dag}A\psi_{E, +}(x) &= E \psi_{E, +}(x)\\
+		AA^{\dag}\psi_{E, -}(x) &= E\psi_{E, -}(x)
+	\end{align}
+	を解けば良いことになる．
+
+	\begin{thm}
+		ここで，$E > 0$の場合
+		\begin{align}
+			A\psi_{E, +}(x) &= \sqrt{E} \psi_{E, -}(x),\label{eq:annihilate}\\
+			A^{\dag}\psi_{E, -}(x) &= \sqrt{E}\psi_{E, +}\label{eq:create}
+		\end{align}
+			の超対称関係がある．
+	\end{thm}
+	今，Eq. \eqref{eq:annihilate}の一つの解$\psi_{E, +}(x)$を取って，$A\psi_{E, +}(x)$を考えると，
+	$AA^{\dag}(A\psi_{E, +})(x)  = EA\psi_{E, +}(x)$よりEq. \eqref{eq:create}の解になる．規格化は$\|A\psi_{E, +}\|^2 = \langle \psi_{E, +}, A^{\dag}A\psi_{E, +}\rangle = E$なので$A\psi_{E, +}(x) = \sqrt{E}\psi_{E, -}(x)$である．もうひとつも同様．\qed
+
+	Witten modelは二成分で考えているが，別個の2つの量子力学系$H_+=A^{\dag}A$, $H_-=AA^{\dag}$を二つ取ってきたと思うと，その間に$A$と$A^{\dag}$を通して
+	対応がついたことになる．$H_+$と$H_-$を超対称パートナーHamiltonianという．
+
+
+	Witten modelのゼロエネルギー状態を調べると，Witten indexに幾何的解釈をつける
+	ことができる．
+	ゼロエネルギー状態は他とは異なり，一階の微分方程式の解になっている．
+	$A\psi_{0, +}(x) = 0 $, $A^{\dag}\psi_{E, -}(x) = 0$だが，微分を明らかに書くと，
+	\begin{align}
+		\frac{-\i\hbar}{\sqrt{2m}}\qty(\dv{}{x}+\frac{1}{\hbar}W'(x))\psi_{0, +}(x) &= 0\\
+		\frac{-\i\hbar}{\sqrt{2m}}\qty(\dv{}{x}-\frac{1}{\hbar}W'(x))\psi_{0, -}(x) &= 0
+	\end{align}
+	なので，簡単に解けて，
+	\begin{align}
+		\psi_{0, +}(x) &= N_{0, +}\e^{-W(x)/\hbar}\\
+		\psi_{0, -}(x) &= N_{0, -}\e^{W(x)/\hbar}
+	\end{align}
+	となる．$N_{0, \pm}$は適当な規格化定数である．
+	ただし，量子力学としては，この解であり規格化可能なものだけが
+	取りうる状態なので規格化可能性を調べる必要がある．
+
+	便宜上，superpotentialが$p$次多項式で$W(x) = a_0 + a_1x + a_2x^2 +\cdots + a_px^{p}$, $a_p\neq 0$で与えられるとする．規格化可能性を考えると，ゼロエネルギー状態はあるとしたらsuperpotentialの最高次が偶数次の場合で，符号が正なら$(-1)^{F}$の固有値が$+1$の方に存在し，負なら$-1$の方に存在することになる．\ref{tab:normalizability}．
+	\begin{table}[htbp]
+		\centering
+		\label{tab:normalizability}
+		\caption{$\checkmark$の入っている場合が規格化可能．}
+		\begin{tabular}{c | cccc}\hline
+			 & $W(\infty)$ & $W(-\infty)$ & $\psi_{0, +}$ & $\psi_{0, -}$\\\hline
+			$a_p > 0$, $p$: even & $\infty$ & $\infty$ & $\checkmark$ & $\times$\\
+			$a_p > 0$, $p$: odd & $\infty$ & $-\infty$ & $\times$ & $\times$\\
+			$a_p < 0$, $p$: even & $-\infty$ & $\infty$ & $\times$ & $\checkmark$\\
+			$a_p < 0$, $p$: odd & $-\infty$ & $-\infty$ & $\times$ & $\times$\\\hline
+		\end{tabular}
+	\end{table}
+
+	Witten indexは
+	\begin{equation}
+		\Delta_{\text{W}} = 
+		\begin{cases}
+			+1,\quad & a_p>0, p:\text{ even}\\
+			-1,\quad & a_p<0, p:\text{ even}\\
+			0, \quad & p:\text{ odd}
+		\end{cases}
+	\end{equation}
+	だが，これはsuperpotentialの$(\text{二回微分が正の極値の数}) - (\text{負の極値の数})$に等しいことが知られている\footnote{Witten1981に書いてあるらしいが，見つけられなかった．}．
+	感覚的には，superpotentialを連続変形しても漸近的振る舞いを変えない限り，この数が変わらないこととしてWitten indexがtopological不変量であることが理解できる．
+
+
+	現象論にもWitten indexは重要で，
+	現状，SUSYは現実世界で観測されていないので，low energyではSUSYは破れていないといけない．
+
+	ground state $\ket{\text{vac}}$として，$\Q\ket{\text{vac}} = \Q^{\dag}\ket{\text{vac}} = 0$のときSUSYは破れていない，そうでないときSUSYは破れているという．
+	エネルギーの言葉ではこれはground energy $E_0 = 0$のときSUSYが破れている，そうでないときSUSYが破れていないことになる．
+
+	Witten indexの言葉では，$\Delta_\text{W}\neq0$なら，かならずゼロエネルギー状態
+	があるので，SUSYは破れていない．
+	SUSYが破れているならば，$\Delta_\text{W} = 0$である．(逆は成り立たない．)
+
+	SUSYが破れている現象論模型を作るためには，$\Delta_{\text{W}} = 0$を満たすように作らなければいけない．
+\end{document}
