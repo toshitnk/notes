@@ -1,0 +1,205 @@
+\documentclass[english, dvipdfmx, a4paper]{jsarticle}
+\usepackage{docmute}
+\usepackage[utf8]{inputenc}
+\usepackage[top=10truemm, bottom=20truemm, left=15truemm, right=15truemm]{geometry} % mergin
+\renewcommand{\headfont}{\bfseries}
+
+% graphics
+\usepackage{graphicx}
+\usepackage{here}
+
+% link
+
+\usepackage{url}
+\usepackage[dvipdfmx, linktocpage]{hyperref} 
+\usepackage{xcolor}
+\usepackage{pxjahyper}
+\hypersetup{
+	colorlinks=true,
+	citecolor=blue,
+	linkcolor=teal,
+	urlcolor=orange,
+}
+
+% math
+
+\usepackage{amsmath, amssymb} 
+\usepackage{physics}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+
+% theoremstyle
+\usepackage{amsthm}
+\newtheoremstyle{break}
+{\topsep}{\topsep}%
+{}{}%
+{\bfseries}{}%
+{\newline}{}%
+\theoremstyle{break}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{eg}[thm]{Example}
+\newtheorem{cl}[thm]{Claim}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{fact}[thm]{Fact}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{prob}{Problem}
+\newtheorem{prop}{Property}
+
+\makeatletter
+\newenvironment{pr}[1][\proofnam]{\par
+\topsep6\p@\@plus6\p@ \trivlist
+\item[\hskip\labelsep{\itshape #1}\@addpunct{\bfseries}]\ignorespaces
+}{%
+\endtrivlist
+}
+\newcommand{\proofnam}{\underline{Derivation.}}
+\makeatother
+% ordinary
+	\newcommand{\R}{\mathbb{R}}
+	\newcommand{\C}{\mathbb{C}}
+	\newcommand{\Z}{\mathbb{Z}}
+	
+	
+	% Physics %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	% Feynman slash
+	\newcommand{\slashed}[1]{#1\!\!\!/}
+	% order
+	
+	%Lie algebra
+	\renewcommand{\O}{\mathcal{O}}
+	\newcommand{\SO}{\mathrm{SO}}
+	\newcommand{\so}{\mathfrak{so}}
+	\newcommand{\SU}{\mathrm{SU}}
+	\newcommand{\su}{\mathfrak{su}}
+	\newcommand{\SP}{\mathrm{SP}}
+	\renewcommand{\sp}{\mathfrak{sp}}
+	\newcommand{\SL}{\mathrm{SL}}
+	\renewcommand{\sl}{\mathfrak{sl}}
+	\newcommand{\GL}{\mathrm{GL}}
+	\newcommand{\gl}{\mathfrak{gl}}
+	\newcommand{\U}{\mathrm{U}}
+	\renewcommand{\u}{\mathfrak{u}}
+\renewcommand{\i}{\mathrm{i}}
+\newcommand{\e}{\mathrm{e}}
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\Q}{\mathcal{Q}}
+\renewcommand{\P}{\mathcal{P}}
+\renewcommand{\S}{\text{S}}
+% number
+
+\renewcommand{\thefootnote}{\roman{footnote}.}
+\renewcommand{\appendixname}{Appendix }
+
+\title{SUSYQM}
+\author{Toshiya Tanaka}
+\date{\today}
+
+\begin{document}
+	可解な量子力学系があったとき，ground stateから$W'(x)$を構成し，超対称パートナーとして可解系を見つけること，さらに一般化して，パラメータ$\mathcal{E}$として$H = A^{\dagger}A + \mathcal{E}$に対する超対称パートナーを見つけ，可解な量子力学系のファミリーを作る方法を見た．
+	
+	前者の構成法に対する具体例を見る．
+	\begin{eg}
+		ポテンシャルを
+		\begin{equation}
+			V_{(1)} (x) = 
+			\begin{cases}
+				-\displaystyle\frac{\pi^2\hbar^2}{2mL^2}, \quad &(0 < x < L)\\
+				\infty, &(x > 0,\ L < x)
+			\end{cases}
+		\end{equation}
+		で与える．
+		Ground stateは$\psi_{0, +} (x) = \sqrt{2/L}\sin(\pi x/L)$であり，第$n$励起状態は$\psi_{n, +}(x) = \sqrt{2/L}\sin((n+1)\pi x/L)$でエネルギーは$E_{n} = n(n+2)\pi^2\hbar^2/(2mL^2)$である．
+
+		今，基底状態を用いて，$W'_{(1)}(x) = -\hbar \psi_0'(x)/\psi_0(x) = -\pi\hbar/L\cot(\pi x/L) $と定めると，ポテンシャルは
+		\begin{align}
+			V_{(1)}(x) &= -\frac{\pi^2\hbar^2}{2mL^2}\\
+			V_{(2)} (x) &= \frac{\pi^2\hbar^2}{2mL^2}\qty(\frac{2}{\sin^2(\pi x/L)} - 1)
+		\end{align}
+		となり，これはWitten modelのところで見たものと同じである．
+
+		これら二つのポテンシャルからなる系のエネルギーは超対称性から同じスペクトラムになり，
+		二つ目の系の固有状態は既知である$\psi_{n, (1)}(x)$を用いて，
+		$\psi_{n, (2)} (x) = A\psi_{n, (1)}(x)$で与えられる．ここで，$A$はintertwinerで
+		\begin{equation}
+			A = \frac{-\i\hbar}{\sqrt{2m}}\qty(\dv{}{x}+\frac{1}{\hbar}W'(x))
+			 = \frac{-\i\hbar}{\sqrt{2m}}\qty(\dv{}{x} - \frac{\pi}{L}\cot\qty(\frac{\pi x}{L}))
+		\end{equation}
+		である．具体的に幾つか計算し，$H_{(2)}$の固有状態になっていて，固有値は$H_{(1)}$に等しいことが確認できる．
+	\end{eg}
+
+	\subsection{形状不変性}
+	SUSYでは，片方の系がexactly solvableであるとき，各エネルギー固有値，固有状態にパートナーを対応付けてexactly solvableにすることが出来た．
+	つまり，この手法は片方の系がexactly solvableでないと使えないが，
+	形状不変性(Shape invariance: SI)と組み合わせることで，zero energy stateさえわかっていれば二つの系がexactly solvableであることが言える．
+
+	\begin{defn}[Shape invariance]
+		系のパラメータ$a$を明示し，超対称パートナーHamiltonian $H_{\pm}(a)$があったとする．これらに形状不変性があるとは
+		\begin{equation}
+			H_{-}(a) = H_+(a_1) + \varepsilon(a_1), \quad a_1 = f(a)
+		\end{equation}
+		なる関係があることをいう．
+
+		言葉でいうと，パラメータを$f$で変換して，定数$\varepsilon(a_1)$の違いでパートナーに一致するときに，形状不変性があるという．
+	\end{defn}
+	\begin{eg}
+		定義域$-\pi/2 < x < \pi/2$でsuperpotentialを$W(x; a) = \hbar a \log(\cos x)$で与える．このとき，ポテンシャルは
+		\begin{equation}
+			V_{\pm} (x; a) = \frac{\hbar^2}{2m} \qty(\frac{a(a\mp1)}{\cos^2x} - a^2)
+		\end{equation}
+		で，これは，$a\mapsto a+1$とすると$V_-(x; a) = V_+(x; a+1) + (a+1)^2-a^2$となる．つまり，$a_1 = a+1$, $\varepsilon(a_1) = a_1^2 - (a_1-1)^2$の形状不変性がある．
+
+		この状況は，up to 定数シフトで$H_-(a)$と$H_+(a+1)$が同じHamiltonianで，エネルギー固有状態は$\psi_{n, +}(x; a) = \psi_{n, +}(x; a+1),\ (n\geq0)$であり，
+		エネルギー固有値は$E_{n+1, -}(a) = E_{n, +}(a+1) + \varepsilon(a+1)$である．
+		$H_+(a+1)$のgroundstate $(n=0)$と$H_-(a)$のgroundstate $(n=1)$が対応するので，labelがずれている．
+
+		これで，$H_{\pm}(a)$の全てのエネルギー固有状態及びエネルギー固有値がわかることになる．
+		まず，形状不変性から$\psi_{1, -}(x; a) = \psi_{0, +}(x; a+1)\propto \cos^{a+1}(x)$となり，SUSYのintertwinerを用いて，$\psi_{1, +}(x; a) = A^{\dagger}(a)\psi_{1, -}(x; a)$となる．更に形状不変性を使うと$\psi_{2, -}(x; a) = \psi_{1, +}(x; a+1) = A^{\dagger}(a+1)\cos^{a+1}(x)$と順次求めることができる．
+
+		energyに関しても，
+		SUSYより$E_{n, +}(a) = E_{n, -}$があるので，
+		$E_{1, -}(a) = E_{0, +}(a+1) + \hbar^2((a+1)^2-a^2)/(2m) = \hbar^2((a+1)^2-a^2)/(2m) = E_{1, +}(a)$で，$E_{2, +}(a) = E_{1, +}(a+1) + \hbar^2((a+1)^2-a^2)/(2m) = \hbar^2((a+2)^2-a^2)/(2m) = E_{2, +}(a)$などと求められる．
+		\qed
+	\end{eg}
+
+	同様の手法で一般論を作れる．
+	\begin{thm}
+		$H_+(a)$のエネルギー固有値とエネルギー固有状態は$\psi_{0, +}(x; a)$から次のようにして作れる．
+
+		\begin{align}
+			\psi_{n, +}(x; a) &= \prod_{k=1}^n\frac{1}{\sqrt{E_k(a_{n-k})}}A^{\dagger}(a)A^{\dagger}(a_1)\cdots A^{\dagger}(a_{n-1})\psi_{0, +}(x; a)\\
+			E_n(a) &= \sum_{k=1}^{n}\varepsilon(a_k)
+		\end{align}
+		ここで，$a_n\coloneqq f(a_{n-1},\ a_0\coloneqq a)$で$n\geq 0$である．
+	\end{thm}
+
+	\begin{eg}[調和振動子]
+		\begin{equation}
+			H_{\pm} (\omega) =- \frac{\hbar^2}{2m} \dv[2]{}{x} + \frac{1}{2}m\omega^2x^2\mp\frac{\hbar\omega}{2}
+		\end{equation}
+		で，ゼロエネルギー解は$\psi_{0, +}(x; \omega) = (m\omega/\pi \hbar)^{1/4}\e^{-m\omega x^2/(2\hbar)}$である．形状不変性は$H_-(\omega) = H_+(\omega) + \hbar\omega$で，$\varepsilon(\omega) = \hbar\omega$である．
+
+		これより，エネルギー固有値は$E_n(\omega) = \sum_{k=1}^{n}\varepsilon(\omega) = n\hbar\omega$で，固有状態はHermite多項式
+		\begin{equation}
+			H_n(q) = (-1)^n\e^{q^2/2}\qty(\dv{}{q} - q)^n\e^{-q^2/2}
+		\end{equation}
+		を使って，
+		\begin{align}
+			\psi_{n, +}(x; \omega) &= \prod_{k=1}^{n}\frac{1}{\sqrt{E_k}}(A^{\dagger})^n\psi_{0, +}(x; \omega)\\
+								   &= \frac{1}{\sqrt{(\hbar\omega)^n}}\qty(\frac{-\i\hbar}{\sqrt{2m}}\qty(\dv{}{x} - \frac{m\omega}{\hbar}x))^n\qty(\frac{m\omega}{\pi\hbar})^{1/4}\e^{-m\omega x^2/2\hbar}\\
+								   &= \frac{\i^n}{2^n\sqrt{n!}}\qty(\frac{m\omega}{\pi\hbar})^{1/4}\e^{-m\omega x^2/2\hbar}H_n\qty(\sqrt{\frac{m\omega}{\hbar}}x)
+		\end{align}
+		となる．
+		\qed
+	\end{eg}
+	\begin{eg}
+		superpotentialを$W(x; a, b) = -\hbar \log(\cos^ax + \sin^bx)$で与える．ポテンシャルは
+		\begin{equation}
+			V_{\pm}(x; a, b) = \frac{\hbar^2}{2m}\qty(\frac{a(a\mp1)}{\cos^2x} + \frac{b(b\mp1)}{\sin^2x} - (a+b)^2)
+		\end{equation}
+		であり，形状不変性は$a_1=a+1$, $b_1 = b+1$で$\varepsilon(a_1, b_1) = 2\hbar^2(a_1+b_1-1)/m$となる．
+		\qed
+	\end{eg}
+	超対称性と形状不変性を用いた可解な量子力学系については，\href{https://arxiv.org/abs/hep-th/9405029}{arXiv:hep-th/9405029}が有名である．
+\end{document}

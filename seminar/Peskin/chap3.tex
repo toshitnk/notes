@@ -55,7 +55,7 @@
 
 		BCH formulaの親戚$\e^{A}B\e^{-A} = B + [A, B] + [A, [A, B]]/2!  + \cdots$を使うと示すことができる．
 		$[S^{\rho\sigma}, \gamma^{\mu}] = -(J^{\rho\sigma})\indices{^\mu_\nu}\gamma^{\mu}$, 
-		$[\omega_{\rho\sigma}S^{\rho\sigma},[\omega_{\tau\upsilon}S^{\tau\upsilon}, \gamma^{\mu}]] \allowbreak = (-1)^2\omega_{\rho\sigma}\omega_{\tau\upsilon}(J^{\tau\upsilon})\indices{^\mu_\nu}(J^{\rho\sigma})\indices{^\nu_\delta}\gamma^{\delta} = ((-\omega_{\rho\sigma}J^{\rho\sigma})^2)\indices{^\mu_\nu}\gamma{\nu}$
+		$[\omega_{\rho\sigma}S^{\rho\sigma},[\omega_{\tau\upsilon}S^{\tau\upsilon}, \gamma^{\mu}]] \allowbreak = (-1)^2\omega_{\rho\sigma}\omega_{\tau\upsilon}(J^{\tau\upsilon})\indices{^\mu_\nu}(J^{\rho\sigma})\indices{^\nu_\delta}\gamma^{\delta} = ((-\omega_{\rho\sigma}J^{\rho\sigma})^2)\indices{^\mu_\nu}\gamma^{\nu}$
 		となることから，
 		\begin{equation}
 			\e^{\i\omega_{\rho\sigma}S^{\rho\sigma}/2}\gamma^{\mu}\e^{-\i\omega_{\tau\sigma}S^{\tau\sigma}/2} = \qty(\sum_{n=0}^{\infty}\frac{(-\i\omega_{\rho\sigma }J^{\rho\sigma})^n}{n!})\indices{^\mu_\nu}\gamma^{\nu}
@@ -99,4 +99,29 @@
 			\item $u$と$v$も直交していることを確かめる．
 		\end{enumerate}
 	\item masslessな場合の$u$と$v$の直交で$\vec{p}$の符号を入れ替えることは，$p^{\mu}\sigma_{\mu}$を$p^{\mu}\bar{\sigma}_{\mu}$に変えることと同じである．
+	\item $\gamma^5$の定義\textref{3.68}について，$\epsilon^{\mu\nu\rho\sigma}$の添字の上下を考慮する必要がある．
+		\begin{itemize}
+			\item $\epsilon^{0123} = 1$で$\epsilon_{0123} = -1$であるので，$0$, $1$, $2$, $3$を$\mu$, $\nu$, $\rho$, $\sigma$に反対称で入れ替えるためには
+			$\epsilon^{\mu\nu\rho\sigma} = -\epsilon_{\mu\nu\rho\sigma}$をかける		
+		\item $4$つの添字を全て下ろす際は，$3$つ空間成分があるので$-$が出る		\item $\epsilon^{\mu\nu\rho\sigma}\epsilon_{\mu\nu\rho\sigma} = -4!$
+
+		\end{itemize}
+		以上に注意して，\textref{3.68}の最右辺が定義に等しいことは
+		$-\i\epsilon^{\mu\nu\rho\sigma}\gamma^{\mu}\gamma^{\nu}\gamma^{\rho}\gamma^{\sigma}/4! = -\i\epsilon^{\mu\nu\rho\sigma}(-\epsilon_{\mu\nu\rho\sigma})\gamma^{0}\gamma^{1}\gamma^{2}\gamma^{3}/4! = \i\gamma^{0}\gamma^{1}\gamma^{2}\gamma^{3}$により示せる．
+	\item $\gamma^{\mu\nu\rho\sigma}$は独立成分が$\gamma^{0}\gamma^{1}\gamma^{2}\gamma^{3}$だけなので，これにより$\epsilon^{\mu\nu\rho\sigma}\gamma^{0}\gamma^{1}\gamma^{2}\gamma^{3}$と書くとわかりやすい\footnote{わかりにくいと言われたけど．}．
+
+		同様に，$\gamma^{\mu\nu\rho}$は独立成分が$\gamma^{0}\gamma^{1}\gamma^{2}$, $\gamma^{0}\gamma^{1}\gamma^{3}$, $\gamma^{0}\gamma^{2}\gamma^{3}$, $\gamma^{1}\gamma^{2}\gamma^{3}$
+		なので，
+		$\epsilon$の添字の$0$, $1$, $2$, $3$を標準の位置に戻して$\epsilon^{0\mu\nu\rho}\gamma^{1}\gamma^{2}\gamma^{3} + \epsilon^{\mu1\rho\sigma}\gamma^{0}\gamma^{2}\gamma^{3} + \epsilon^{\mu\nu2\sigma}\gamma^{0}\gamma^{1}\gamma^{3} + \epsilon^{\mu\nu\rho3}\gamma^{0}\gamma^{1}\gamma^{2}$と書くとよくわかる．
+
+
+
+	\item p.61 の角運動量が真空にかかると$0$であることの理由として，
+		一つは，真空の回転等に対する不変であることから，微小変換である角運動量でゼロになる(\cite[p.323]{Sakamoto2014})．
+
+		もう一つは，具体的な角運動量の表式から出すには，正規順序(normal ordering)というものが必要\href{https://physics.stackexchange.com/a/715148}{SE.715072}．
+		大体，$aa^{\dag}$を$a^{\dag}a$に直すときに，$\delta(0)$が出るが，これを無視しましょうということ\footnote{ゼミで質問すると，軌道角運動量については
+		運動量と同様に奇関数性からゼロになる．問題はspinだが，こちらはエネルギーと同様に，spinの基準が$\delta(0)$に解釈するという．}．
+	\item \textref{3.120}の中辺はすこし気持ち悪く思う．行列で割っているので．
+		ちゃんとやるなら，$\i (\slashed{p} + m) = (p^2 - m^2) \tilde{S}_{\text{R}}(p)$として，$\tilde{S}_{\text{R}}(p) = \i(\slashed{p} + m)/(p^2-m^2) $とするほうがよいか．
 \end{itemize}

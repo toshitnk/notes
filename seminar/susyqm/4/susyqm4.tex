@@ -101,7 +101,7 @@
 \date{\today}
 
 \begin{document}
-	\begin{eg}{調和振動子}
+	\begin{eg}[調和振動子]
 		$W(x)\coloneqq m\omega x^2/2$とすると
 		\begin{equation}
 			H_{\pm} = -\frac{\hbar^2}{2m}\dv[2]{}{x} + \frac{m\omega^2}{2}x^2 \mp \frac{\hbar\omega}{2}
@@ -110,7 +110,7 @@
 
 		定義どおり，計算すると，
 		\begin{equation}
-			A = \frac{-\i m\omega}{\sqrt{2m}}\qty(x - \frac{\hbar}{m\omega}\dv{}{}) = -\i \sqrt{\hbar\omega}\ a
+			A = \frac{-\i m\omega}{\sqrt{2m}}\qty(x - \frac{\hbar}{m\omega}\dv{}{x}) = -\i \sqrt{\hbar\omega}\ a
 		\end{equation}
 		になっている．ここで$a$は通常の消滅演算子になっていて，$a = \sqrt{m\omega/(2\hbar)}(x + \hbar/(m\omega)\dv*{}{x})$である．
 
@@ -127,7 +127,7 @@
 		$H_{-}a\psi_{n, +}(x) = \hbar\omega(aa^{dag}a)\psi_{n, +}(x) = aH_+\psi_{n, +}(x) = n\hbar\omega a\psi_{n, +}(x)$であることから，$a$は$H_+$の固有状態を$H_-$の固有状態に移すことがわかる．$a^{\dag}$についても同様．
 	\end{eg}
 	
-	\begin{eg}{自由粒子とRosen--Morseポテンシャル}
+	\begin{eg}[自由粒子とRosen--Morseポテンシャル]
 		$W'(x) = \hbar\tanh(x)$と選ぶと
 		\begin{align}
 			V_+(x) &= \frac{\hbar^2}{2m}\qty(1-\frac{2}{\cosh^2(x)})\\
@@ -136,12 +136,12 @@
 		となる．$V_+$の方をRosen--Morseポテンシャルといい，$V_-$は定数ずれた自由粒子である．
 	\end{eg}
 
-	\begin{eg}{$\delta$関数ポテンシャル}
+	\begin{eg}[$\delta$関数ポテンシャル]
 		$W'(x) = \alpha\hbar(\Theta(x) - \Theta(-x))$で与えると，
 		$V_{\pm}(x) = \hbar^2/(2m)(\alpha^2 \mp 2\alpha\delta(x))$となる．
 	\end{eg}
 
-	\begin{eg}{Coulombもどき}
+	\begin{eg}[Coulombもどき]
 		$W'(x) = me^2/(\hbar l) - \hbar l/x$, $(x>0)$で与えると，
 		\begin{equation}
 			V_{\pm}(x) = -\frac{e^2}{x} + \frac{\hbar^2l(l\mp1)}{x^2} + \frac{me^2}{2\hbar^2l^2}
@@ -149,14 +149,14 @@
 		となる\footnote{若干違うが，水素の動径方向に似ている．}．軌道角運動量が$l$のものと$l-1$のものがパートナーになっていると思える．
 	\end{eg}
 
-	\begin{eg}{Dirichlet and Neumann boundary condition}
+	\begin{eg}[Dirichlet and Neumann boundary condition]
 		$-1 \leq x \leq 1$に制限した有限系を考える．$V_{\pm}(x) = 0$として，境界条件を$\psi'_{E, +}(-1) = \psi'_{E, +}(1) = 0$と$\psi_{E, -}(-1) = \psi_{E, -}(1) = 0$と入れた二つの系を考える．前者をNeunamm, 後者をDirichlet境界条件という．
 		$A = -\i\hbar/\sqrt{2m}\dv*{}{x}$なので，これらは両者を移し合う．
 
 		このように，境界条件を変えた系を移し合うケースもある\footnote{境界条件のSUSYによる対応は\href{https://arxiv.org/abs/0812.4659}{arXiv:0812.4659}に詳しい．}．
 	\end{eg}
 
-	\begin{eg}{無限に深い井戸型ポテンシャル}
+	\begin{eg}[無限に深い井戸型ポテンシャル]
 		$W'(x) = \hbar\tan(x), \ (-\pi/2\leq x\leq \pi/2)$とすると，$V_+(x) = -\hbar^{2}/(2m)$, $V_-(x) = \hbar^2/(2m)(2/\cos^2(x) - 1)$となる．後者をP\"{o}schl--Tellerポテンシャルという．
 	\end{eg}
 	
@@ -181,6 +181,7 @@
 		\end{figure}
 
 	\section{Exactly solvable model}
+	\subsection{超対称関係からの視点}
 	\begin{defn}[Exactly solvable]
 		Exactly solvableとは，量子力学系のエネルギー固有値と固有関数がすべてわかることを指す．
 	\end{defn}
@@ -224,7 +225,7 @@
 	\begin{equation}
 		-\frac{\hbar^2}{2m}\dv[2]{\phi(x)}{x} + V_{(1)}(x)\phi(x) = \mathcal{E}_{(1)}\phi(x)\label{eq:Riccati_Schroedinger}
 	\end{equation}
-	に線形化できる．ここで，$\mathcal{E}_{(1)}$は$\mathcal{E}_{(1)} < E_0$を満たす\footnote{$A^{\dag}A$の形にする以上，固有値は必ず非負になる．最低エネルギーが$E_0$にシフトしたので，この場合に非負という条件はこのようになる．}ように取れるパラメータである\footnote{パラメータはこの条件を満たしても，super@otentialの素性が悪くなる(発散したりする)こともあるようである．そうならない範囲でパラメータは自由に取れる．}．
+	に線形化できる．ここで，$\mathcal{E}_{(1)}$は$\mathcal{E}_{(1)} < E_0$を満たす\footnote{$A^{\dag}A$の形にする以上，固有値は必ず非負になる．最低エネルギーが$E_0$にシフトしたので，この場合に非負という条件はこのようになる．}ように取れるパラメータである\footnote{パラメータはこの条件を満たしても，superpotentialの素性が悪くなる(発散したりする)こともあるようである．そうならない範囲でパラメータは自由に取れる．}．
 	\begin{thm}
 		今，Eq. \eqref{eq:Riccati_Schroedinger}の特解を$\phi_{\S}(x)$を用いて，一般解は
 		\begin{equation}
