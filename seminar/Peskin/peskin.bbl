@@ -7,11 +7,15 @@
 \providecommand{\href}[2]{#2}
 \providecommand{\doihref}[2]{\href{#1}{#2}}
 \providecommand{\arxivfont}{\tt}
-\begin{thebibliography}{Sak14}
+\begin{thebibliography}{Kug89}
 
 \bibitem[GR80]{GRA80}
 I.~S. Gradshteyn and I.~M. Ryzhik, \emph{Table of integrals, series, and
   products}, Academic Press, New York, 1980.
+
+\bibitem[Kug89]{Kugo1989}
+T.~Kugo, \emph{ゲージ場の量子論}, 新物理学シリーズ /山内恭彦監修, no. 23-24,
+  培風館, 1989.
 
 \bibitem[PS95]{Peskin1995}
 M.~E. Peskin and D.~V. Schroeder, \emph{{An Introduction to quantum field

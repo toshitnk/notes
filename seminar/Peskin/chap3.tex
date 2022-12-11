@@ -124,4 +124,45 @@
 		運動量と同様に奇関数性からゼロになる．問題はspinだが，こちらはエネルギーと同様に，spinの基準が$\delta(0)$に解釈するという．}．
 	\item \textref{3.120}の中辺はすこし気持ち悪く思う．行列で割っているので．
 		ちゃんとやるなら，$\i (\slashed{p} + m) = (p^2 - m^2) \tilde{S}_{\text{R}}(p)$として，$\tilde{S}_{\text{R}}(p) = \i(\slashed{p} + m)/(p^2-m^2) $とするほうがよいか．
+
+	\item Lorentz群の4つの連結成分は，$\R^{1, 3}$でのparity $P = \mathrm{diag}(1, -1, -1, -1)$とtime reversal $T = \mathrm{diag}(-1, 1, 1,1)$を考えると，$\det$と$\Lambda\indices{_0^0}$の符号がそれぞれ違う．回転とboostからなるLorentz変換はこれらを保つので，これらにより区別できる．
+
+	\item p.65のparityのphaseの説明で物理量が二度やると元に戻る性質から$\eta_a^2 = \eta_b^2 = \pm1$とあるが，物理量は$\psi^{\dagger}\psi$などの積分でなると思うと，phaseは$\eta^{*}\eta = \abs{\eta}^2$の形で出てくると思うし，phaseなので絶対値$1$なので$1$しかありえないということになる\footnote{\href{https://twitter.com/san_wkwk/status/1596176870751752192?s=20&t=r0nJYSPKDf_OSyPgOmz2oA}{このTweet}で教えてもらった．}．
+		この部分はとくに以後の議論にかかわらないし，重要なのは正粒子と反粒子でparityが違うという議論なので，それは後でするから問題がない．
+	\item p.68のTime reversalの議論は今までz方向のspinの固有状態で議論していたのを，
+		一般の方向のspinの固有状態で議論する．
+		極座標で方向ベクトル$\vec{n} = (\cos\theta\sin\phi, \sin\theta\sin\phi, \cos\theta)^{\top}$を取って，一般方向のspinは
+		\begin{equation}
+			\vec{n}\cdot\vec{\sigma} = \mqty(\cos\theta & \e^{-\i\phi}\\
+			\e^{\i\phi}\sin\theta & -\cos\theta)
+		\end{equation}
+		となるので，書いてある$\xi(\uparrow) = (\cos(\theta/2), \e^{\i\phi}\sin(\theta/2))^{\top},\ \xi(\downarrow) = (-\e^{-\i\phi}\sin(\theta/2), \cos(\theta/2))^{\top}$が$\vec{n}\cdot\vec{\sigma}$の固有ベクトルであることを
+		実際に確かめればよいのだが，次のように構成できる．
+		
+		一つの方法は，$\vec{n}\cdot \vec{\sigma} \vec{x}=\lambda\vec{x} $の固有値問題を直接解く．
+		もう一つは，z方向の固有ベクトル$\xi^1=(1, 0)^{\top}$, $\xi^2 = (0, 1)^{\top}$を回転させて$\vec{n}$の方向に合わせる．
+		例えば，$\xi^1$に関してはまずy軸周りに$\theta$回転させて，z方向に$\phi$回転させると良い．$\xi$はspinorなので，
+		\begin{align}
+			\xi(\uparrow) &= \e^{-\i\phi\sigma^3/2}\e^{-\i\theta\sigma^2/2}\mqty(1\\0) \\
+						  &= \mqty(\e^{-\i\phi/2} & 0\\ 0 \e^{\i\phi/2})\mqty(\cos(\theta/2) & -\sin(\theta/2) \\ \sin(\theta/2) & \cos(\theta/2))\mqty(1 \\0) \\
+						  & = \e^{-\i\phi/2}\mqty(\cos(\theta/2) \\ \e^{\i\phi/2}\sin(\theta/2))
+		\end{align}
+		とできる．
+	\item pp.70,71でcharge conjugationで転置を取って場の順番を変えるとき，量子論なので$\{\psi_a(x), \bar{\psi}_b(x)\} = \delta^{(3)}(x)\delta_{ac}\gamma^0_{cb}$の無限大の項が出るはずである．これはスカラーの場合はそこそこちゃんと言える\cite[p53]{Kugo1989}．
+		スカラーの変換は
+		\begin{align}
+			C\bar{\psi}\psi C&= (-\i\gamma^0\gamma^2\psi)^{\top}(-\i\bar{\psi}\gamma^0\gamma^2)^{\top}\\
+							 &= -\gamma_{ab}^{0}\gamma_{bc}^2\psi_c\bar{\psi}_d\gamma_{de}^0\gamma_{ea}^2\\
+							 &= \bar{\psi}_d\gamma_{de}^2\gamma_{ea}^2\gamma_{ab}^0\gamma_{bc}^2\psi_c - \delta^{(3)}(0)\delta_{cf}\gamma_{fd}^0\gamma_{de}^0\gamma_{ea}^2\gamma_{ab}^0\gamma_{bc}^2\\
+							 &= \bar{\psi}\psi - \delta^{(3)}(0)\Tr(\gamma^0\gamma^0\gamma^2\gamma^0\gamma^2)
+		\end{align}
+		となる．ここで，最後のトレースはゼロだから，ゼロになると思う．擬スカラーも同様にできるが，ベクトルのときは少しテクニカルに，もともと場を反対称化しておくなどの処方があるらしい．
+	\item p.71の最後にfree Dirac LagrangianがC, P, Tそれぞれに関して不変であると書いてあるが，kinetic termが表を見ただけではすぐにはわからない．
+		Tに関しては，反線形であることを使えば，$\i$が入っているので複素共役で余分なマイナスがでるので合う．
+
+		Cに関してそのままやろうとすると，部分積分して全微分項を落とせばマイナスが出て合うように思うが，ちゃんとやると転置で順序を入れ替えるときに，場と場の微分の入れ替えが発生するが，これが反交換するかがわからない
+		\footnote{いろいろ聞いたが，結局解決していない．
+		現時点で納得している説明としては，Lagrangianなので場はそもそも古典変数であり，今まで議論していたのは量子場であった．
+	Dirac場の古典論は場をGrassmann数として扱い，Grassmann数のGrassmann偶の空間座標による微分はGrassmann奇なので，場と場の微分は反交換する．
+古典場に関してのC変換を調べる必要はあるが，量子場と同様に$\i\gamma^0\gamma^2$をかけることでC変換を実現するので，上の議論が成り立つ．Dirac場の古典論は\cite[Chap.1]{Kugo1989}に詳しい．}．
 \end{itemize}
