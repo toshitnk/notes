@@ -7,4 +7,54 @@
 		Lagrangianを書き下すルールの一つにくりこみ可能性があり，次元解析だけで，ある程度形が限定される．また，理論の対称性などを考慮するとさらに限定できる．
 		そうしてLagrangianが書かれたとして，どのように物理量を計算するのか．
 		厳密に解ける模型はほぼないので，自由場からの摂動で解く．その方法を見つけるのが，以後の話である．
+	\item pp.94, 95の最後で$p^0\propto(1+\i\varepsilon)$にとるのは，Feynman propagatorのpoleの避け方を思うと，多少納得できる．
+		もとの$T\colon-\infty(1-\i\varepsilon) \to \infty(1-\i\varepsilon)$で積分を行うことを考えると，振動項を無視して，
+		\begin{equation}
+			\int_{-\infty(1-\i\varepsilon)}^{\infty(1-\i\varepsilon)}\dd{t}\e^{-\i p^0 t} \sim -\e^{p^0\varepsilon\infty} \to -\infty
+		\end{equation}
+		が発散する．ここで，$p^0\propto(1 + \i\varepsilon)$とすると，$(1-\i\varepsilon)(1+\i\varepsilon) = 1 + \varepsilon^2\in\R$になり，発散しなくなると思う．
+	\item p.96の$(2\pi)^4\delta^{(4)}(0) = 2TV$は
+		\begin{equation}
+			\delta^{(4)}(p) = \intp[4]{x}\e^{-\i px}
+		\end{equation}
+		のFourier変換を使うと，\textref{4.49}の形になり，$t$積分の$2T$と$x$積分の$V$で無限大の$\delta^{(4)}(0)$を有限の$2TV$の$T, V\to \infty$極限と解釈する．
+	\item Feynman ruleでSymmetry factorで割るのは，同じものは一度だけ数えるためである．
+		この思想は統計力学の等重率の原理に似ていて，全ての状態(diagram)を同じ重みで数えるためである．
+		積分する4つの$\phi(z)$の入れ替えによる$4!$や摂動の$n$次の項で内点を入れ替える$n!$を考慮したとして，diagramの対称性に関してダブリがでる場合がある．
+		例えば，次の場合\footnote{tikz-feynhandの練習も兼ねて書いてみた．}，$z$同士で縮約をとる次の項はダブル上のルールだけだとダブルカウントしてしまう．
+		\begin{equation}
+			\begin{tikzpicture}
+				\begin{feynhand}
+					\vertex  (a) at(-1, 0) {$x$};
+					\vertex  (b) at (1, 0) {$y$};
+					\vertex (c) at (0, 0);
+					\vertex (d) at (0, 1);
+					\propag [plain] (a) to (b);
+					\propag [plain] (c) to [out=45, in=0] (d) to [out=180, in=135] (c);
+				\end{feynhand}
+			\end{tikzpicture}
+			=
+			-\i\lambda\int \dd[4]{z} D(x-z)D(z-y)D(z_1-z_2) -\i\lambda\int \dd[4]{z} D(x-z)D(z-y)D(z_2-z_1)
+		\end{equation}
+		わかりやすさのために，まず区別して$z_1$と$z_2$としたが，これらは同じもので，重み$1$で足さなければいけないので，Symmetry factor $2$で割る必要がある．
+	\item 他にも，統計力学っぽいところがあって，例えば，\textref{4.52}の和と積を入れ替える一連の計算は分配関数を計算するときによく使うテクニックである．
+	\item \textref{4.55}の一つ前の式の右辺
+		\begin{equation}
+			\mel{\Omega}{\T(\phi(x)\phi(y))}{\Omega}\lim_{T\to\infty(1-\i\varepsilon)}(\abs{\braket{0}{\Omega}}^2e^{-\i E_0 2T})
+		\end{equation}
+		について，$\mel{\Omega}{\T(\phi(x)\phi(y))}{\Omega} $は外点につながっているdiagramの和で，$\e^{-\i E_0 2T}$は真空泡と議論があるが，忘れ去られている
+		$\abs{\braket{0}{\Omega}}^2$は\textref{4.55}の比例に吸収させると思う．
+	\item \textref{4.58}は今まで浸かっていた``disconnected''というワードは外点にdisconnectedの意味で使われていたが，
+		このように二つに別れてしまうdiagramのこともdisconnectedというので，注意が必要であることをいう．
+		前者は以前の議論で，分母分子でキャンセルするのでcorrelation functionに寄与しないのに対し，後者は
+		correlation functionに寄与するという違いがある．
+	\item \textref{4.64}は，不安定状態を考えているので，$p^0\neq E_{\vec{p}}=\sqrt{\vec{p}^2 + m^2}$であることに注意して，
+		\begin{align}
+			\frac{1}{p^2-m^2 + \i m\Gamma}
+			& = \frac{1}{(p^0)^2 - E_{\vec{p}}^2  +\i m\Gamma}\\
+			& \sim \frac{1}{2E_{\vec{p}}(p^0-E_{\vec{p}}) + \i m\Gamma}\label{eq:on-shell_approx}\\
+			& = \frac{1}{2E_{\vec{p}}(p^0-E_{\vec{p}}+\i m\Gamma/(E_{2\vec{p}}))}
+		\end{align}
+		となる．Eq. \eqref{eq:on-shell_approx}では
+		$p^0$が$E_{\vec{p}}$に近いとしている．
 \end{itemize}
