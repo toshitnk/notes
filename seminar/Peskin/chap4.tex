@@ -53,8 +53,71 @@
 			\frac{1}{p^2-m^2 + \i m\Gamma}
 			& = \frac{1}{(p^0)^2 - E_{\vec{p}}^2  +\i m\Gamma}\\
 			& \sim \frac{1}{2E_{\vec{p}}(p^0-E_{\vec{p}}) + \i m\Gamma}\label{eq:on-shell_approx}\\
-			& = \frac{1}{2E_{\vec{p}}(p^0-E_{\vec{p}}+\i m\Gamma/(E_{2\vec{p}}))}
+			& = \frac{1}{2E_{\vec{p}}(p^0-E_{\vec{p}}+\i m\Gamma/(2E_{\vec{p}}))}
 		\end{align}
 		となる．Eq. \eqref{eq:on-shell_approx}では
 		$p^0$が$E_{\vec{p}}$に近いとしている．
+	\item Peskinのin, out stateは相互作用場で$T\to \pm\infty$にしたと定義されているが，
+		他の本\cite{Kugo1989}, \cite{Sakamoto2020}では$T\to\pm \infty$で自由場と一致しているとして，定めているので，in, out場の定義が違うので，注意が必要である．あとで，相互作用場での$\ket{\vec{p}}$を自由場での$\ket{\vec{p}}_0$で表す操作をするが，そちらが通常のin, out場の定義である．
+	\item \textref{4.68}のimpact parameterによるphaseのずれだが，通常の平行移動とおもうと，指数の方はプラスで出るように思う．
+		しかし，$k_{\mathcal{B}}$の全空間で積分しているし，これは先の計算でデルタ関数として現れるだけなので，
+		あまり議論に影響はしない．
+
+	\item \textref{4.70}のS-matrixの定義は，二行目から見るのがわかりやすくて，同じ時間$t=0$で$\ket*{\vec{k}_{\mathcal{A}}\vec{k}_{\mathcal{B}}}$と$\bra{\vec{p}_1\vec{p}_2\cdots}$があって，
+		$\ket*{\vec{k}_{\mathcal{A}}\vec{k}_{\mathcal{B}}}$を$H$で$-T$時間発展させたのがin stateで
+		$\bra{\vec{p}_1\vec{p}_2\cdots}$を$T$時間発展させたのがout stateである．
+	\item S-matrixを考えれば良いのだが，常に存在する自明な項があるので，この本ではそれを除いて考える．
+		常に出てくる項とは
+		\begin{enumerate}
+			\item $\mathsf{S} = 1 + \i \mathsf{T}$
+				\footnote{$\mathsf{S}$をscattering matrix, $\mathsf{T}$をtransfer matrixと言う．日本語ではそれぞれ散乱行列と転送行列であり，その$\mathsf{S}$と$\mathsf{T}$であるとゼミでボケようと思ったが，それまでに炎上したので自粛した．余裕のある人はこのネタを供養してください．}
+				と分けたときの，$1$
+			\item 運動量保存の$(2\pi)^4\delta^{(4)}(p_{\mathcal{A}}+p_{\mathcal{B}} - \sum_fp_f)$\footnote{out stateの添字に$f$を使っているのは，final stateのfだと思う．}
+		\end{enumerate}
+		である．これらを除いたものがinvariant matrix element $\M$である．
+	\item \textref{4.74}は運動量状態$\prod_f 1/\sqrt{2E_f}\ket{\vec{p}_1\cdots}$へのamplitudeを求めている．
+		なぜ，\textref{4.68}の$\phi_f(\vec{p}_f)$などがないのかと悩んだが，これは波束をFourier変換したときの
+		展開係数なので単なる一つのモードを考えている今は当然必要ない．
+		また，$1/\sqrt{2E_f}$はLorentz不変なnormalizationのためのfactorで，求めたいのは確率なので，二乗すると，必要な式を得る．
+	\item \textref{4.76}の$\dd{\sigma}$を求める計算は，まず$\bar{k}_i$の6つの積分をまず計算することで，barのついている変数がデルタ関数で潰れることを確認する．
+		
+		まず，ここではimplicitにビーム方向に$z$軸をとって，impact parameter方向の二次元を$\perp$と取っている．ここで，$\bar{k}_{\mathcal{B}}^{\perp}$積分で$\bar{k}_{\mathcal{B}}^{\perp} = k_{\mathcal{B}}^{\perp}$を得て，
+		これと，前のデルタ関数の結果を先取りすることで，$\bar{k}_{\mathcal{A}}^{\perp} = \sum_fp_f^{\perp} - k_{\mathcal{B}}^{\perp} = k_{\mathcal{A}}$となる．
+
+		z成分は\textref{4.77}の計算が必要だが，ここで使っているデルタ関数の公式は
+		\begin{equation}
+			\delta(f(x)) = \sum_{\text{zeros}}\frac{1}{\abs{f'(x)}}\delta(x-x_0)
+		\end{equation}
+		と全ての零点を拾わなければならないが，ここでは和がない．
+		デルタ関数のなかにある$\bar{k}_{\mathcal{A}}^z$についての関数の零点は，一般に2つあることが予期されるので正確にはこれではいけないはずである．
+
+		これは次のように解釈できる．今の状況は運動量が狭い範囲にある波束を考えているので，
+		その範囲は零点を一つしか拾わないように設定されていると思う．
+		実際，次の計算でそのような近似を使うので，そこまでは和の状況で残しておき，そこでひとつだけ零点を拾うという議論のほうが筋は良い気がする．
+
+		今の積分は$\delta(\bar{E}_{\mathcal{A}} + \bar{E}_{\mathcal{B}}-\sum_fE_f)$で$\bar{k}_{\mathcal{A}}^z = \sum_fp_f^z - \bar{k}_{\mathcal{B}}^z$となっているものを計算していて，
+		\begin{align}
+			&\sqrt{(k_{\mathcal{A}}^{\perp})^2+(\textcolor{red}{\bar{k}_{\mathcal{A}}^z})^2+m_{\mathcal{A}}^2} + \sqrt{(k_{\mathcal{B}}^{\perp})^2 + (\sum_fp_f^z-\textcolor{red}{\bar{k}_{\mathcal{A}}^z})^2+m_{\mathcal{B}}^2}\\
+			& = \sum_fE_f = E_{\mathcal{A}} + E_{\mathcal{B}}\\
+			& = \sqrt{(k_{\mathcal{A}}^{\perp})^2+(\textcolor{red}{k_{\mathcal{A}}^z})^2+m_{\mathcal{A}}^2} + \sqrt{(k_{\mathcal{B}}^{\perp})^2 + (\sum_fp_f^z-\textcolor{red}{k_{\mathcal{A}}^z})^2+m_{\mathcal{B}}^2}
+		\end{align}
+		であるので，$\bar{k}_{\mathcal{A}}^z = k_{\mathcal{A}^z}$となり，
+		$\bar{k}_{\mathcal{B}}^z = \sum_fp_f^z-k_{\mathcal{A}}^z = k_{\mathcal{B}}^z$となる．
+		これで，$\vec{\bar{k}}_{i}^z = \vec{k}_i^z$が言えるので，エネルギーについても$\bar{E}_i=E_i$となり，
+		\textref{4.78}のように二乗でまとめることができる．
+	\item $k/E = v$の書き換えは，静止系からLorentz変換したことを考えると
+		\begin{equation}
+			\mqty(\gamma & \gamma\beta\\ \gamma\beta & \gamma)\mqty(m\\0) = \mqty(E\\k)
+		\end{equation}
+		なので，$k/E = \beta = v$となる．
+
+	\item \textref{4.82}でもデルタ関数の公式を使って，$\delta(E_{\text{CM}}-E_1-E_2)=(p_1/E_1 + p_1/E_2)^{-1}\delta(p-p_0)$としているが，これも真面目に考えるとおかしくて，$p_1$積分は$0\to \infty$で零点を計算をするとプラスマイナスの組ででてくるので複数拾うことはないにしろ，$E_{\text{CM}} < m_1+m_2$だと解を持たないのでゼロになる．
+		零点をしらべるより，デルタ関数を変数変換して調べたほうがわかりやすくて\cite{Schwartz:2014sze}，$x\coloneqq \sqrt{p_1^2+m_1^2} + \sqrt{p_1^2 + m_2^2} - E_{\text{CM}}$すると，
+		\begin{equation}
+		\int_{m_1+m_2-E_{\text{CM}}}^{\infty}\delta(x)
+		\end{equation}
+		となるが，これは$m_1+m_2 > E_{\text{CM}}$だと$0$を拾わない．
+		
+		しかし，これは物理的に考えるとtotal energyがmassより小さかったら，そのような散乱は起こらず興味のない結果になってしまうので，これが満たされているのは当然とも思える．
+	\item \textref{4.102}の$1/2$のfactorはloopのsymmetry factorで割っている．
 \end{itemize}

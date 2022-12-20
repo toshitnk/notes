@@ -25,4 +25,12 @@ M.~E. Peskin and D.~V. Schroeder, \emph{{An Introduction to quantum field
 M.~Sakamoto, \emph{場の量子論：不変性と自由場を中心にして}, 量子力学選書 /
   坂井典佑, 筒井泉監修, 裳華房, 2014.
 
+\bibitem[Sak20]{Sakamoto2020}
+\bysame, \emph{場の量子論(ii)：ファインマン・グラフとくりこみを中心にして},
+  量子力学選書 / 坂井典佑, 筒井泉監修, 裳華房, 2020.
+
+\bibitem[Sch14]{Schwartz:2014sze}
+M.~D. Schwartz, \emph{{Quantum Field Theory and the Standard Model}}, Cambridge
+  University Press, 3 2014.
+
 \end{thebibliography}
