@@ -120,4 +120,60 @@
 		
 		しかし，これは物理的に考えるとtotal energyがmassより小さかったら，そのような散乱は起こらず興味のない結果になってしまうので，これが満たされているのは当然とも思える．
 	\item \textref{4.102}の$1/2$のfactorはloopのsymmetry factorで割っている．
+
+	\item Fermionの一粒子状態を$\ket{\vec{p}, s}$と書いただけでは$(a_{\vec{p}}^s)^{\dagger}\ket{0}$のfermionか$(b_{\vec{p}}^s)\ket{0}$のantifermionか区別がつかない．
+		これで良いのかと聞いたところ，そもそも実用的にはまずdiagramを直接書いて計算するので，この記法を使った縮約の式に戻ることは殆ど無いそうである\footnote{ただし，symmetry factorを調べるときはdiagramだけだと探し漏れがあるので，
+		その場合は縮約の式に戻って調べるという使い方をするそう．}．ここは，教育的配慮と認識して，上手く解釈するのが吉．
+	\item \textref{4.115}で
+		\begin{equation}
+			\wick{\langle \c5{\vec{p}'}, \c2{\vec{k}'}\rvert \c2{\bar{\psi}_x}\c3{\psi_x}\c1{\phi_x}\c5{\bar{\psi}_y}\c4{\psi_y}\c1{\phi_y}\lvert \c4{\vec{p}}, \c3{\vec{k}}\rangle} 
+		\end{equation}
+		の縮約で，$\bar{\psi}$が入れ替わっている箇所があるように思うが，p. 119で説明があるように$\bra*{\vec{p}', \vec{k}'} = \bra{0}a_{\vec{k}'}a_{\vec{p}'}$と外れるので，この計算はあっている．
+		また，spinorの順番が$\bar{u}u\bar{u}u$になっているのは当然で，$u$は4成分あるので，この順番でないと1成分に縮約できない．
+	\item \textref{4.130}の$\partial^2A_{\mu} = 0$のゲージのとり方をLorentz gaugeと書いてあるが，Lorenzである
+		\footnote{日本語だと前者をローレンツ，後者をローレンスと表記することが多いと思う．}．
+	\item Chapter 4.8の力の働き方が引力か斥力かという話は，\cite{Zee:2003mt}の一章にも経路積分形式で書かれている．
+	\item \textref{4.132}は
+		\begin{equation}
+			\intp[4]{q}\frac{\i g_{\mu\nu}}{q^2+\i\epsilon}\e^{-\i q(x-y)}
+			= \intp{q}(\i g_{\mu\nu})\e^{\i\vec{q}\cdot (\vec{x}-\vec{y})}\int\frac{\dd{q^0}}{2\pi} \frac{\e^{- \i q^0(x^0-y^0)}}{(q^0)^2-\abs{\vec{q}}^2 + \i\epsilon}
+		\end{equation}
+		として，後ろの計算を留数積分でする．
+
+		\begin{equation}
+			I  =\int \dd{z}\frac{\e^{-\i zx}}{z^2-z_0^2 + \i\epsilon}
+		\end{equation}
+		は$z = \pm\sqrt{z_0^2-\i\epsilon}$にsimple poleがあり，下半平面で積分路を閉じると収束するので，$z = \sqrt{z_0^2-\i\epsilon}\sim \abs{z_0}$の方のpoleを拾って，
+		\begin{equation}
+			I = -2\pi\i\frac{\e^{-\i zx}}{2z}
+		\end{equation}
+		なので教科書の結果を得る．
+	\item \textref{4.133}の計算を縮約に戻ってやると次のようになる．
+		\begin{align}
+			&\i \M (2\pi)^4\delta^{(4)}(p+k -p'-k')
+			\\&= 
+			\begin{tikzpicture}[baseline=(x.base)]
+				\begin{feynhand}
+					\vertex [dot] (x) at (-0.5, 0) {};
+					\vertex [dot] (y) at (0.5, 0) {};
+					\vertex (p) at (-1, -0.5);
+					\vertex (p') at (-1, 0.5);
+					\vertex (k) at (1, -0.5);
+					\vertex (k') at (1, 0.5);
+					\propag[fermion] (p) to (x);
+					\propag[fermion] (x) to (p');
+					\propag[fermion] (k) to (y);
+					\propag[fermion] (y) to (k');
+					\propag[photon] (x) to (y);
+				\end{feynhand}
+			\end{tikzpicture}\\
+			&= \bra{0}\wick{\c2{a_{k'}}\c4{a_{p'}}\qty(-\i e\int \dd[4]{x})\c4{\bar{\psi_x}}\gamma^{\mu}\c3{\psi_x}\c5{A_\mu}\qty(-\i e\int\dd[4]y)\c2{\bar{\psi_y}}\gamma^{\nu}\c1{\psi_y}\c5{A_\nu}\c3{a_p^{\dagger}}\c1{a_k^{\dagger}}}\ket{0}\\
+			&= (-\i e)^2\int \dd[4]{x}\int \dd[4]{y}\bra{0}\wick{\c2{a_{k'}}\c4{a_{p'}}\c4{\bar{\psi_x}}(-1)\c2{\bar{\psi_y}}\gamma^{\mu}\c5{A_\mu}\gamma^{\nu}\c1{\psi_y}\c5{A_\nu}(-1)\c3{\psi_x}\c3{a_p^{\dagger}}\c1{a_k^{\dagger}}}\ket{0}\\
+			&= (-\i e)^2\int\dd[4]{x}\int \dd[4]{y}\intp[4]{q}
+			\bar{u}(p')\e^{\i p'x}\gamma^{\mu}u(p)\e^{-\i px}\frac{-\i g_{\mu\nu}}{q^2+\i\epsilon}\e^{-\i q(x-y)}\bar{u}(k')\e^{\i k'y}\gamma^{\nu}u(k)\e^{-\i kx}\\
+			&= (-\i e)^2\intp[4]{q}\bar{u}(p')\gamma^{\mu}u(p)\frac{-\i g_{\mu\nu}}{q^2+\i\epsilon}\bar{u}(k')\gamma^{\nu}u(k)(2\pi)^4\delta^{(4)}(p+q-p')(2\pi)^4\delta^{(4)}(k-q-k')\\
+			&= (-\i e)^2\bar{u}(p')\gamma^{\mu}u(p)\frac{-\i g_{\mu\nu}}{(p'-p)^2}\bar{u}(k')\gamma^{\nu}u(k) (2\pi)^4\delta^{(4)}(p+k-p'-k')
+		\end{align}
+		となり，常に出てくる外線の運動量保存を省いたものが\textref{4.133}である\footnote{もっと丁寧にやるべきところは，gamma行列とspinorのspinor添字をちゃんと書いて，行列の積の順序がこれで良いか確かめることである．}．
+
 \end{itemize}
