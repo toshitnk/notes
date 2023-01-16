@@ -1,0 +1,23 @@
+\section{Elementary Process of Quantum Electrodynamics}
+\begin{itemize}
+	\item $\i\M = (\i\e^2/q^2)\bar{v}(p')\gamma^{\mu}u(p)\bar{u}(k)\gamma_{\mu}v(k')$だが，cross sectionを求める際は$\abs{\M}^2$が必要で，$(\bar{v}\gamma^{\mu}u)^{*}$が必要であるが，これはbarのnotationが優れているポイントで，
+		$(\gamma^0)^{\top} = \gamma^{0}$, $(\gamma^{i})^{\top} =- \gamma^{i}$であるので，$(\bar{v}\gamma^{\mu}u)^{*} = \bar{u}\gamma^{\mu}v$である．
+	\item p.132でspinの向きを指定せず平均をとる操作をするが，これは始状態の$\mathrm{e^+}$, $\mathrm{e^-}$に対してであり，終状態の$\mathrm{\mu^+}$, $\mathrm{\mu^-}$については和をとるので，$1/2$のfactorは$s$, $s'$についての和に関してかかり，\textref{5.4}では全体で$1/4$のfactorがかかる．
+	\item \textref{5.4}での$\tr$はスピノル添字に関してのtraceであることに注意．$\mu$などはベクトルの添字なのでtraceには関係しない．
+	\item $\tr\qty((\slashed{p} -m_{\elec})\gamma^{\mu}(\slashed{p}+m_{\elec}\gamma^{\nu})) = 4\qty((p')^\mu p^\nu + (p')^\nu p^\mu - g^{\mu\nu}(p\cdot p' + m_\elec^2))$
+		は$\slashed{p} = \gamma^{\mu} p_\mu$に注意して，Gamma行列に対してのTraceの公式を使えば導ける．
+	\item \textref{5.6}の等式はあとで使う．一番最後の$\epsilon^{\alpha\beta\mu\nu} \epsilon_{\alpha\beta\rho\sigma} = -2(\delta\indices{^\mu_\rho}\delta\indices{^\nu_\sigma} - \delta\indices{^\mu_\sigma}\delta\indices{^\nu_\rho})$から示す．
+
+		まず，これはすでに$\alpha$, $\beta$に関して和を取られているので，$\mu$, $\nu$が$\alpha$, $\beta$と一致すると完全反対称性からゼロになる．つまり，$\mu$ ($\nu$)は$\rho$か$\sigma$と一致しなければならない．また，$\mu$と$\nu$, $\rho$と$\sigma$は反対称なので，反対称に組まなければいけない．
+		これらから$\epsilon^{\alpha\beta\mu\nu} \epsilon_{\alpha\beta\rho\sigma} \propto \delta\indices{^\mu_\rho}\delta\indices{^\nu_\sigma} - \delta\indices{^\mu_\sigma}\delta\indices{^\nu_\rho}$である．
+		
+		比例定数$c$は$\mu$, $\nu$, $\rho$, $\sigma$に適当な文字を入れて決定すればよい．$(\mu, \nu) = (\rho, \sigma) = (2, 3)$として，
+		$\epsilon^{0123}\epsilon_{0123}  + \epsilon^{1023}\epsilon_{1023} = -2$\footnote{$\epsilon^{0123} = 1$とする規約で，
+		全ての添字を下ろすと，
+		空間成分$1$, $2$, $3$を下ろすときに奇数回$-1$が出るので，
+		$\epsilon_{0123} = -1$}．
+		一方，$c(\delta\indices{^2_2}\delta{^3_3} - \delta{^2_3}\delta{^3_2}) = a$より$c = -2$であるので，主張は示された．
+	\item \textref{5.7}の等式は$\gamma^{\mu}$の数$n$が偶数のとき成り立つ．
+		奇数ならば，\textref{5.5}の二番目の式からゼロになる．
+		$\gamma^5$が入った場合もなりたつと書いてあるが，$\gamma^{5}$の個数は$n$にカウントしないと思う．また，$\gamma^5$が入ったとき$n$が奇でもゼロになるとは言えない．例えば$n=4$のとき$\epsilon^{\mu\nu\rho\sigma}$に比例する．
+\end{itemize}
