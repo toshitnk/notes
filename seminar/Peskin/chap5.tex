@@ -1,14 +1,15 @@
 \section{Elementary Process of Quantum Electrodynamics}
 \begin{itemize}
-	\item $\i\M = (\i\e^2/q^2)\bar{v}(p')\gamma^{\mu}u(p)\bar{u}(k)\gamma_{\mu}v(k')$だが，cross sectionを求める際は$\abs{\M}^2$が必要で，$(\bar{v}\gamma^{\mu}u)^{*}$が必要であるが，これはbarのnotationが優れているポイントで，
+	\item $\i\M = (\i\elec^2/q^2)\bar{v}(p')\gamma^{\mu}u(p)\bar{u}(k)\gamma_{\mu}v(k')$だが，cross sectionを求める際は$\abs{\M}^2$が必要で，$(\bar{v}\gamma^{\mu}u)^{*}$が必要であるが，これはbarのnotationが優れているポイントで，
 		$(\gamma^0)^{\top} = \gamma^{0}$, $(\gamma^{i})^{\top} =- \gamma^{i}$であるので，$(\bar{v}\gamma^{\mu}u)^{*} = \bar{u}\gamma^{\mu}v$である．
 	\item p.132でspinの向きを指定せず平均をとる操作をするが，これは始状態の$\mathrm{e^+}$, $\mathrm{e^-}$に対してであり，終状態の$\mathrm{\mu^+}$, $\mathrm{\mu^-}$については和をとるので，$1/2$のfactorは$s$, $s'$についての和に関してかかり，\textref{5.4}では全体で$1/4$のfactorがかかる．
+		今後の議論もumpolarizedなものは入射粒子に関して平均を取り，散乱粒子に関して和をとる．
 	\item \textref{5.4}での$\tr$はスピノル添字に関してのtraceであることに注意．$\mu$などはベクトルの添字なのでtraceには関係しない．
 	\item $\tr\qty((\slashed{p} -m_{\elec})\gamma^{\mu}(\slashed{p}+m_{\elec}\gamma^{\nu})) = 4\qty((p')^\mu p^\nu + (p')^\nu p^\mu - g^{\mu\nu}(p\cdot p' + m_\elec^2))$
 		は$\slashed{p} = \gamma^{\mu} p_\mu$に注意して，Gamma行列に対してのTraceの公式を使えば導ける．
 	\item \textref{5.6}の等式はあとで使う．一番最後の$\epsilon^{\alpha\beta\mu\nu} \epsilon_{\alpha\beta\rho\sigma} = -2(\delta\indices{^\mu_\rho}\delta\indices{^\nu_\sigma} - \delta\indices{^\mu_\sigma}\delta\indices{^\nu_\rho})$から示す．
 
-		まず，これはすでに$\alpha$, $\beta$に関して和を取られているので，$\mu$, $\nu$が$\alpha$, $\beta$と一致すると完全反対称性からゼロになる．つまり，$\mu$ ($\nu$)は$\rho$か$\sigma$と一致しなければならない．また，$\mu$と$\nu$, $\rho$と$\sigma$は反対称なので，反対称に組まなければいけない．
+		まず，これはすでに$\alpha$, $\beta$に関して和を取られているので，$\mu$, $\nu$が$\alpha$, $\beta$と一致すると完全反対称性からゼロになる．つまり，$\mu$, $\nu$は$\rho$か$\sigma$と一致しなければならない．また，$\mu$と$\nu$, $\rho$と$\sigma$は反対称なので，反対称に組まなければいけない．
 		これらから$\epsilon^{\alpha\beta\mu\nu} \epsilon_{\alpha\beta\rho\sigma} \propto \delta\indices{^\mu_\rho}\delta\indices{^\nu_\sigma} - \delta\indices{^\mu_\sigma}\delta\indices{^\nu_\rho}$である．
 		
 		比例定数$c$は$\mu$, $\nu$, $\rho$, $\sigma$に適当な文字を入れて決定すればよい．$(\mu, \nu) = (\rho, \sigma) = (2, 3)$として，
@@ -16,8 +17,79 @@
 		全ての添字を下ろすと，
 		空間成分$1$, $2$, $3$を下ろすときに奇数回$-1$が出るので，
 		$\epsilon_{0123} = -1$}．
-		一方，$c(\delta\indices{^2_2}\delta{^3_3} - \delta{^2_3}\delta{^3_2}) = a$より$c = -2$であるので，主張は示された．
+		一方，$c(\delta\indices{^2_2}\delta\indices{^3_3} - \delta\indices{^2_3}\delta\indices{^3_2}) = a$より$c = -2$であるので，主張は示された．
+
+		これを用いると残りの式も示せて，$\epsilon^{\alpha\beta\gamma\mu}\epsilon_{\alpha\beta\gamma\nu} = -2(\delta\indices{^\gamma_\gamma}\delta\indices{^\mu_\nu} - \delta\indices{^\gamma_\nu}\delta\indices{^\mu_\gamma}) = -2(4\delta\indices{^\mu_\nu} - \delta\indices{^\mu_\nu}) = -6\delta\indices{^\mu_\nu}$,
+		$\epsilon^{\alpha\beta\gamma\delta}\epsilon_{\alpha\beta\gamma\delta} = -6\delta\indices{^\delta_\delta} = -24$となる．
 	\item \textref{5.7}の等式は$\gamma^{\mu}$の数$n$が偶数のとき成り立つ．
 		奇数ならば，\textref{5.5}の二番目の式からゼロになる．
 		$\gamma^5$が入った場合もなりたつと書いてあるが，$\gamma^{5}$の個数は$n$にカウントしないと思う．また，$\gamma^5$が入ったとき$n$が奇でもゼロになるとは言えない．例えば$n=4$のとき$\epsilon^{\mu\nu\rho\sigma}$に比例する．
+	\item cross sectionを求めるときに，$\elec^4/(16\pi^2) = \alpha^2$を無理やり作り出す計算がよくでてくる．
+	\item section 5.2ではhelicityの固有状態に分けて議論する．
+	\item anti fermionのhelicityは，anti fermionのspinが反転する性質から，helicityも反転する．
+	\item \textref{5.26}は$\sqrt{(1-\hat{\vec{p}}\cdot\vec{\sigma})/2} = (1-\hat{\vec{p}}\cdot\vec{\sigma})/2$であることを使う．
+		
+		\begin{align}
+			\sqrt{p\cdot\sigma} &= \sqrt{E - \vec{p}\cdot\vec{\sigma}}\\
+								&= \sqrt{2E}\sqrt{(1-\vec{p}/E \cdot \vec{\sigma})/2}\\
+								&\sim \sqrt{2E}\sqrt{(1-\hat{\vec{p}}\cdot\sigma)/2}
+		\end{align}
+		だが，
+		\begin{equation}
+			\qty(\frac{1}{2}(1-\hat{\vec{p}}\cdot\vec{\sigma}))^2
+			= \frac{1}{4}(1-2\hat{\vec{p}}\cdot\vec{\sigma} + (\hat{\vec{p}}\cdot\vec{\sigma}))
+		\end{equation}
+		であり，
+		\begin{align}
+			(\hat{\vec{p}}\cdot\vec{\sigma})^2
+			&= \hat{p}_i\sigma_i\hat{p}_j\sigma_j\\
+			&= \hat{p}_i\hat{p}_j\frac{1}{2}(\{\sigma_i, \sigma_j\} + [\sigma_i, \sigma_j])\\
+			&= \hat{p}_i\hat{p}_j (\delta_{ij} + \i\epsilon_{ijk}\sigma_k)\\
+			&= \hat{p}_i\hat{p}_i\\
+			&= 1
+		\end{align}
+		より\footnote{$\hat{\vec{p}}\cdot\vec{\sigma}$の計算は$AB = (AB+BA)/2+(AB-BA)/2$を使ってやるのがよい．これはゼミで指摘された．}，
+		\begin{equation}
+			\qty(\frac{1}{2}(1-\hat{\vec{p}}\cdot\vec{\sigma}))^2 = \frac{1}{2}(1-\hat{\vec{p}}\cdot \vec{\sigma})
+		\end{equation}
+		であることから，$(1-\hat{\vec{p}}\cdot \vec{\sigma})/2$自身も二乗して$(1-\hat{\vec{p}}\cdot \vec{\sigma})/2$になる量とわかる．
+	\item \textref{5.29}の中辺はスピノル添字を行列として書いていて，右辺はベクトル添字を行列として書いていることに注意すること．
+	\item \textref{5.32}の最後の式は負号はつかない．\footnote{これは，教科書の公式ページのerrataにも載っている．}
+	\item \textref{5.31}などで，amplitudeを求める際に，muonの方の$\bar{u}\gamma^{\mu}v = -2E(0, \cos\theta)$の添字$\mu$を下げて，空間成分にマイナスをつけないといけないことに注意する．
+	\item \textref{5.40}の置き換えは次のように理解できる．
+
+		まず，計算すべき量は$\i\M(\text{something} \to \vec{k}, \vec{k}') = \xi^\dagger_a \Gamma(\vec{k})_{ab}\xi'_b = (\xi'\xi^\dagger)_{ba}\Gamma(\vec{k})$で，spinorの積$\xi'\xi^{\dagger}$を行列で書く．
+
+		この行列が$\textcolor{red}{-}\vec{n}^*/\sqrt{2} \cdot \vec{\sigma}$と書けることを示し．$\vec{n}$を決定する\footnote{ここから一連の計算で$-$がところどころ抜けているとerrataに載っている．強調のため補うべき負号を\textcolor{red}{赤色}でかく．}．
+		まず，spinの値が$1$の場合，すなわちmuonのスピンがともに上を向いている$\uparrow\uparrow$のとき，
+		\begin{equation}
+			\xi'\xi^{\dagger} = \mqty(0\\1)\mqty(1 &  0) = \mqty(0 & 0 \\ 1 & 0)
+		\end{equation}
+		であるが，$\vec{n} = \textcolor{red}{-}(\hat{x} + \i\hat{y}) / \sqrt{2}$とすれば
+		\begin{equation}
+			\frac{-\vec{n}^*\cdot\vec{\sigma}}{\sqrt{2}} =  \frac{1}{2}(\sigma_x - \i\sigma_y) = \mqty(0 & 0 \\ 1 & 0)
+		\end{equation}
+		として一致する．
+
+		spinの値が$-1$の場合，すなわちmuonのスピンがともに下を向いている$\downarrow\downarrow$のとき，
+		\begin{equation}
+			\xi'\xi^{\dagger} = \mqty(-1 \\ 0)\mqty(0 & 1) = \mqty(0 & -1\\ 0 & 0)
+		\end{equation}
+		であるが，$\vec{n} = (\hat{x} - \i\hat{y})/\sqrt{2}$\footnote{ここは負号はつかない．}とすると，
+		\begin{equation}
+			\frac{-\vec{n}^*\cdot \vec{\sigma}}{\sqrt{2}} = \frac{-1}{2}(\sigma_x + \i\sigma_y) = \mqty(0 & -1 \\ 0 & 0)
+		\end{equation}
+		となり一致する．
+
+		spinの値がゼロのとき，tripletの方は$(\uparrow\downarrow + \downarrow\uparrow)/\sqrt{2}$なので，
+		\begin{equation}
+			\xi'\xi^{\dagger}  = \frac{1}{\sqrt{2}} \qty( \mqty(-1\\0)\mqty(1 & 0) + \mqty(0 \\ 1)\mqty(0 & 1) ) = \frac{-1}{\sqrt{2}}\mqty(1 & 0 \\ 0 & -1)
+		\end{equation}
+		であるが，$\vec{n} = \hat{z}$と選ぶと
+		\begin{equation}
+			\frac{-\vec{n}^{*} \cdot \vec{\sigma}}{\sqrt{2}} = \frac{-1}{\sqrt{2}} \mqty(1 & 0 \\ 0 & -1)
+		\end{equation}
+		となり一致する．
+
+		この議論は，各spinの組に対して$\vec{n}$を決めるためのものと理解する．
 \end{itemize}
