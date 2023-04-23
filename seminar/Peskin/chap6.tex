@@ -1,5 +1,80 @@
 \section{Radiative Corrections: Introduction}
 \begin{itemize}
     \item このセクションは，書いてあるとおりに計算すればたくさん発散が出てきて死ぬセクションらしい．
-\end{itemize}
+	 \item bremsstrahlungで出てくるphotonは低エネルギー過ぎて観測できないので，実験上は
+	 \begin{center}
+	 	\begin{tikzpicture}
+			\begin{feynhand}
+				\vertex (a) at (-1, -1);
+				\vertex (b) at (-1, 1);
+				\vertex (c) at (1, -1);
+				\vertex (d) at (1, 1);
+				\propag[plain, line width=2pt] (c) to (d);
+				\propag[plain] (a) to (b);
+
+				\vertex (e) at (-1, 0);
+				\vertex (f) at (1, 0);
+				\propag[photon] (e) to (f);
+			\end{feynhand}
+		\end{tikzpicture}
+		\qquad{}と\qquad{}
+	 	\begin{tikzpicture}
+			\begin{feynhand}
+				\vertex (a) at (-1, -1);
+				\vertex (b) at (-1, 1);
+				\vertex (c) at (1, -1);
+				\vertex (d) at (1, 1);
+				\propag[plain, line width=2pt] (c) to (d);
+				\propag[plain] (a) to (b);
+
+				\vertex (e) at (-1, 0);
+				\vertex (f) at (1, 0);
+				\propag[photon] (e) to (f);
+
+				\vertex (h) at (-1, -0.5);
+				\vertex (g) at (-2, 0);
+				\propag[photon] (h) to (g);
+			\end{feynhand}
+		\end{tikzpicture}
+	\end{center}
+	は区別できないのだが，計算上はすべてのprocessを取り込む必要がある．
+	masslessの粒子がいると，このようにいくらで低エネルギーのものをとりこんで，
+	エネルギースペクトラムは$m_\elec$から上は連続的になる．
+
+	\item \textref{Fig. 7.2}などはmassless photonがいないと仮定して，スペクトラムを書いている．
+	このときは図にあるように$2m_\elec$から状態が連続的に分布する．
+	状態があると，相関関数のFourier変換がpoleを持つらしく，連続spectrumだと大体poleが連続的に分布すると思えば，そこにbranch cutが走ることになる．
+	\end{itemize}
+
 \subsection{Soft Bremsstrahlung}
+
+	\begin{itemize}
+	\item \textref{6.4}では$m\epsilon$を改めて$\epsilon$とおいている．
+
+	\item \textref{6.5}の計算で$1/k^2$のpoleを両方下に下げる遅延条件を設定することは，今$t=0$で瞬間的に加速されることを考えているので，それ以前に放射の場はなくて，その後には存在するという境界条件を課していることと思える
+	\footnote{今，微分方程式をFourier変換したものを考えており，このようなpoleをずらす操作は適切な境界条件を与えていると思える．}．
+
+	$t>0$の場合でも放射が起こるのか，と混乱したが，そうではなくて$t=0$の瞬間に放射が起こったものが$t>0$でも残っていると思うと教えてもらった．
+	\item \textref{6.5}の$k^0$についての積分を行う際に，複素関数として，上(下)半平面に積分路を追加してそれがゼロに飛ぶことを使うが，
+	$\e^{\i kz} = \e^{\i kR\cos\theta - kR\sin\theta}$をゼロに飛ばしたときに$\theta \sim 0$の範囲で本当に収束するのかという質問がでた．
+	これは，一般論としては\href{https://ja.wikipedia.org/wiki/\%E3\%82\%B8\%E3\%83\%A7\%E3\%83\%AB\%E3\%83\%80\%E3\%83\%B3\%E3\%81\%AE\%E8\%A3\%9C\%E9\%A1\%8C}{Jordanの補題}というのがあって，その証明を追えばよいのだが，収束することは次のように言える．
+
+	まず，積分について$f(z)$を$M/R^k$, $(k>0)$程度で抑えられる関数\footnote{たとえば$1/(k^2 + m^2)$なら$k=3$くらい，今の場合の$1/(k^4(k+m)(k-m))$だと$k=5$など．}として，
+	\begin{align}
+		\int \dd{z}f(z)e^{\i kz} &= \int_{0}^{\pi} \dd{\theta}\i R\e^{\i\theta} f(R\e^{\i\theta})\e^{\i kR\cos\theta - kR\sin\theta}\\
+		&= 2\int_{0}^{\pi/2} \dd{\theta}\i R\e^{\i\theta} f(R\e^{\i\theta})\e^{\i kR\cos\theta - kR\sin\theta}\\
+	\end{align}
+	とできる．$\pi/2 \leq \theta \leq \pi$については$\theta \to \pi-\theta$としてまとめた．
+
+	$0 \leq \theta \leq \pi/2$においては$\sin\theta \geq 2\theta/\pi$
+	が成り立つので，
+	\begin{align}
+		\abs{\int_{0}^{\pi/2} \dd{\theta}\i R\e^{\i\theta} f(R\e^{\i\theta})\e^{\i kR\cos\theta - kR\sin\theta}}
+		&\leq \int_{0}^{\pi/2}\dd{\theta}R\abs{f(R\e^{\i\theta})}\e^{-kR\sin\theta}\\
+		&\leq \frac{M}{R^k}\int_{0}^{\pi/2}\dd{\theta}\e^{-kR2\theta/\pi}\\
+		&= \frac{M}{R^k}\frac{\pi}{2kR}(1 - \e^{-kR})\\
+		&\leq \frac{\pi}{2kR^k}M \underset{R\to\infty}{\to} 0
+	\end{align}
+	となる．
+	\item p.178の一番下の式からp.179の最初の式で負号が消えているのは，$p^{\mu} = (p^0, \vec{0})$と設定したので，$k^0 = \vec{k}\cdot \vec{p}/p^0 = 0$だから，分母の$k^2 = -\abs*{\vec{k}}^2$の負号が出てくるからである．
+\end{itemize}
