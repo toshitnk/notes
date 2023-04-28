@@ -213,7 +213,13 @@
 	ここで，ベクトル解析の式$(\vec{A}\times\vec{B})\cdot(\vec{C}\times \vec{D}) = (\vec{A}\cdot \vec{C})(\vec{B}\cdot \vec{D}) - (\vec{A}\cdot\vec{D})(\vec{B}\cdot \vec{C})$をつかい，$\vec{\mathcal{B}} = \hat{\vec{k}} \times \vec{\mathcal{E}}$であることと$\vec{k} \cdot \vec{\mathcal{E}} = 0$を考慮すると$\vec{\mathcal{B}}(\vec{k})\cdot\vec{\mathcal{B}}(-\vec{k}) = -\vec{\mathcal{E}}(\vec{k})\cdot\vec{\mathcal{E}}(-\vec{k})$などとなり，$\e^{\pm \i k^0t}$の項は足すと消える．
 
 	\item 偏光ベクトル$\epsilon^{\mu}$は四元ベクトルだが，ゲージ対称性で一成分，zero normのunphysical stateを消すために一成分消えるので，独立なものは二つ．
-	\item \textref{6.13}で$\sum \epsilon_\mu\epsilon_\nu^{*}$を$-g_{\mu\nu}$に置き換えてよいのは，$k_{\mu}(p'^{\mu}/(k\cdot p') - p^{\mu}/(k\cdot p)) = 0$がなりたつので，\textref{5.79}あたりの議論を追うとこの置き換えをしてよいことがわかるらしい．(逆に，この種の条件がない場合は置き換えができない．)
+	\item \textref{6.13}で$\sum \epsilon_\mu\epsilon_\nu^{*}$を$-g_{\mu\nu}$に置き換えてよいのは，$k_{\mu}(p'^{\mu}/(k\cdot p') - p^{\mu}/(k\cdot p)) = 0$がなりたつ．
+	\textref{5.79}あたりの議論を追うと
+	まず，$k^{\mu*} = (k, 0,0, k)$, $\epsilon^1 = (0, 1, 0, 0)$, $\epsilon^2 = (0, 0, 1, 0)$をとり，
+	$k_{\mu}f^{\mu} = 0 $が成り立っている．$k$の取り方から，
+	$kf^0 - kf^3 = 0$がわかり，
+	$\sum \epsilon_\mu\epsilon_\nu f^\mu f^{\nu *} = \abs{f^1}^2 L \abs{f^2}^2 = \abs{f^1}^2 + \abs{f^2}^2 + \abs{f^3}^2 - \abs{f^0}^2 = g_{\mu\nu}f^{\mu}f^{\nu * }$となるので，
+	この置き換えをしてよいことがわかる．(逆に，この種の条件がない場合は置き換えができない．)
 	
 
 	\item p.181最後に積分の下端を設定するところの$\vec{v}$などはhigh energyを考えているので$\abs*{\vec{v}} \sim 1$であることに今後注意すべき．
