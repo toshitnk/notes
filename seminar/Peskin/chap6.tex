@@ -77,4 +77,32 @@
 	\end{align}
 	となる．
 	\item p.178の一番下の式からp.179の最初の式で負号が消えているのは，$p^{\mu} = (p^0, \vec{0})$と設定したので，$k^0 = \vec{k}\cdot \vec{p}/p^0 = 0$だから，分母の$k^2 = -\abs*{\vec{k}}^2$の負号が出てくるからである．
+
+	\item \textref{6.10}の絶対値はベクトルの絶対値で，\textref{6.8}で実数に設定しているので複素共役をとる必要はない．
+	また，$1/8$の係数は，エネルギーの定義の$1/2$と$\R\ni a = (z+z^*)/2$と書くときの$1/2$のfactor 2つ分によりついている．
+
+	\item \textref{6.10}の$\vec{B}$側の評価で，形は$\vec{E}$のほうと同じだから，
+	\begin{equation}
+		\frac{1}{2}\int\dd[3]{x}\abs*{\vec{B}(x)}^2
+		= \frac{1}{8}\intp[3]{k}
+		\qty(\vec{\mathcal{B}}(\vec{k})\cdot \vec{\mathcal{B}}(\vec{-k})\e^{-2\i k^0t}
+		+ 2\vec{\mathcal{B}}(\vec{k}) \cdot \vec{\mathcal{B}}^{*}(\vec{k})
+		+ \vec{\mathcal{B}}^{*}(\vec{k}) \cdot \vec{\mathcal{B}}^{*}(\vec{-k})\e^{2\i k^0t})
+	\end{equation} 
+	となる．
+	ここで，ベクトル解析の式$(\vec{A}\times\vec{B})\cdot(\vec{C}\times \vec{D}) = (\vec{A}\cdot \vec{C})(\vec{B}\cdot \vec{D}) - (\vec{A}\cdot\vec{D})(\vec{B}\cdot \vec{C})$をつかい，$\vec{\mathcal{B}} = \hat{\vec{k}} \times \vec{\mathcal{E}}$であることと$\vec{k} \cdot \vec{\mathcal{E}} = 0$を考慮すると$\vec{\mathcal{B}}(\vec{k})\cdot\vec{\mathcal{B}}(-\vec{k}) = -\vec{\mathcal{E}}(\vec{k})\cdot\vec{\mathcal{E}}(-\vec{k})$などとなり，$\e^{\pm \i k^0t}$の項は足すと消える．
+
+	\item 偏光ベクトル$\epsilon^{\mu}$は四元ベクトルだが，ゲージ対称性で一成分，zero normのunphysical stateを消すために一成分消えるので，独立なものは二つ．
+	\item \textref{6.13}で$\sum \epsilon_\mu\epsilon_\nu^{*}$を$-g_{\mu\nu}$に置き換えてよいのは，$k_{\mu}(p'^{\mu}/(k\cdot p') - p^{\mu}/(k\cdot p)) = 0$がなりたつので，\textref{5.79}あたりの議論を追うとこの置き換えをしてよいことがわかるらしい．(逆に，この種の条件がない場合は置き換えができない．)
+	
+
+	\item p.181最後に積分の下端を設定するところの$\vec{v}$などはhigh energyを考えているので$\abs*{\vec{v}} \sim 1$であることに今後注意すべき．
+	また，この下端の設定は任意性があり，今考えているのは放射が軸にほぼ平行な$\cos\theta \sim 1$あたりからの寄与がdominantであるからである．
+
+	この設定に物理的解釈をつけようと思うと，後ろに放射することはないだろうとおもい，方向転換する角度でcutoffするという説明を教えてもらった．
+
+
+	\item \textref{6.17}の$\approx 2\log(p\cdot p'/((E^2-\abs*{\vec{p}})/2))$への変形は，分母の$E^2(E-\abs*{\vec{p}}) \simeq (E+\abs*{\vec{p}})/2(E-\abs*{\vec{p}})$と考えるとよい．
+	また，直接しらべるとこの途中式を経ず，最後の形にもっていくこともできるらしい． 
+	\item \textref{6.17}の最後は等号だが近似を使っている．
 \end{itemize}
