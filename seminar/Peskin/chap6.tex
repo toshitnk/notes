@@ -40,6 +40,126 @@
 	masslessの粒子がいると，このようにいくらで低エネルギーのものをとりこんで，
 	エネルギースペクトラムは$m_\elec$から上は連続的になる．
 
+	\item \textref{6.1}以外にheavy particleを含むloop diagramが次の6種類ある．
+	loop diagramとは，外線の運動量を決めても内線の運動量がuniqueに決まらないdiagramであることに注意．
+	\begin{center}
+		\begin{tikzpicture}
+			\begin{feynhand}
+				\vertex (a) at (-1, -1);
+				\vertex (b) at (-1, 1);
+				\vertex (c) at (1, -1);
+				\vertex (d) at (1, 1);
+				\propag[plain, line width=2pt] (c) to (d);
+				\propag[plain] (a) to (b);
+
+				\vertex (e) at (-1, 0);
+				\vertex (f) at (1, 0);
+				\propag[photon] (e) to (f);
+
+				\vertex (h) at (1, -0.3);
+				\vertex (g) at (1, 0.3);
+				\propag[photon] (h) to  [out=0, in=0](g);
+			\end{feynhand}
+		\end{tikzpicture}
+		,\quad
+		\begin{tikzpicture}
+			\begin{feynhand}
+				\vertex (a) at (-1, -1);
+				\vertex (b) at (-1, 1);
+				\vertex (c) at (1, -1);
+				\vertex (d) at (1, 1);
+				\propag[plain, line width=2pt] (c) to (d);
+				\propag[plain] (a) to (b);
+
+				\vertex (e) at (-1, 0);
+				\vertex (f) at (1, 0);
+				\propag[photon] (e) to (f);
+
+				\vertex (h) at (1, 0.2);
+				\vertex (g) at (1, 0.8);
+				\propag[photon] (h) to [out=0, in=0](g);
+			\end{feynhand}
+		\end{tikzpicture}
+		,\quad
+		\begin{tikzpicture}
+			\begin{feynhand}
+				\vertex (a) at (-1, -1);
+				\vertex (b) at (-1, 1);
+				\vertex (c) at (1, -1);
+				\vertex (d) at (1, 1);
+				\propag[plain, line width=2pt] (c) to (d);
+				\propag[plain] (a) to (b);
+
+				\vertex (e) at (-1, 0);
+				\vertex (f) at (1, 0);
+				\propag[photon] (e) to (f);
+
+				\vertex (h) at (1, -0.2);
+				\vertex (g) at (1, -0.8);
+				\propag[photon] (h) to [out=0, in=0] (g);
+			\end{feynhand}
+		\end{tikzpicture}
+		, \quad
+		\begin{tikzpicture}
+			\begin{feynhand}
+				\vertex (a) at (-1, -1);
+				\vertex (b) at (-1, 1);
+				\vertex (c) at (1, -1);
+				\vertex (d) at (1, 1);
+				\propag[plain, line width=2pt] (c) to (d);
+				\propag[plain] (a) to (b);
+
+				\vertex (e) at (-1, 0);
+				\vertex (f) at (-0.5, 0);
+				\propag[photon] (e) to (f);
+
+				\vertex (g) at (1, 0);
+				\vertex (h) at (0.5, 0);
+				\propag[photon] (g) to (h);
+				\vertex (i) at (0, 0.5);
+				\vertex (j) at (0, -0.5);
+				\propag[photon] (h) to [out=270, in=0] (j) to [out=180, in=270] (f) to [out=90, in=180] (i) to [out=0, in=90] (h);
+			\end{feynhand}
+		\end{tikzpicture}
+		,\quad
+		\begin{tikzpicture}
+			\begin{feynhand}
+				\vertex (a) at (-1, -1);
+				\vertex (b) at (-1, 1);
+				\vertex (c) at (1, -1);
+				\vertex (d) at (1, 1);
+				\propag[plain, line width=2pt] (c) to (d);
+				\propag[plain] (a) to (b);
+
+				\vertex (e) at (1, 0.5);
+				\vertex (f) at (1, -0.5);
+				\vertex (g) at (-1, 0.5);
+				\vertex (h) at (-1, -0.5);
+
+				\propag[photon] (g) to (f);
+				\propag[photon] (h) to (e);
+			\end{feynhand}
+		\end{tikzpicture}
+		, \quad
+		\begin{tikzpicture}
+			\begin{feynhand}
+				\vertex (a) at (-1, -1);
+				\vertex (b) at (-1, 1);
+				\vertex (c) at (1, -1);
+				\vertex (d) at (1, 1);
+				\propag[plain, line width=2pt] (c) to (d);
+				\propag[plain] (a) to (b);
+
+				\vertex (e) at (1, 0.5);
+				\vertex (f) at (1, -0.5);
+				\vertex (g) at (-1, 0.5);
+				\vertex (h) at (-1, -0.5);
+
+				\propag[photon] (g) to (e);
+				\propag[photon] (h) to (f);
+			\end{feynhand}
+		\end{tikzpicture}
+	\end{center}
 	\item \textref{Fig. 7.2}などはmassless photonがいないと仮定して，スペクトラムを書いている．
 	このときは図にあるように$2m_\elec$から状態が連続的に分布する．
 	状態があると，相関関数のFourier変換がpoleを持つらしく，連続spectrumだと大体poleが連続的に分布すると思えば，そこにbranch cutが走ることになる．
