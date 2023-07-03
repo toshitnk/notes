@@ -1,8 +1,36 @@
 \section{Manifolds and Tensor Fields}
+\subsection{Manifolds}
 \begin{itemize}
 	\item waldは多様体の定義を近傍系から定めている．近傍とは位相空間$M, \mathcal{O}$として$p\in M$を含む$O\in \mathcal{O}$のことである．
 	通常，多様体は位相空間であることを用いて定義するが，近傍により開集合系を定めると位相空間になるので良いのだと思う．
 	\item 多様体の位相的性質としてハウスドルフかつパラコンパクトであることを課している．
 	ハウスドルフ性は通常課すのでよいとして，パラコンパクトであることは多様体上の積分を定義するときに1の分割が常に存在することを保証するらしいがよくわからない．
-	\item 　$S^2$が多様体であることの例では，座標変換をたとえ$(1, +)$から$(2, +)$の変換では$f_2^{+}\circ (f_1^-)^{-1}(x_1, x_2) = (\sqrt{1-(x^1)^2-(x^2)^2}, x^2)$と定めれば微分可能であることがわかる．
+	\item $S^2$が多様体であることの例では，座標変換をたとえ$(1, +)$から$(2, +)$の変換では$f_2^{+}\circ (f_1^-)^{-1}(x_1, x_2) = (\sqrt{1-(x^1)^2-(x^2)^2}, x^2)$と定めれば微分可能であることがわかる．
+	\item 大体この辺の多様体論でやっていることは，多様体$M$上の解析学をチャート$\psi$で$\R^n$上の解析学を持って定義している．例えば，$M$上の$C^\infty$級関数$f$とは，$f\circ\psi^{-1}$が$C^\infty$級であることにより定義するなど．
+\end{itemize}
+
+\subsection{Vectors}
+\begin{itemize}
+	\item $M$上の定数関数$h(p) = c$を接ベクトル$v$で移したものがゼロになることは，$v(h^2)$にLeibniz則と線形性を使うとわかるが，線形性を使う$v(h^2) = v(ch) = ch(v)$は関数として$h^2 = ch$と考えると良い．等しいのは，任意の$p\in M$に対して二つの関数が同じ値を返すからである．
+	\item \textref{2.2.4}の$x^{\mu}$は$x^{\mu}\colon \R^{n} \ni x = (x^1, x^2, \ldots, x^\mu, \ldots, x^n) \mapsto x^\mu\in\R$のことである．
+\end{itemize}
+
+\subsection{Tensors; the Metric Tensor}
+\begin{itemize}
+	\item $V$と$V^{*}$は同型だが，この同型は基底を指定して初めて決まるのに対し，$V^{**}$との同型は
+		人為的に基底を定めなくても, $v\in V$に対し
+		$V^{**}\ni v\colon V^{*}\ni w^{*}\to w^{*}(v)\in \R$
+		が自動的に定まるので，数学的自然さの度合いが違う．
+		このような同型はcanonicalな同型といい，他と区別される．
+	\item metricの正の数と負の数は基底のとり方によらないという主張は，線形代数のSylvesterの慣性法則を参照．
+	\item metric $g$がsymmetricでnon degenerateである理由は，よく知っている(Minkowski)内積\footnote{通常の内積は更にpositive definiteであることが追加される．}の意味でのmetricとcompatibleにするためである．
+		特にnon degenerateだと移した先で$g(x, v) = g(x', v)$と同じならば，$g(x, v) - g(x', v) = g(x-x', v) = 0$となり，non degenerate性から$x-x'=0$となるので$g(\bullet, v)$が単射であることがわかる．
+		これにより，内積と双対ベクトルとの一対一対応があることが言える\footnote{全射性は$\dim V = \dim V^{*}$で単射であることから言える．}．
+	\item metric $g\colon V\times V \to \R$だが，
+		$g\colon V\ni v\mapsto g(\bullet, v) \in V^{*}$と見ることも出来て，これはまさしく添字の上げ下げである．
+\end{itemize}
+
+\subsection{The Abstract Index Notation}
+\begin{itemize}
+	\item 座標を決めて，成分で書く方法$T\indices{^{\mu_1\cdots\mu_k}_{\nu_1\cdots\nu_l}}$ではなく，Abstract index notationでは座標は固定せず，添字はそのslotが双対空間か通常のベクトル空間のどちらに作用するかを表す．
 \end{itemize}

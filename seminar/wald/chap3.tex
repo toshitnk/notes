@@ -1,0 +1,22 @@
+\section{CURVATURE}
+\subsection{Derivative Operators and Parallel Transport}
+\begin{itemize}
+	\item Christoffel symbolは変換性の観点からはテンソルでない．\textref{3.1.15}で左辺はテンソルの変換をするが，右辺のChristoffel symbolは$\Gamma\indices{^b_{ac}}t^c$全体としてテンソルの変換をする．
+		$\nabla'_a t'^b = \partial'_a t'^b +{\Gamma'}\indices{^b_{ac}}t'^c$と書いたとき，${\Gamma'}\indices{^b_a_c} \neq \partial'_ax^d\partial_ex'^b\partial'_cx^f \Gamma\indices{^e_d_f}$ということ．
+	\item Theorem 3.1.1について，uniquenessは次のように言える．
+		今，二つの共変微分$\tilde{\nabla}_a$, $\tilde{\nabla}'_a$をとったとして，\textref{3.1.28}の方法で$C\indices{^c_a_b}$, ${C'}\indices{^c_a_b}$をそれぞれに対しつくると，
+		\begin{align}
+			0 &= \nabla_ag_{bc} = \tilde{\nabla}_a g_{bc} - C\indices{^d_a_b}g_{dc} - C\indices{^d_a_c}g_{bd}\\
+			0 &= \nabla'_ag_{bc} = \tilde{\nabla}'_a g_{bc} - {C'}\indices{^d_a_b}g_{dc} - {C'}\indices{^d_a_c}g_{bd}
+		\end{align}
+		が成り立つ．ここで，$\nabla_a$, $\nabla'_a$が等しいことは，次のようにして言える．
+
+		$\nabla_a$, $\nabla'_a$は共変微分なので，
+		$\nabla_ag_{bc} = \nabla'_ag_bc - D\indices{^d_a_b}g_{dc} - D\indices{^d_a_c}g_{bd}$の差があるが，これはゼロであるので，
+		$D\indices{^d_a_b}g_{dc} - D\indices{^d_a_c}g_{bd} = 0$でないといけない．ところが，\textref{3.1.24}以降の一連の議論を繰り返すと，\textref{3.1.28}に対応する部分より，
+		$D\indices{^c_a_b} = 0$となり，作った微分は最初の微分のとり方によらないことがわかる．
+\end{itemize}
+\subsection{Curvature}
+\subsection{Geodesics}
+\subsection{Methods for Computing Curvature}
+

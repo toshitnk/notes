@@ -2,6 +2,7 @@
 \begin{itemize}
     \item このセクションは，書いてあるとおりに計算すればたくさん発散が出てきて死ぬセクションらしい．
 	 \item bremsstrahlungで出てくるphotonは低エネルギー過ぎて観測できないので，実験上は
+	\iffigure
 	 \begin{center}
 	 	\begin{tikzpicture}
 			\begin{feynhand}
@@ -37,12 +38,18 @@
 			\end{feynhand}
 		\end{tikzpicture}
 	\end{center}
+	\else
+	\begin{center}
+		(ここにはdiagramが入る．)
+	\end{center}
+	\fi
 	は区別できないのだが，計算上はすべてのprocessを取り込む必要がある．
 	masslessの粒子がいると，このようにいくらで低エネルギーのものをとりこんで，
 	エネルギースペクトラムは$m_\elec$から上は連続的になる．
 
 	\item \textref{6.1}以外にheavy particleを含むloop diagramが次の6種類ある．
 	loop diagramとは，外線の運動量を決めても内線の運動量がuniqueに決まらないdiagramであることに注意．
+	\iffigure
 	\begin{center}
 		\begin{tikzpicture}
 			\begin{feynhand}
@@ -161,6 +168,11 @@
 			\end{feynhand}
 		\end{tikzpicture}
 	\end{center}
+	\else
+	\begin{center}
+		(ここにはdiagramが入る．)
+	\end{center}
+	\fi
 	\item \textref{Fig. 7.2}などはmassless photonがいないと仮定して，スペクトラムを書いている．
 	このときは図にあるように$2m_\elec$から状態が連続的に分布する．
 	状態があると，相関関数のFourier変換がpoleを持つらしく，連続spectrumだと大体poleが連続的に分布すると思えば，そこにbranch cutが走ることになる．
@@ -231,4 +243,84 @@
 	\item \textref{6.17}の$\approx 2\log(p\cdot p'/((E^2-\abs*{\vec{p}})/2))$への変形は，分母の$E^2(E-\abs*{\vec{p}}) \simeq (E+\abs*{\vec{p}})/2(E-\abs*{\vec{p}})$と考えるとよい．
 	また，直接しらべるとこの途中式を経ず，最後の形にもっていくこともできるらしい． 
 	\item \textref{6.17}の最後は等号だが近似を使っている．$(p'-p)^2 = (p')^2 + p^2 - 2p\cdot p'$だが，相対論極限で$p^2 = E^2 - \abs*{\vec{p}}^2 = m^2\sim0$なので，前二項を無視している．
+	\item \textref{6.22}でamplitudeを分離させているが．$\delta(p-p'-k)$をどう分けたのか．$\M_0$には$\delta(p-p')$となるが，$\O(k)$くらいの違いは無視すると思う．
+	\item \textref{6.25}の積分の上端は，運動量保存からelectronの運動量の差$\vec{q} = \vec{p} - \vec{p'}$までと考える．
+	\item totalの結果はclassicalの場合は粒子数で，こちらは発散しても個数が無限大であるとことそんなにおかしくないが，
+		quantumの場合は確率なので，発散することは大問題である．
+	\item \textref{6.26}を計算するために，photonに小さいmass $\mu$を入れるのは，
+		\begin{equation}
+			\int_{\mu}^{\abs*{\vec{q}}} \dd{k}\frac{1}{k}\mathcal{I}(\vec{v}, \vec{v}')
+		\end{equation}
+		とすると計算してもよいし，
+		\begin{equation}
+			\int_{0}^{\abs*{\vec{q}}} \dd{k}\frac{1}{\sqrt{k^2+m^2}}\mathcal{I}(\vec{v}, \vec{v}')
+		\end{equation}
+		で$\log 2$くらいを捨てると思えば良い．
+\end{itemize}
+
+\subsection{The Electron Vertex Function: Formal Structure}
+\begin{itemize}
+	\item photonにmassを持たせて良いのか，という問題は後のsectionでdiagramを足し上げると$\mu$依存性が消えるらしい．
+	\item \textref{6.31}で$C = 0$を決定するのに$q^2\neq 0$でないといけないが，これは飛んでいるphotonがoff shellであることを意味する．
+		このphotonはon shellになり得なくて，これは(今，heavy particleを無視して書いているが，本来は)内線だからである．
+		また，
+		\iffigure
+		\begin{equation}
+			\begin{tikzpicture}
+				\begin{feynhand}
+					\vertex (a) at (0, 0);
+					\vertex (b) at (-1, 1) {massive};
+					\vertex (c) at (-1, -1) {massive};
+					\vertex (d) at (2, 0){massless} ;
+					\propag[fermion] (a) to (b);
+					\propag[chabos] (d) to (a);
+					\propag[fermion] (c) to (a);
+				\end{feynhand}
+			\end{tikzpicture}
+		\end{equation}
+		\begin{center}
+			(ここにはdiagramが入る)
+		\end{center}
+		\fi
+		はエネルギー運動量保存からありえないことがわかる．
+	\item p.187の注釈に空間の添字の上げ下げによる符号に注意せよとあるが，\textref{6.35}は$A^i$が上がっているので，overallの符号が$+$になっている\footnote{同時に$A_{\textref{cl}}$のclassicalの添字が下がっているのはconfusingである．}．
+	\item p.187の最後の式は\textref{6.30}から$\delta(p'^0-p^0)=\delta(q^0)$なので左辺の$q_\nu$は$q^i$にしてよい．
+	\item p.188の$\tilde{B}^k(\vec{q}) = \textcolor{red}{+}\i\epsilon^{ijk}q^i\tilde{A}_{\text{cl}}^j(\vec{q})$である．なぜなら，
+		\begin{equation}
+			f(x) = \intp[4]{k}\tilde{f}(k)\e^{-ikx}
+		\end{equation}
+		のFourier変換のconventionを取っていて，空間成分の係数は$+\i$だからである．こうすると直前の$\i\M$の符号があう．
+\end{itemize}
+
+\subsection{The Electron Vertex Function: Evaluation}
+\begin{itemize}
+	\item \textref{6.38}でvertexが$\e^2$なのは，$-\i\e\Gamma^{\mu}$と一つ外に出して定義しているからである．
+	\item Feynman parameter積分はまず，
+		\begin{equation}
+			\frac{1}{AB} = \int_0^1 \delta(x+y-1) \frac{1}{(xA+yB)^2}
+		\end{equation}
+		は計算できる．これを$B$で微分することによって
+		\begin{equation}
+			\frac{1}{AB^n} = \int_0^1\delta(x+y-1)\frac{ny^{n-1}}{(xA+yB)^{n+1}}\label{eq:feyn_parameter}
+		\end{equation}
+		を得る．
+		
+		\textref{6.41}は帰納法で，
+		\begin{equation}
+			\frac{1}{A_1A_2\cdots A_n}\cdots\frac{1}{A_{n+1}} 
+			= \int_0^1\dd{x_1}\cdots\int_0^1\dd{x_n}\delta(\sum x_i-1)\frac{(n-1)!}{(x_1A_1 + x_2A_2 + \cdots + x_nA_n)^n}\frac{1}{A_{n+1}}
+		\end{equation}
+		に\eqref{eq:feyn_parameter}を用いると示せる．
+	\item \textref{6.42}で$m_i$は整数に制限しなくても成り立つと書いてある．この導出では整数解微分しているので階乗しか出ないが，(多少テクニカルだが，)$\Gamma$関数を使って示す方法があるので，整数以外にも使うことができる．
+
+	\item $q^2<0$はあとからも使う重要な性質で次のように示せる．
+		\begin{equation}
+			p\cdot q = p\cdot (p'-p) = \sqrt{m^2 + \abs*{\vec{p}}^2}\sqrt{m^2 + \abs*{\vec{p}'}^2} - m^2 > 0.
+		\end{equation}
+	\item $d$次元の極座標は$d-1$個の角度パラメータがあって，$1$個は$0$から$2\pi$，残りの$d-2$個は$0$から$\pi$まで動くように取れる．これは，$d-1$次元球面は円周を変形しながら閉区間を動かす軌跡により作ることができる構成があることから理解できる．
+	\item \textref{6.55}は$F_1(q^2=0)$が発散してはいけないことからの修正である．
+	\item Pauli--Villarsでは大きい$\Lambda$を2つ目のプロパゲーターにより小さい寄与を付け加えることで，紫外発散を消せる．
+		赤外発散は一項目のプロパゲーター自体に小さい$\mu$を付け加えることで消す．
+	\item 次元正則化ではUV発散は消せるが，IRは消せない．
+		これは，次元を増やすと運動量が大きい所は発散が弱くなるが，ゼロは原点なので発散が緩やかにならないと思える．
 \end{itemize}
