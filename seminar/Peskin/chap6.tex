@@ -324,3 +324,23 @@
 	\item 次元正則化ではUV発散は消せるが，IRは消せない．
 		これは，次元を増やすと運動量が大きい所は発散が弱くなるが，ゼロは原点なので発散が緩やかにならないと思える．
 \end{itemize}
+
+
+\subsection{The Vertex Corrections: Infrared Divergence}
+\begin{itemize}
+	\item $F_1(q^2)$の$y$, $z$の積分変数の変換はJacobianを計算すると，正しいことが確認できる．$y = \sqrt{w^2}\xi$, $z = 1-\sqrt{w^2}$なので，
+	\begin{equation}
+	\displaystyle
+	\begin{pmatrix}
+	\pdv{y}{\xi} & \pdv{y}{w^2}\\
+	\pdv{z}{\xi} & \pdv{z}{w^2}
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		\sqrt{w^2} & \frac{1}{2\sqrt{w^2}}\\
+		0 & -\frac{1}{2\sqrt{w^2}}
+	\end{pmatrix}
+	\end{equation}
+	より，determinantの絶対値は$1/2$になる．
+	\item \textref{6.61}は，上の計算過程で省略している$\mu \to 0$で発散しない1と$\O(\alpha^2)$を復活させている．
+\end{itemize}
