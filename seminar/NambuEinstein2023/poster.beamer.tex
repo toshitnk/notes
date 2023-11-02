@@ -1,0 +1,174 @@
+\documentclass[dvipdfmx]{beamer}
+\usepackage[orientation=portrait, size=a1, scale=1.7]{beamerposter}
+\usepackage{pxjahyper}
+\setlength{\parindent}{11pt}
+\usepackage{ascmac}
+% theme
+\usefonttheme{professionalfonts}
+\usetheme{Madrid}
+\usecolortheme{default}
+\setbeamertemplate{enumerate item}[default]
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{navigation symbols}{}
+\usepackage[scaled]{helvet}
+\renewcommand{\sfdefault}{phv}
+\renewcommand{\familydefault}{\sfdefault}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+\setbeamertemplate{theorems}[numbered]
+\definecolor{Crimson}{HTML}{dc143c}
+\setbeamercolor{alerted text}{fg=Crimson}
+
+% 二段組
+\usepackage{multicol}
+
+% graphics
+\usepackage{graphicx}
+\usepackage{here}
+
+% math
+\usepackage{amsmath, amssymb}
+\usepackage{physics}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{stmaryrd}
+%\usepackage{tikz}
+%\usepackage[all]{xy}
+
+
+
+
+% link
+
+\usepackage{url}
+\usepackage{hyperref} 
+\usepackage{xcolor}
+\usepackage{pxjahyper}
+\definecolor{link}{HTML}{4b0082}
+\hypersetup{
+	colorlinks=true,
+	citecolor=link,
+	linkcolor=link,
+	urlcolor=orange,
+}
+
+% my command
+\newcommand{\hilb}{\mathcal{H}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\definecolor{myblue}{HTML}{00008b}
+\setbeamercolor{headline}{fg = white, bg = myblue}
+\setbeamertemplate{headline}{
+		\leavevmode
+		\begin{beamercolorbox}[wd=\paperwidth]{headline}
+		\centering
+		\vskip4ex
+		\usebeamercolor{title in headline}{
+				\color{fg}\textbf{\LARGE{\inserttitle}}\\[2.5ex]
+		}
+		\usebeamercolor{author in headline}{
+				\color{fg}\Large{\insertauthor}
+		}\\[1.5ex]
+		\usebeamercolor{institute in headline}{
+				\color{fg}\large{\insertinstitute}
+		}
+
+		\vskip4ex
+		\end{beamercolorbox}
+}
+\setbeamertemplate{block begin}{%
+    \vskip.5ex
+	\begin{beamercolorbox}[
+		leftskip=0.5em,
+        colsep*=.75ex
+		]{block title}%
+		\usebeamerfont*{block title}\insertblocktitle
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[
+        leftskip=-0.5em,
+        colsep*=.75ex,
+        sep=1ex,
+        vmode
+		]{block body}%
+}
+\setbeamertemplate{block end}{%
+    \end{beamercolorbox}
+    \vskip1.5ex
+}
+\mathversion{bold}
+%\definecolor{math}{HTML}{100080}
+%\everymath{\color{math}}
+
+
+% my defs
+\newcommand{\N}{\mathcal{N}}
+\newcommand{\Ztt}{\mathbb{Z}_2^2}
+\renewcommand{\i}{\mathrm{i}}
+\newcommand{\Q}{\mathcal{Q}}
+\newcommand{\g}{\mathfrak{g}}
+\renewcommand{\acomm}[2]{\mathbf{\{} #1, #2 \mathbf{\}}}
+\renewcommand{\comm}[2]{\mathbf{[} #1, #2 \mathbf{]}}
+\newcommand{\zcomm}[2]{\mathbf{\llbracket} #1, #2 \mathbf{\rrbracket}}
+% title
+\author{\inst{1}}
+\institute{\inst{1}大阪公理}
+\title[\textcolor{white}{}]{超場形式による$\textcolor{white}{\mathbf{\Ztt}}$超対称な古典力学}
+\begin{document}
+\begin{frame}
+\begin{columns}[t]
+		\begin{column}{0.47\textwidth}
+				\begin{block}{$\Ztt$超対称性について}
+							系のHamiltonian $H$，操作を指定する演算子を$\mathcal{O}$．
+
+							量子力学において，操作$\mathcal{O}$に対して系が対称性を持つとは，$[H, \mathcal{O}] = 0$が成り立つこと．
+					\begin{itembox}[l]{通常の対称性の例}
+							回転を指定する演算子は角運動量演算子$J_i$で．
+							\[\comm{J_i}{J_j} = \i\epsilon_{ijk}J_k\]
+							を満たす．
+
+							回転対称性を持つ系では$[H, J_i] = 0$が成り立つ．
+					\end{itembox}
+					通常の対称性は演算子の\underline{交換子}により定まる．このような構造を\underline{Lie代数}という．
+					\begin{itembox}[l]{超対称性}
+						bosonとfermionを入れ替える操作を指定する演算子は$\Q$, $\Q^\dag$ (superchargeという)で，
+						\[\acomm{\Q}{\Q} =2 H\]
+
+						を満たす．
+
+						超対称性を持つ系では$[H, \Q] = [H, \Q^\dag] = 0$が成り立つ．
+					\end{itembox}
+					超対称性を考えるには\underline{\alert{反}交換子}が必要．
+
+					交換子と反交換子を統一的に記述するためにLie代数を$\Z_2$で次数付する．演算子の空間が$\g = \g_0 \oplus \g_1$と直和分解されていて，$H\in \g_0$, $\Q\in \g_1$であると考える．
+					$\zcomm{A}{B}\coloneqq AB - (-1)^{\deg A\deg B}BA$
+				\end{block}
+
+				\begin{block}{超場形式}
+					超対称性の古典論を考えるのに有効な方法として，超場形式が知られている．
+
+					\begin{table}{h}
+						\centering
+						\begin{tabular}{ccc}
+							通常の場 & 時空$(t, x)$ & 	
+							超場形式
+						\end{tabular}
+					\end{table}
+					$\theta$は$\theta^2 = 0$を満たす古典量(Glassmann数という)で，$(t, \theta)$が張る空間を超空間，その上の関数$\Phi(t, \theta)$を超場という．
+
+
+				\end{block}
+
+
+				\begin{block}{HOGE}
+				\end{block}
+		\end{column}
+		\begin{column}{0.47\textwidth}
+				\begin{block}{PIYO}
+				\end{block}
+		\end{column}
+\end{columns}
+\end{frame}
+\end{document}
+
+
