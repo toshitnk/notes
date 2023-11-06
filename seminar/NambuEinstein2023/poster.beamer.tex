@@ -1,5 +1,5 @@
 \documentclass[dvipdfmx]{beamer}
-\usepackage[orientation=portrait, size=a1, scale=1.7]{beamerposter}
+\usepackage[orientation=portrait, size=a1, scale=1.5]{beamerposter}
 \usepackage{pxjahyper}
 \setlength{\parindent}{11pt}
 \usepackage{ascmac}
@@ -12,6 +12,7 @@
 \setbeamertemplate{navigation symbols}{}
 \usepackage[scaled]{helvet}
 \renewcommand{\sfdefault}{phv}
+%\renewcommand{\baselinestretch}{1.2}
 \renewcommand{\familydefault}{\sfdefault}
 \renewcommand{\kanjifamilydefault}{\gtdefault}
 \setbeamertemplate{theorems}[numbered]
@@ -48,7 +49,7 @@
 	colorlinks=true,
 	citecolor=link,
 	linkcolor=link,
-	urlcolor=orange,
+	urlcolor=white,
 }
 
 % my command
@@ -99,16 +100,18 @@
 \mathversion{bold}
 %\definecolor{math}{HTML}{100080}
 %\everymath{\color{math}}
+\usepackage{slashed}
 
 
+\newcommand{\new}{\vspace{0.5\baselineskip}}
 % my defs
 \newcommand{\N}{\mathcal{N}}
 \newcommand{\Ztt}{\mathbb{Z}_2^2}
 \renewcommand{\i}{\mathrm{i}}
 \newcommand{\Q}{\mathcal{Q}}
 \newcommand{\g}{\mathfrak{g}}
-\renewcommand{\acomm}[2]{\mathbf{\{} #1, #2 \mathbf{\}}}
-\renewcommand{\comm}[2]{\mathbf{[} #1, #2 \mathbf{]}}
+%\renewcommand{\acomm}[2]{\mathbf{\{} #1, #2 \mathbf{\}}}
+%\renewcommand{\comm}[2]{\mathbf{[} #1, #2 \mathbf{]}}
 \newcommand{\zcomm}[2]{\mathbf{\llbracket} #1, #2 \mathbf{\rrbracket}}
 % title
 \author{\inst{1}}
@@ -129,8 +132,10 @@
 
 							回転対称性を持つ系では$[H, J_i] = 0$が成り立つ．
 					\end{itembox}
-					通常の対称性は演算子の\underline{交換子}により定まる．このような構造を\underline{Lie代数}という．
-					\begin{itembox}[l]{超対称性}
+					通常の対称性は演算子の\underline{交換子}により定まる．
+
+					このような構造を\underline{Lie代数}という．
+					\begin{itembox}[l]{超対称性(\underline{SU}per \underline{SY}mmetry)}
 						bosonとfermionを入れ替える操作を指定する演算子は$\Q$, $\Q^\dag$ (superchargeという)で，
 						\[\acomm{\Q}{\Q} =2 H\]
 
@@ -139,33 +144,82 @@
 						超対称性を持つ系では$[H, \Q] = [H, \Q^\dag] = 0$が成り立つ．
 					\end{itembox}
 					超対称性を考えるには\underline{\alert{反}交換子}が必要．
+	\new
 
-					交換子と反交換子を統一的に記述するためにLie代数を$\Z_2$で次数付する．演算子の空間が$\g = \g_0 \oplus \g_1$と直和分解されていて，$H\in \g_0$, $\Q\in \g_1$であると考える．
-					$\zcomm{A}{B}\coloneqq AB - (-1)^{\deg A\deg B}BA$
+					\alert{$\Z_2$ graded} Lie代数を考えることで，交換子と\alert{反}交換子を統一的に記述できる．
+
+					演算子が棲む空間が二種類$\g_0$, $\g_1$あるとして，空間の次数の積により演算を定める．
+					\begin{table}[h]
+						\centering
+						\begin{tabular}{c|cc}\hline
+							 & $\g_0$& $\g_1$\\\hline
+							$\g_0$ & $\comm{\bullet}{\bullet}$ & $\comm{\bullet}{\bullet}$\\
+							$\g_1$ & $\comm{\bullet}{\bullet}$&$\acomm{\bullet}{\bullet}$\\\hline
+						\end{tabular}
+					\end{table}
+
+					$H\in\g_0$, $\Q, \Q^\dag\in\g_1$とすると，超対称性の代数を満たす．
+					\begin{itembox}{$\Ztt$超対称性}
+						次数付を$\Ztt\coloneqq \Z_2 \times \Z_2 = {(0, 0), (1, 0), (0, 1), (1, 1)}$に拡張し，交換子を次数の標準内積で定める．
+						\begin{table}[h]
+							\centering
+							\begin{tabular}{c|cccc}\hline
+								 & $(0, 0)$ & $(1, 0)$ & $(0, 1)$ & $(1, 1)$\\\hline
+								$(0, 0)$ & $\comm{\bullet}{\bullet}$ & $\comm{\bullet}{\bullet}$& $\comm{\bullet}{\bullet}$ & $\comm{\bullet}{\bullet}$\\
+								$(1, 0)$ & $\comm{\bullet}{\bullet}$ & $\acomm{\bullet}{\bullet}$& $\comm{\bullet}{\bullet}$ & $\acomm{\bullet}{\bullet}$\\
+								$(0, 1)$ & $\comm{\bullet}{\bullet}$ & $\comm{\bullet}{\bullet}$& $\acomm{\bullet}{\bullet}$ & $\acomm{\bullet}{\bullet}$\\
+								$(1, 1)$ & $\comm{\bullet}{\bullet}$ & $\acomm{\bullet}{\bullet}$& $\acomm{\bullet}{\bullet}$ & $\comm{\bullet}{\bullet}$\\\hline
+							\end{tabular}
+						\end{table}
+						\begin{alignat*}{3}
+							\acomm{Q_{10}}{Q_{10}} &= \acomm{Q_{01}}{Q_{01}} = 2H, &\quad &\acomm{Q_{10}}{Q_{01}} = \i Z\\
+							\acomm{Q_{10}}{Z} &= \acomm{Q_{01}}{Z} = 0, & & \acomm{Z}{Z} = 0
+						\end{alignat*}
+					\end{itembox}
 				\end{block}
 
 				\begin{block}{超場形式}
 					超対称性の古典論を考えるのに有効な方法として，超場形式が知られている．
 
-					\begin{table}{h}
+					通常の時空$(t, x)$に追加で$\theta$, $\theta^\dag$軸を加えた空間を\underline{超空間}という．ただし，$\theta^2 = (\theta^\dag) = 0$となるGlassman数．
+					\begin{table}[h]
 						\centering
-						\begin{tabular}{ccc}
-							通常の場 & 時空$(t, x)$ & 	
-							超場形式
+
+						\begin{tabular}{c|cc}
+							通常の場 & 時空$(t, x)$ &場$\phi(t, x)$ 	\\\hline
+							超場形式 & \alert{超}空間$(t, x, \alert{\theta}, \alert{\theta^\dag})$ &\alert{超}場$\Phi(t, x, \alert{\theta}, \alert{\theta^\dag})$
 						\end{tabular}
 					\end{table}
-					$\theta$は$\theta^2 = 0$を満たす古典量(Glassmann数という)で，$(t, \theta)$が張る空間を超空間，その上の関数$\Phi(t, \theta)$を超場という．
+					超対称不変なactionは次のようにして書き下すことができる．
+					\[S = \int\dd{t}\int\dd{\theta}\int\dd{\theta^\dag} ((D\Phi)(D^\dag\Phi) + W(\Phi))\]
 
-
+					\vskip\baselineskip
+					$\Z_2^2$超対称性についても，このように古典論を構築できないか．
 				\end{block}
 
 
-				\begin{block}{HOGE}
-				\end{block}
 		\end{column}
 		\begin{column}{0.47\textwidth}
-				\begin{block}{PIYO}
-				\end{block}
+		\begin{block}{$\Z_2^2$超空間上の積分 \scriptsize{\href{https://arxiv.org/abs/2305.07836}{[N.Aizawa, R.Ito arXiv:2305.07836]}}}
+		\end{block}
+
+		\begin{block}{$\Ztt$超場形式}
+			\[S = -\int\dd{t}\dd{z}\dd{\theta_{10}}\dd{\theta_{01}}\frac{z}{\sqrt{y}}(2D_{10}\Phi D_{01}\Phi) + \alpha V(\Phi)\]
+			これを上で定義した積分を使い計算をすると，
+			\begin{align*}
+				S &= \frac{1}{2} (\partial_{\mu} \varphi_{00} \partial^{\mu} \varphi_{00} + \partial_{\mu} \varphi_{11} \partial^{\mu} \varphi_{11}) +2 A_{00}^2 + 2 A_{11}^2
+	+i \overline{\Psi}_{10}  \slashed{\partial} \Psi_{10} 
+	+i \overline{\Psi}_{01}  \slashed{\partial} \Psi_{01}
+	\nonumber \\
+%	&-2\alpha \left[ A_{11} V_{00} + A_{00} V_{11} + \frac{1}{2}(\overline{\Psi}_{10} \gamma^3 \Psi_{01} - \overline{\Psi}_{01}\gamma^3 \Psi_{10}) \partial_{00} V_{00} 
+%	-\frac{i}{2}( \overline{\Psi}_{10} \gamma^3 \Psi_{10} + \overline{\Psi}_{01} \gamma^3 \Psi_{01}) \partial_{00} V_{11}\right.
+%	\nonumber \\
+	&-2\alpha ( A_{11} V_{00} + A_{00} V_{11} )
+	\nonumber \\
+	& - \alpha \big[ (\overline{\Psi}_{10} \gamma^3 \Psi_{01} - \overline{\Psi}_{01}\gamma^3 \Psi_{10}) \partial_{00} V_{00}
+	-i( \overline{\Psi}_{10} \gamma^3 \Psi_{10} + \overline{\Psi}_{01} \gamma^3 \Psi_{01}) \partial_{00} V_{11} \big]
+\end{align*}
+		\end{block}
 		\end{column}
 \end{columns}
 \end{frame}
