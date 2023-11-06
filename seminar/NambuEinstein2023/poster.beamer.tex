@@ -190,8 +190,14 @@
 							超場形式 & \alert{超}空間$(t, x, \alert{\theta}, \alert{\theta^\dag})$ &\alert{超}場$\Phi(t, x, \alert{\theta}, \alert{\theta^\dag})$
 						\end{tabular}
 					\end{table}
-					超対称不変なactionは次のようにして書き下すことができる．
-					\[S = \int\dd{t}\int\dd{\theta}\int\dd{\theta^\dag} ((D\Phi)(D^\dag\Phi) + W(\Phi))\]
+					超場はBosonとFermionを自動的に含む．
+					\[\Phi(t, \theta, \theta^\dag) = q(t) + \theta\eta^{\dag} - \theta^{\dag}\eta + \theta\theta^{\dag}F(t)\]
+					$q$, $F$: Boson, $\eta$, $\eta^\dag$ : Fermion.
+					超対称不変なactionは超場の超空間上での積分から次のように構成できる．
+					\begin{align*}
+					S &= \int\dd{t}\dd{\theta}\dd{\theta^\dag} (-\frac{1}{2}(D\Phi)(D^\dag\Phi) + W(\Phi))\\
+					&= \int\dd{t}\qty(\frac{1}{2}\dot{q}^2 + \frac{1}{2}F^2 + W'(q)F + \i \eta^{\dag}\dot{\eta} + W''(q)\eta^{\dag}\eta)
+					\end{align*}
 
 					\vskip\baselineskip
 					$\Z_2^2$超対称性についても，このように古典論を構築できないか．
@@ -204,8 +210,12 @@
 		\end{block}
 
 		\begin{block}{$\Ztt$超場形式}
+		$(t, \theta_{10}, \theta_{01}, z)$による空間を\alert{$\Ztt$}超空間といい，
+
+		その上の関数$\Phi(t, \theta_{10}, \theta_{01}, z)$を$\Ztt$超場という．
 			\[S = -\int\dd{t}\dd{z}\dd{\theta_{10}}\dd{\theta_{01}}\frac{z}{\sqrt{y}}(2D_{10}\Phi D_{01}\Phi) + \alpha V(\Phi)\]
 			これを上で定義した積分を使い計算をすると，
+			\small{
 			\begin{align*}
 				S &= \frac{1}{2} (\partial_{\mu} \varphi_{00} \partial^{\mu} \varphi_{00} + \partial_{\mu} \varphi_{11} \partial^{\mu} \varphi_{11}) +2 A_{00}^2 + 2 A_{11}^2
 	+i \overline{\Psi}_{10}  \slashed{\partial} \Psi_{10} 
@@ -218,7 +228,7 @@
 	\nonumber \\
 	& - \alpha \big[ (\overline{\Psi}_{10} \gamma^3 \Psi_{01} - \overline{\Psi}_{01}\gamma^3 \Psi_{10}) \partial_{00} V_{00}
 	-i( \overline{\Psi}_{10} \gamma^3 \Psi_{10} + \overline{\Psi}_{01} \gamma^3 \Psi_{01}) \partial_{00} V_{11} \big]
-\end{align*}
+\end{align*}}
 		\end{block}
 		\end{column}
 \end{columns}
